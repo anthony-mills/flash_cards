@@ -17,6 +17,9 @@ $(document).ready(function(){
     },
     speed:   'fast',
     timeout: 0,
+    width: 0,
+    containerResize: 0,
+    slideResize: 0
   });
   function onBefore(){
     $(this).parent().find('.current').removeClass('current');

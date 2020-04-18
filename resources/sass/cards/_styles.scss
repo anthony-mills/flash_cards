@@ -12,8 +12,20 @@
     padding:0;
     position:relative;
     text-align:center;
-    width:500px
+
+    @media only screen and (max-width : 500px) {
+        min-width: 300px;
+    }
+
+    @media only screen and (max-width : 1000px) {
+        min-width: 400px;
+    }
+
+    @media only screen and (min-width : 1000px) {
+        min-width: 500px;
+    }                
 }
+
 .card{
     -webkit-perspective:1600;
     perspective:1600;
@@ -25,8 +37,7 @@
     min-height: 300px;
     line-height:60px;
     position:relative;
-    width:500px;
-    min-width: 500px;
+    width: 100%;
 }
 .card:first-child{
     display:block
@@ -46,11 +57,12 @@
     -o-transition:all 0.4s ease-in-out;
     transition:all 0.4s ease-in-out;
     background-color:#fff;
-    background-size:500px 30px;
+    background-size:100% 30px;
     background-position:50%;
     height:100%;
     width:100%;
     position:absolute;
+
 }
 .current .side_one,.current.flip .side_two{
     -webkit-box-shadow:0 3px 5px #000;
@@ -86,19 +98,11 @@
     z-index:1000
 }
 .card p{
-    //background-image:-webkit-gradient(linear, 50% 0%, 50% 44, color-stop(0%, #ffffff), color-stop(97.727%, #ffffff), color-stop(100%, #ff78b4));
-    background-image:-webkit-linear-gradient(#ffffff 0px,#ffffff 43px,#ff78b4 44px);
-    background-image:-moz-linear-gradient(#ffffff 0px,#ffffff 43px,#ff78b4 44px);
-    background-image:-o-linear-gradient(#ffffff 0px,#ffffff 43px,#ff78b4 44px);
-    background-image:-ms-linear-gradient(#ffffff 0px,#ffffff 43px,#ff78b4 44px);
-    background-image:linear-gradient(#ffffff 0px,#ffffff 43px,#ff78b4 44px);
-    background-size:500px 45px;
-    background-repeat:repeat-x;
-    display:table-cell;
-    height:300px;
-    vertical-align:middle;
-    width:500px
+    text-align:middle;
+    padding-left: 10px;
+    padding-right: 10px; 
 }
+
 #nav_deck{
     color:#fff;
     position:relative
