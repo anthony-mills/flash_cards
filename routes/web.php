@@ -18,3 +18,7 @@ Route::get('/', 'CardController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/card/categories', 'CategoryController@manageCategories')->name('category.create');
+
+Route::post('/card/categories', 'CategoryController@saveCategory')->name('category.save');

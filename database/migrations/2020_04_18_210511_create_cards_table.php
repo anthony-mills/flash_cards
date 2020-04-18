@@ -17,10 +17,11 @@ class CreateCardsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->unsignedInteger('category')->nullable(); 
-            $table->string('name', 100)->nullable();         
+            $table->string('problem', 250)->nullable();
+            $table->string('solution', 250)->nullable();                         
             $table->timestamps();
 
-            $table->foreign('category')->references('id')->on('card_category')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('category')->references('id')->on('card_categories')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

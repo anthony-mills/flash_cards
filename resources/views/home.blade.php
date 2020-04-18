@@ -17,7 +17,9 @@
                     <ul>
                         <li>Create Card</li>                        
                         <li>List Cards</li>
-                        <li>Manage Categories</li>
+                        <li>
+                            <a href="/card/categories">Manage Categories</a>
+                        </li>
                     </ul>
                 </div>
             </div>
