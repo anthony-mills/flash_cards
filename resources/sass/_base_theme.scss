@@ -2527,8 +2527,10 @@ textarea.form-control {
   display: none;
   width: 100%;
   margin-top: 0.25rem;
-  font-size: 80%;
-  color: #D9831F;
+  font-size: 1.1em;
+  line-height: 1em;
+  text-align: center;
+  color: red;
 }
 
 .invalid-tooltip {

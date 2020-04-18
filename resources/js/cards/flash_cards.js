@@ -1,7 +1,7 @@
 $(document).ready(function(){
   // FLIP
   $('#flipper').bind('click', function(){
-    $('.card.current').toggleClass('flip');
+    $('.flash-card.current').toggleClass('flip');
   });
 
   // CYCLE

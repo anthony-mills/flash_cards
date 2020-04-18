@@ -5,7 +5,7 @@
 	    <div class="row justify-content-center">
 	        <div class="col-md-8">
 				<ul id="deck">
-					<li class="card">
+					<li class="flash-card">
 						<div class="side_one">
 							<p>How many licks does it take to get to the center of a Tootsie Pop?</p>
 						</div>
@@ -15,7 +15,7 @@
 						</div>
 					</li>
 
-					<li class="card">
+					<li class="flash-card">
 						<div class="side_one">
 							<p>Slide 3?dkkkkkkkkkkkkkkkkkkk</p>
 						</div>

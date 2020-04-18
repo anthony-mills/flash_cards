@@ -26,7 +26,7 @@
     }                
 }
 
-.card{
+.flash-card{
     -webkit-perspective:1600;
     perspective:1600;
     color:#222;
@@ -39,7 +39,7 @@
     position:relative;
     width: 100%;
 }
-.card:first-child{
+.flash-card:first-child{
     display:block
 }
 .side_one,.side_two{
@@ -97,7 +97,7 @@
     transform:rotateX(0deg);
     z-index:1000
 }
-.card p{
+.flash-card p{
     text-align:middle;
     padding-left: 10px;
     padding-right: 10px; 
@@ -120,7 +120,7 @@
     opacity:1
 }
 
-.card:first-child .side_two{
+.flash-card:first-child .side_two{
     font-family:GungSeo, serif
 }
 
