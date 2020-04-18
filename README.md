@@ -21,3 +21,7 @@ A test user is created with the follwing credentials:
 
 User: test.user@test.com
 Password: 2ht4eqx0
+
+## Credits
+
+The flash card presentation code was adapted from [Curtis Blackwell's Flash Cards](https://github.com/curtisblackwell/flash_cards) project.
