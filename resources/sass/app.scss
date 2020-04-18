@@ -6,3 +6,13 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Base Theme
+@import '_base_theme';
+
+// Card Styles
+@import 'cards/_styles';
+
+#app .navbar {
+	border-style: none !important;
+}
