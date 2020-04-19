@@ -19,6 +19,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/card/categories', 'CategoryController@manageCategories')->name('category.create');
+/** Start the card category related routes **/
+Route::get('/card/categories/list', 'CategoryController@listCategories')->name('category.list');
 
-Route::post('/card/categories', 'CategoryController@saveCategory')->name('category.save');
+Route::get('/card/categories/delete/{catId}', 'CategoryController@deleteCategory');
+
+Route::get('/card/categories/create', 'CategoryController@createCategory')->name('category.create');
+
+Route::post('/card/categories/create', 'CategoryController@saveCategory')->name('category.save');
+/** End the card category related routes **/

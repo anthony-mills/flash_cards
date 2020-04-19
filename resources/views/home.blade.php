@@ -8,17 +8,18 @@
                 <div class="card-header">Flash Cards</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    @include('alerts.status')
                         
                     <ul>
                         <li>Create Card</li>                        
                         <li>List Cards</li>
+                        
                         <li>
-                            <a href="/card/categories">Manage Categories</a>
+                            <a href="/card/categories/create">Create Category</a>
+                        </li>
+
+                        <li>
+                            <a href="/card/categories/list">Existing Categories</a>
                         </li>
                     </ul>
                 </div>

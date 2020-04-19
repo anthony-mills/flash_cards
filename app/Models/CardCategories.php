@@ -15,4 +15,25 @@ class CardCategories extends Model
                           ];
                           
 
+    /**
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+    public function flashCards()
+    {
+        return $this->hasMany('App\Models\Cards', 'category');
+    }
+
+    /**
+    * Return all prize pools and their enclosed prizes
+    * 
+    * @return Illuminate\Support\Collection $existingCats
+    **/
+    public function getCategories()
+    {
+        $existingCats = $this->with(
+            'flashCards'
+        )->orderBy('name', 'ASC')->get();
+
+        return $existingCats;
+    }    
 }
