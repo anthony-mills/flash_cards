@@ -2,7 +2,23 @@
 
 Digital Flash Card application for aiding the memorisation of information. 
 
-## Getting Started
+### Why?
+
+A flash card is a tool that aids the [process of memorisation](https://en.wikipedia.org/wiki/Flashcard). Recently while studying to sit a certification I was haunted by the feeling that key facts were not sticking in my memory as well as they could. Sure I could revise the content again but what if it didn't stick the next time around either? 
+
+A new approach was needed to quickly revise key facts without the associated bulk. So I decided to create this web based flash card tool with Laravel so I could create my own sets of topics and related cards to study.
+
+It is a simple two part application the frontend allows users to cycle though the cards available. Along with a simple backend system that allows the management of cards and their associated categories.
+
+### Requirements 
+
+The application is created with Laravel 7.
+
+So an environment running PHP versions 7.2.5 and above is required.
+
+Along with a MySQL server to hold the flash cards and categories.
+
+### Getting Started
 
 composer install 
 
@@ -15,13 +31,30 @@ Edit the newly created .env file and add the database configuration values relev
 ./artisan migrate:seed
 ./artisan db:seed
 
-## Test User Account
+### Test User Account
 
 A test user is created with the follwing credentials:
 
 User: test.user@test.com
 Password: 2ht4eqx0
 
-## Credits
+### Credits
 
 The flash card presentation code was adapted from [Curtis Blackwell's Flash Cards](https://github.com/curtisblackwell/flash_cards) project.
+
+### Licence
+
+Copyright (C) 2020 [Anthony Mills](http://www.anthony-mills.com)
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
