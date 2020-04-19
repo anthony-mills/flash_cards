@@ -19,6 +19,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+/** Start the flash card related routes **/
+Route::get('/card/create', 'CardController@createCard')->name('card.create');
+
+Route::post('/card/create', 'CardController@saveCard')->name('card.save');
+/** End the flash card related routes **/
+
 /** Start the card category related routes **/
 Route::get('/card/categories/list', 'CategoryController@listCategories')->name('category.list');
 

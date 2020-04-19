@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryCreateForm extends FormRequest
+class CardCreateForm extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -14,7 +14,9 @@ class CategoryCreateForm extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:2|unique:card_categories,name|regex:/^[\pL0-9$ ()]+$/u',
+            'category' => 'required|numeric',
+            'problem' => 'regex:/^[\pL0-9$ ()]+$/u|required|max:250',
+            'solution' => 'regex:/^[\pL0-9$ ()]+$/u|required|max:250',                        
         ];
     }
 }

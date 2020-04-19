@@ -11,8 +11,9 @@
                     @include('alerts.status')
                         
                     <ul>
-                        <li>Create Card</li>                        
-                        <li>List Cards</li>
+                        <li>
+                            <a href="/card/create">Create Flash Card</a>
+                        </li>                        
                         
                         <li>
                             <a href="/card/categories/create">Create Category</a>
