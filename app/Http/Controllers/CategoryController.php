@@ -66,7 +66,7 @@ class CategoryController extends Controller
 
     			return redirect()->route('category.list')->with('status', 'Deleted the category "' . $catName . '".'); 
     		} else {
-    			return redirect()->route('category.list')->with('error', 'Error saving the new category.'); 
+    			return redirect()->route('category.list')->with('error', 'Error deleting the category.'); 
     		}
 
     	}
@@ -91,4 +91,31 @@ class CategoryController extends Controller
         );    	
     }
 
+	/**
+	* List all of the cards associated with a category
+	*
+	* @param integer $catId
+	*
+    * @return \Illuminate\View\View	
+	**/
+    public function getCards( $catId )
+    {
+    	if (is_numeric($catId)) {
+	    	$catRow = ( new CardCategories )->getCategory( $catId );
+
+	    	if ( $catRow ) {
+		        return view(
+		            'categories.list-cards', 
+		            [
+		            	'catRow' => $catRow
+		            ]
+		        );	    		
+	    	}
+
+	    	return redirect()->route('home')->with('error', 'Category not found.');
+
+        }
+
+        throw new \Exception('Non numeric category id provided.');    	
+    }
 }

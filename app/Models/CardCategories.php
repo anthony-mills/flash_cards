@@ -24,7 +24,7 @@ class CardCategories extends Model
     }
 
     /**
-    * Return all prize pools and their enclosed prizes
+    * Return all categories and their associated cards
     * 
     * @return Illuminate\Support\Collection $existingCats
     **/
@@ -35,5 +35,22 @@ class CardCategories extends Model
         )->orderBy('name', 'ASC')->get();
 
         return $existingCats;
-    }    
+    }
+
+    /**
+    * Return a category along with its associated Cards
+    * 
+    * @param integer $catId
+    *
+    * @return Illuminate\Support\Collection $existingCats
+    **/
+    public function getCategory( $catId )
+    {
+        $existingCats = $this->with(
+            'flashCards'
+        )->where('id', $catId)
+        ->orderBy('name', 'ASC')->first();
+
+        return $existingCats;
+    }            
 }
