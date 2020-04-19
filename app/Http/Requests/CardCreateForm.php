@@ -15,7 +15,7 @@ class CardCreateForm extends FormRequest
     {
         return [
             'category' => 'required|numeric',
-            'problem' => 'regex:/^[\pL0-9$ ()]+$/u|required|max:250',
+            'problem' => 'regex:/^[\pL0-9$ ()?]+$/u|required|max:250',
             'solution' => 'regex:/^[\pL0-9$ ()]+$/u|required|max:250',                        
         ];
     }

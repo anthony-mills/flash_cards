@@ -12,10 +12,12 @@ class CardController extends Controller
 {
     public function index()
     {
+    	$existingCards = Cards::get();
+
         return view(
             'cards.landing', 
             [
-                'section_name' => 'Prizes'
+                'existingCards' => $existingCards ?? array()
             ]
         );    	
     }

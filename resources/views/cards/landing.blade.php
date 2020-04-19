@@ -4,33 +4,29 @@
 	<div class="container dark-container">
 	    <div class="row justify-content-center">
 	        <div class="col-md-8">
-				<ul id="deck">
-					<li class="flash-card">
-						<div class="side_one">
-							<p>How many licks does it take to get to the center of a Tootsie Pop?</p>
-						</div>
+	        	@if (count($existingCards) > 1)
+					<ul id="deck">
+						@foreach( $existingCards as $existingCard )
+							<li class="flash-card">
+								<div class="side_one">
+									<p>{{ $existingCard->problem }}</p>
+								</div>
 
-						<div class="side_two">
-							<p>The world may never know.</p>
-						</div>
-					</li>
+								<div class="side_two">
+									<p>{{ $existingCard->solution }}</p>
+								</div>
+							</li>
+						@endforeach				
+					</ul>
 
-					<li class="flash-card">
-						<div class="side_one">
-							<p>Slide 3?dkkkkkkkkkkkkkkkkkkk</p>
-						</div>
-
-						<div class="side_two">
-							<p>NFI</p>
-						</div>
-					</li>				
-				</ul>
-
-				<div id="nav_deck">
-					<span class="icon" id="prev" data-icon="<"><span class="visuallyhidden">Previous</span></span>
-					<span class="icon" id="flipper" data-icon="/"><span class="visuallyhidden">Flip</span></span>
-					<span class="icon" id="next" data-icon=">"><span class="visuallyhidden">Next</span></span>
-				</div>						
+					<div id="nav_deck">
+						<span class="icon" id="prev" data-icon="<"><span class="visuallyhidden">Previous</span></span>
+						<span class="icon" id="flipper" data-icon="/"><span class="visuallyhidden">Flip</span></span>
+						<span class="icon" id="next" data-icon=">"><span class="visuallyhidden">Next</span></span>
+					</div>						
+				@else 
+					<p>The system needs at least 2 stored flash cards to get started.</p>
+				@endif					
 	        </div>
 	    </div>
 	</div>
