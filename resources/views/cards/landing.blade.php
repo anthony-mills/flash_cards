@@ -25,7 +25,7 @@
 						<span class="icon" id="next" data-icon=">"><span class="visuallyhidden">Next</span></span>
 					</div>						
 				@else 
-					<p>The system needs at least 2 stored flash cards to get started.</p>
+					@include('alerts.insufficent_cards')
 				@endif					
 	        </div>
 	    </div>

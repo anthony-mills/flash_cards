@@ -33,7 +33,7 @@
                                             </a>
 
                                             <a href="/card/categories/delete/{{ $existingCat->id }}">
-                                                <button type="button" class="btn btn-danger">Delete</button>
+                                                <button type="button" class="btn btn-primary">Delete</button>
                                             </a>
                                         </td>                                                                                           
                                     </tr>

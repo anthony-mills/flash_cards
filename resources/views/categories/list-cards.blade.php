@@ -29,7 +29,7 @@
                                         <td>{{ $existingCard->created_at }}</td>     
                                         <td>
                                             <a href="/card/delete/{{ $existingCard->id }}">
-                                                <button type="button" class="btn btn-danger">Delete</button>
+                                                <button type="button" class="btn btn-primary">Delete</button>
                                             </a>
                                         </td>                                                                                           
                                     </tr>
