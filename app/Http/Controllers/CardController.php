@@ -5,21 +5,50 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\CardCreateForm;
+use App\Http\Requests\CardStartSetForm;
+
 use App\Models\CardCategories;
 use App\Models\Cards;
 
 class CardController extends Controller
 {
-    public function index()
+    /**
+    * Allow the user to select the card topic they would like to study
+    *
+    * @return \Illuminate\View\View     
+    **/    
+    public function beginSet()
     {
-    	$existingCards = Cards::get();
+        $cardCats = ( new CardCategories )->getCategories();
+
+        return view(
+            'cards.start', 
+            [
+                'cardCats' => $cardCats ?? array(),
+                'cardNumber' => [ 10 => 10, 20 => 20, 50 => 50 ]
+            ]
+        );        
+    }
+
+    /**
+    * Display the selected flashcard set to the user
+    *
+    * @param \App\Http\Requests\CardStartSetForm $formObj
+    *     
+    * @return \Illuminate\View\View     
+    **/
+    public function showCards( CardStartSetForm $formObj )
+    {
+        $existingCards = Cards::where( 'category', $formObj->get('category') )
+                                ->limit( $formObj->get('card_number') )
+                                ->get();
 
         return view(
             'cards.landing', 
             [
                 'existingCards' => $existingCards ?? array()
             ]
-        );    	
+        );      
     }
 
     /**

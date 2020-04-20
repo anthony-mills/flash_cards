@@ -2,23 +2,26 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'CardController@index');
-
 Auth::routes([
   'register' => false,
   'reset' => false,
   'verify' => false,
 ]);
 
-Route::get('/dashboard', 'HomeController@index')->name('home');
 
-/** Start the flash card related routes **/
+/** Start the flash card management related routes **/
+Route::get('/', 'CardController@beginSet')->name('card.select');
+
+Route::post('/', 'CardController@showCards')->name('card.begin');
+
 Route::get('/card/create', 'CardController@createCard')->name('card.create');
 
 Route::post('/card/create', 'CardController@saveCard')->name('card.save');
 
 Route::get('/card/delete/{cardId}', 'CardController@deleteCard');
-/** End the flash card related routes **/
+/** End the flash card management related routes **/
+
+Route::get('/dashboard', 'HomeController@index')->name('home');
 
 /** Start the card category related routes **/
 Route::get('/card/categories/list', 'CategoryController@listCategories')->name('category.list');
