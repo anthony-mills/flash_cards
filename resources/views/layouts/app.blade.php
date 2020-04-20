@@ -27,7 +27,7 @@
 
                 @else
                     <a class="navbar-brand" href="{{ url('/home') }}">
-                            Home
+                        <button type="button" class="btn btn-info">Admin Dashboard</button>
                     </a>
                 @endif
                 
