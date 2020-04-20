@@ -3,7 +3,7 @@
 @section('content')
 	<div class="container dark-container">
 	    <div class="row justify-content-center">
-	        <div class="col-md-8">
+	        <div class="col-md-12">
 	        	@if (count($existingCards) > 1)
 					<ul id="deck">
 						@foreach( $existingCards as $existingCard )
