@@ -10,6 +10,10 @@ A new approach was needed to quickly revise key facts without the associated bul
 
 It is a simple two part application the frontend allows users to cycle though the cards available. Along with a simple backend system that allows the management of cards and their associated categories.
 
+### Screenshots
+
+![Viewing Cards](/screenshots/cards.gif?raw=true "Looking at flash cards")
+
 ### Requirements 
 
 The application is created with Laravel 7.
