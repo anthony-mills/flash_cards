@@ -27,6 +27,10 @@ $(document).ready(function(){
     }
     function onAfter(){
       $(this).addClass('current');
+
+      var cardNum = $(this).data("card-number");
+
+      $("#current-card").html( cardNum );
     }
     // Keyboard Nav
     $(document).keydown(function (e) {
