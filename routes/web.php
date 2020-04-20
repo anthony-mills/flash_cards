@@ -10,7 +10,7 @@ Auth::routes([
   'verify' => false,
 ]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('home');
 
 /** Start the flash card related routes **/
 Route::get('/card/create', 'CardController@createCard')->name('card.create');
