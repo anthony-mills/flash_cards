@@ -160,13 +160,12 @@ $button_width:     40px;
 #prev:before, #next:before, #flipper:before {
   font-size: $button_font_size;
   padding: $button_padding;
-  position: absolute;
   width: $button_width;
 }
 #prev:before { left:  0; }
 #next:before { right: 0; }
-#flipper:before {
-  left: 50%;
-  margin-left: -($button_width/2 + $button_padding);
+
+.card-controls {
+    font-weight: 700;
+    box-shadow: 0 3px 5px #000;
 }
- 
