@@ -25,14 +25,14 @@
                         <div class="form-group">
                             {!! Form::label('problem', 'Problem') !!}
                             <span class="red-text">*</span>
-                             {!! Form::textarea('problem', null, ['dusk' => 'category_name','class' => 'form-control', 'placeholder' => 'Front of Card  ( Max 250 Characters )', 'maxlength' => 250]) !!}
+                             {!! Form::textarea('problem', null, ['dusk' => 'category_name','class' => 'form-control texteditor', 'placeholder' => 'Front of Card  ( Max 250 Characters )', 'maxlength' => 250]) !!}
                         </div>        
 
                         <!-- Solution on the back of the card -->
                         <div class="form-group">
                             {!! Form::label('solution', 'Solution') !!}
                             <span class="red-text">*</span>
-                             {!! Form::textarea('solution', null, ['dusk' => 'category_name','class' => 'form-control', 'placeholder' => 'Back of Card ( Max 250 Characters )', 'maxlength' => 250]) !!}
+                             {!! Form::textarea('solution', null, ['dusk' => 'category_name','class' => 'form-control texteditor', 'placeholder' => 'Back of Card ( Max 250 Characters )', 'maxlength' => 250]) !!}
                         </div>    
 
                         <span class="red-text"><em> ( * Denotes required fields )</em></span>

@@ -101,7 +101,12 @@
     padding-top: 18px;
     padding-left: 10px;
     padding-right: 10px;
-    line-height: 30px; 
+    line-height: 30px;
+    text-align: left;
+
+    p {
+        margin: 0px;
+    } 
 }
 
 .no-csstransforms3d .flip .side_one,.no-csstransforms3d .side_two{
