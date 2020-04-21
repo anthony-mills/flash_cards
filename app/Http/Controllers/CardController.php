@@ -90,7 +90,7 @@ class CardController extends Controller
     	$cardId = Cards::create( $formData )->id;
 
     	if ( is_numeric($cardId) ) {
-			return redirect()->route('home')->with('status', 'Flash card saved successfully.'); 
+			return redirect()->route('dashboard')->with('status', 'Flash card saved successfully.'); 
     	} else {
 			return redirect()->route('card.create')->with('error', 'Error saving the flash card.')->withInput(); 
     	} 	
@@ -112,9 +112,9 @@ class CardController extends Controller
     		if ($cardRow) {
     			$cardRow->delete();
 
-    			return redirect()->route('home')->with('status', 'Successfully deleted the flash card".'); 
+    			return redirect()->route('dashboard')->with('status', 'Successfully deleted the flash card".'); 
     		} else {
-    			return redirect()->route('home')->with('error', 'Error deleting the card from the system.'); 
+    			return redirect()->route('dashboard')->with('error', 'Error deleting the card from the system.'); 
     		}
 
     	}

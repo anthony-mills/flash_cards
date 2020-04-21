@@ -19,15 +19,17 @@
 							</li>
 						@endforeach				
 					</ul>
+			</div>
 
+			<div class="col-md-6">
 					<div class="card">
 	                	<div class="card-body card-controls">
-							<div class="row">
-								<div class="col-md-5 text-right">
+							<div class="row justify-content-center">
+								<div class="col-xs-1 text-right">
 									<span class="icon" id="prev" data-icon="<"><span class="visuallyhidden">Previous</span></span>
 								</div> 
 
-								<div class="col-md-2 text-center">
+								<div class="col-xs-4 text-center">
 									<span class="icon" id="flipper" data-icon="/"><span class="visuallyhidden">Flip</span></span>	
 
 									<div class="current-card-count">
@@ -35,7 +37,7 @@
 									</div>								
 								</div>
 
-								<div class="col-md-5 text-left">
+								<div class="col-xs-1 text-left">
 									<span class="icon" id="next" data-icon=">"><span class="visuallyhidden">Next</span></span>									
 								</div> 																
 							</div>						

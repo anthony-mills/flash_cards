@@ -21,7 +21,7 @@ Route::post('/card/create', 'CardController@saveCard')->name('card.save');
 Route::get('/card/delete/{cardId}', 'CardController@deleteCard');
 /** End the flash card management related routes **/
 
-Route::get('/dashboard', 'HomeController@index');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 /** Start the card category related routes **/
 Route::get('/card/categories/list', 'CategoryController@listCategories')->name('category.list');
