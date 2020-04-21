@@ -10,11 +10,11 @@
 						@foreach( $existingCards as $existingCard )
 							<li class="flash-card" data-card-number="{{ $cardCount++ }}">
 								<div class="side_one">
-									<p>{{ $existingCard->problem }}</p>
+									<div class="flash-card-content">{{ $existingCard->problem }}</div>
 								</div>
 
 								<div class="side_two">
-									<p>{{ $existingCard->solution }}</p>
+									<div class="flash-card-content">{{ $existingCard->solution }}</div>
 								</div>
 							</li>
 						@endforeach				

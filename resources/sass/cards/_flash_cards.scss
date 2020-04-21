@@ -97,10 +97,11 @@
     transform:rotateX(0deg);
     z-index:1000
 }
-.flash-card p{
-    text-align:middle;
+.flash-card .flash-card-content {
+    padding-top: 18px;
     padding-left: 10px;
-    padding-right: 10px; 
+    padding-right: 10px;
+    line-height: 30px; 
 }
 
 .no-csstransforms3d .flip .side_one,.no-csstransforms3d .side_two{
