@@ -44,7 +44,11 @@ Password: 2ht4eqx0
 
 ### Credits
 
-The flash card presentation code was adapted from [Curtis Blackwell's Flash Cards](https://github.com/curtisblackwell/flash_cards) project.
+* Flash card presentation code was adapted from [Curtis Blackwell's Flash Cards](https://github.com/curtisblackwell/flash_cards) project.
+
+* Text editor for creating and editing the flash card content hails from the [Summernote project](https://summernote.org/).
+
+* Big props also go out to the [Laravel Framework](https://laravel.com/) for making a project like this so simple to build.
 
 ### Licence
 
