@@ -72,6 +72,34 @@ class CardController extends Controller
     }
 
     /**
+    * Edit an existing flash card 
+    *
+    * @param integer $cardId
+    * 
+    * @return \Illuminate\View\View 
+    */
+    public function editCard( $cardId )
+    {
+        $this->middleware('auth');
+
+        $existingCats = ( new CardCategories )->getCategories();
+
+        $cardRow = Cards::where( 'id', $cardId )->first();
+
+        if ( $cardRow ) {
+            return view(
+                'cards.create', 
+                [
+                    'existingCats' => $existingCats,
+                    'cardRow' => $cardRow
+                ]
+            );   
+        }
+
+        return redirect()->route('dashboard')->with('status', 'Card not found.');
+    }
+
+    /**
     * Store a flash card to the database
     *
     * @param \App\Http\Requests\CardCreateForm $formObj
@@ -88,7 +116,13 @@ class CardController extends Controller
     		'solution' => $formObj->get('solution'), 
     	);
 
-    	$cardId = Cards::create( $formData )->id;
+        if ( $formObj->get('card_id') ) {
+            $cardId = $formObj->get('card_id');
+
+            Cards::where('id', $cardId )->update( $formData );
+        } else {
+            $cardId = Cards::create( $formData )->id;
+        }
 
     	if ( is_numeric($cardId) ) {
 			return redirect()->route('dashboard')->with('status', 'Flash card saved successfully.'); 

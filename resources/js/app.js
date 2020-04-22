@@ -7,6 +7,7 @@ require('./cards/flash_cards');
 $(document).ready(function(){
 	if ($('.texteditor').length) {
 		$('.texteditor').summernote({
+			'removeModule': 'autolink',
 	        toolbar: [
 	          ['style', ['style']],
 	          ['font', ['bold', 'underline', 'clear']],

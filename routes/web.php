@@ -14,6 +14,8 @@ Route::get('/', 'CardController@beginSet')->name('card.select');
 
 Route::post('/', 'CardController@showCards')->name('card.begin');
 
+Route::get('/card/edit/{cardId}', 'CardController@editCard')->name('card.edit');
+
 Route::get('/card/create', 'CardController@createCard')->name('card.create');
 
 Route::post('/card/create', 'CardController@saveCard')->name('card.save');
