@@ -20,7 +20,7 @@
                             <span class="red-text">*</span>
                             <br />
 
-                            {!! Form::select( 'category', $existingCats->pluck('name', 'id'), $cardRow->category ?? null, ['dusk' => 'card_category', 'required'] ) !!}
+                            {!! Form::select( 'category', $existingCats->pluck('name', 'id'), $cardRow->category ?? null, ['class' => 'form-control form-control-lg', 'dusk' => 'card_category', 'required'] ) !!}
                         </div>
 
                         <!-- Problem on the front of the card -->
