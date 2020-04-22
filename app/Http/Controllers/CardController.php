@@ -41,6 +41,7 @@ class CardController extends Controller
     {
         $existingCards = Cards::where( 'category', $formObj->get('category') )
                                 ->limit( $formObj->get('card_number') )
+                                ->inRandomOrder()
                                 ->get();
 
         return view(

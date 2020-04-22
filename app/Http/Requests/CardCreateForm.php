@@ -28,8 +28,8 @@ class CardCreateForm extends FormRequest
     {
         return [
             'category' => 'required|numeric',
-            'problem' => 'string|required|max:250',
-            'solution' => 'string|required|max:250',                        
+            'problem' => 'string|required|max:1000',
+            'solution' => 'string|required|max:1000',                        
         ];
     }
 
