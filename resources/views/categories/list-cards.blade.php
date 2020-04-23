@@ -24,12 +24,16 @@
                                 @foreach( $catRow->flashCards as $existingCard )
                                     <tr>
                                         <td>{{ $existingCard->id }}</td>
-                                        <td>{{ $existingCard->problem }}</td>
-                                        <td>{{ $existingCard->solution }}</td>
-                                        <td>{{ $existingCard->created_at }}</td>     
-                                        <td>
+                                        <td>{!! $existingCard->problem !!}</td>
+                                        <td>{!! $existingCard->solution !!}</td>
+                                        <td>{{ Carbon\Carbon::parse($existingCard->created_at)->format('d/m/Y') }}</td>     
+                                        <td class="text-center">
+                                            <a href="/card/edit/{{ $existingCard->id }}">
+                                                <button type="button" class="btn btn-info btn-block btn-sm mt-1">Edit</button>
+                                            </a>
+
                                             <a href="/card/delete/{{ $existingCard->id }}">
-                                                <button type="button" class="btn btn-primary">Delete</button>
+                                                <button type="button" class="btn btn-primary btn-block btn-sm mt-1">Delete</button>
                                             </a>
                                         </td>                                                                                           
                                     </tr>

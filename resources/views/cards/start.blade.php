@@ -19,7 +19,7 @@
                                 <span class="red-text">*</span>
                                 <br />
 
-                                {!! Form::select( 'category', $cardCats->pluck('name', 'id'), null, ['dusk' => 'card_category', 'required'] ) !!}
+                                {!! Form::select( 'category', $cardCats->pluck('name', 'id'), null, ['class' => 'form-control form-control-lg', 'dusk' => 'card_category', 'required'] ) !!}
                             </div>
 
                             <!-- Number of cards -->
@@ -28,7 +28,7 @@
                                 <span class="red-text">*</span>
                                 <br />
 
-                                {!! Form::select( 'card_number', $cardNumber, null, ['dusk' => 'card_number', 'required'] ) !!}
+                                {!! Form::select( 'card_number', $cardNumber, null, ['class' => 'form-control form-control-lg', 'dusk' => 'card_number', 'required'] ) !!}
                             </div>
 
                             <div class="text-center">
