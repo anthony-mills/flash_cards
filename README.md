@@ -15,18 +15,23 @@ It is a simple two part application the frontend allows users to cycle though th
 ![Viewing Cards](/screenshots/cards.gif?raw=true "Looking at flash cards")
 
 Select a Card Set to Study
+
 ![Topic Selection](/screenshots/1.png?raw=true "Select card set to study")
 
 Showing Card Question
+
 ![Viewing Question](/screenshots/2.png?raw=true "Viewing Question")
 
 Showing Answer on Card
+
 ![Showing Answer](/screenshots/3.png?raw=true "Showing Answer")
 
 Card Categories in Admin Panel
+
 ![Card Categories](/screenshots/4.png?raw=true "Card Categories")
 
 Card Creation in Admin Panel
+
 ![Card Creation](/screenshots/5.png?raw=true "Card Creation")
 
 ### Requirements 
