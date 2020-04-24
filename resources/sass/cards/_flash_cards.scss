@@ -45,12 +45,12 @@
 .side_one,.side_two{
     -webkit-backface-visibility:hidden;
     backface-visibility:hidden;
-    background-image:-webkit-gradient(linear, 50% 0%, 50% 30, color-stop(0%, #ffffff), color-stop(96.667%, #ffffff), color-stop(100%, #bbdbfd));
-    background-image:-webkit-linear-gradient(#ffffff 0px,#ffffff 29px,#bbdbfd 30px);
-    background-image:-moz-linear-gradient(#ffffff 0px,#ffffff 29px,#bbdbfd 30px);
-    background-image:-o-linear-gradient(#ffffff 0px,#ffffff 29px,#bbdbfd 30px);
-    background-image:-ms-linear-gradient(#ffffff 0px,#ffffff 29px,#bbdbfd 30px);
-    background-image:linear-gradient(#ffffff 0px,#ffffff 29px,#bbdbfd 30px);
+    background-image:-webkit-gradient(linear, 50% 0%, 50% 30, color-stop(0%, #f7f7f7), color-stop(96.667%, #f7f7f7), color-stop(100%, #bbdbfd));
+    background-image:-webkit-linear-gradient(#f7f7f7 0px,#f7f7f7 29px,#bbdbfd 30px);
+    background-image:-moz-linear-gradient(#f7f7f7 0px,#f7f7f7 29px,#bbdbfd 30px);
+    background-image:-o-linear-gradient(#f7f7f7 0px,#f7f7f7 29px,#bbdbfd 30px);
+    background-image:-ms-linear-gradient(#f7f7f7 0px,#f7f7f7 29px,#bbdbfd 30px);
+    background-image:linear-gradient(#f7f7f7 0px,#f7f7f7 29px,#bbdbfd 30px);
     -webkit-transition:all 0.4s ease-in-out;
     -moz-transition:all 0.4s ease-in-out;
     -ms-transition:all 0.4s ease-in-out;
@@ -173,5 +173,6 @@ $button_width:     40px;
 
 .card-controls {
     font-weight: 700;
-    box-shadow: 0 3px 5px #000;
+    box-shadow: 0 5px 5px #000;
+    background-color: #f7f7f7;
 }
