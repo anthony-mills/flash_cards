@@ -45,7 +45,7 @@ class CardController extends Controller
                                 ->get();
 
         return view(
-            'cards.landing', 
+            'cards.show_cards', 
             [
                 'existingCards' => $existingCards ?? array()
             ]

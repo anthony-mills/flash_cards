@@ -21,7 +21,7 @@
 </head>
 <body class="d-flex flex-column">
     <div id="app">
-        <nav  class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav  class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
             <div class="container">
                 @guest
 
@@ -81,7 +81,7 @@
         </main>        
     </div>
 
-  <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+  <footer id="sticky-footer" class="py-2 bg-light">
     <div class="container text-center">
       <small>
         Flash Cards was written by <a href="https://www.anthony-mills.com" target="_blank">Anthony Mills</a> and is distributed under a <a target="_blank" href="https://github.com/anthony-mills/flash_cards/">GPLV3 licence</a>.
