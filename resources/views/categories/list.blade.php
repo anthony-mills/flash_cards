@@ -32,9 +32,7 @@
                                                 <button type="button" class="btn btn-info">View Cards</button>
                                             </a>
 
-                                            <a href="/card/categories/delete/{{ $existingCat->id }}">
-                                                <button type="button" class="btn btn-primary">Delete</button>
-                                            </a>
+                                            <button type="button" data-delete="/card/categories/delete/{{ $existingCat->id }}" class="delete-item btn btn-primary">Delete</button>
                                         </td>                                                                                           
                                     </tr>
                                 @endforeach
