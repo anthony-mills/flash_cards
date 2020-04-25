@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Category Cards: {{ $catRow->name }}</div>
+                <div class="card-header">Category: {{ $catRow->name }} - {{ $cardCount }} Existing Cards</div>
 
                 <div class="card-body">
                     @include('alerts.status')
