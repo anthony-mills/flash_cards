@@ -1,16 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Category: {{ $catRow->name }} - {{ $cardCount }} Existing Cards</div>
+                <div class="card-header">Showing {{ $cardRows->count() }}  of {{ $cardRows->count }} Existing Cards</div>
 
                 <div class="card-body">
                     @include('alerts.status')
 
-                    @if ( count($catRow->flashCards) > 0 )                    
+                    @if ( count($cardRows) > 0 )   
+                        <div class="text-xs-center">
+                            {{ $cardRows->links() }}
+                        </div>
+
                         <table class="table">
                             <thead class="thead-dark">
                                 <th scope="col">ID</th>
@@ -21,7 +26,7 @@
                             </thead>
 
                             <tbody>
-                                @foreach( $catRow->flashCards as $existingCard )
+                                @foreach( $cardRows as $existingCard )
                                     <tr>
                                         <td>{{ $existingCard->id }}</td>
                                         <td>{!! $existingCard->problem !!}</td>
@@ -38,6 +43,10 @@
                                 @endforeach
                             </tbody>
                         </table>
+
+                        <div class="text-center">
+                            {{ $cardRows->links() }}
+                        </div>
                     @else 
                         <p>Category contains no cards.</p>
                     @endif

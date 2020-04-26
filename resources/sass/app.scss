@@ -19,8 +19,10 @@
 // Confirm Modal Styling 
 @import '_confirm_modal';
 
-#app .navbar {
 
+// Center Laravel pagination elements
+.pagination {
+	justify-content: center;
 }
 
 #sticky-footer {

@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\CategoryCreateForm;
 use App\Models\CardCategories;
+use App\Models\Cards;
 
 class CategoryController extends Controller
 {
+
 	public function __construct()
 	{
 	    $this->middleware('auth');
@@ -101,14 +103,13 @@ class CategoryController extends Controller
     public function getCards( $catId )
     {
     	if (is_numeric($catId)) {
-	    	$catRows = ( new CardCategories )->getCategory( $catId );
+	    	$cardRows = ( new Cards )->getByCat( $catId );
 
-	    	if ( $catRows ) {
+	    	if ( $cardRows ) {
 		        return view(
 		            'categories.list-cards', 
 		            [
-		            	'catRow' => $catRows,
-                        'cardCount' => $catRows->count()
+		            	'cardRows' => $cardRows
 		            ]
 		        );	    		
 	    	}
