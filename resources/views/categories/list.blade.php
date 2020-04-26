@@ -9,8 +9,11 @@
 
                 <div class="card-body">
                     @include('alerts.status')
+                    
+                    @if ( count($existingCats) > 0 )           
 
-                    @if ( count($existingCats) > 0 )                    
+                        {{ $existingCats->links() }}
+
                         <table class="table">
                             <thead class="thead-dark">
                                 <th scope="col">ID</th>
@@ -38,6 +41,8 @@
                                 @endforeach
                             </tbody>
                         </table>
+
+                        {{ $existingCats->links() }}                        
                     @else 
                         <p>There are no stored card categories to display.</p>
                     @endif

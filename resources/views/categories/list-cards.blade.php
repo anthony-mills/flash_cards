@@ -12,9 +12,8 @@
                     @include('alerts.status')
 
                     @if ( count($cardRows) > 0 )   
-                        <div class="text-xs-center">
-                            {{ $cardRows->links() }}
-                        </div>
+
+                        {{ $cardRows->links() }}
 
                         <table class="table">
                             <thead class="thead-dark">
@@ -44,9 +43,8 @@
                             </tbody>
                         </table>
 
-                        <div class="text-center">
-                            {{ $cardRows->links() }}
-                        </div>
+                        {{ $cardRows->links() }}
+
                     @else 
                         <p>Category contains no cards.</p>
                     @endif

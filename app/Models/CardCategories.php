@@ -5,6 +5,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Config;
 
 class CardCategories extends Model
 {
@@ -30,9 +31,9 @@ class CardCategories extends Model
     **/
     public function getCategories()
     {
-        $existingCats = $this->with(
-            'flashCards'
-        )->orderBy('name', 'ASC')->get();
+        $pageResults = Config::get('flash_cards.results_per_page');
+
+        $existingCats = $this->orderBy('name', 'ASC')->paginate( $pageResults );
 
         return $existingCats;
     }
