@@ -16,5 +16,4 @@ class Cards extends Model
                             'solution'
                           ];
                           
-
 }

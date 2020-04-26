@@ -101,13 +101,14 @@ class CategoryController extends Controller
     public function getCards( $catId )
     {
     	if (is_numeric($catId)) {
-	    	$catRow = ( new CardCategories )->getCategory( $catId );
+	    	$catRows = ( new CardCategories )->getCategory( $catId );
 
-	    	if ( $catRow ) {
+	    	if ( $catRows ) {
 		        return view(
 		            'categories.list-cards', 
 		            [
-		            	'catRow' => $catRow
+		            	'catRow' => $catRows,
+                        'cardCount' => $catRows->count()
 		            ]
 		        );	    		
 	    	}
