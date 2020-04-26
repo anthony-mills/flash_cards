@@ -24,6 +24,10 @@
                         </li>
                     </ul>
                 </div>
+
+                <div class="card-footer text-muted text-center">
+                    Currently {{ $cardCount }} saved flash cards
+                </div>                
             </div>
         </div>
     </div>
