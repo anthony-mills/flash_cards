@@ -1,10 +1,10 @@
 ## About Flash Cards
 
-Digital Flash Card application for aiding the memorisation of information. 
+Digital Flash Card web application built with for helping remember information. 
 
-### Why?
+### Why Do I Want This?
 
-A flash card is a tool that aids the [process of memorisation](https://en.wikipedia.org/wiki/Flashcard). Recently while studying to sit a certification I was haunted by the feeling that key facts were not sticking in my memory as well as they could. Sure I could revise the content again but what if it didn't stick the next time around either? 
+A flash card is a tool that aids the [process of memorisation](https://en.wikipedia.org/wiki/Flashcard). Recently while studying to sit a certification I was haunted by the feeling that key facts were just not sticking in my memory as well as they could. Sure I could revise the content again but what if it didn't stick the next time around either? 
 
 A new approach was needed to quickly revise key facts without the associated bulk. So I decided to create this web based flash card tool with Laravel so I could create my own sets of topics and related cards to study.
 
