@@ -22,6 +22,10 @@
                         <li class="list-group-item">
                             <a href="/card/categories/list">Existing Categories</a>
                         </li>
+
+                        <li class="list-group-item">
+                            <a href="/">Go to Flash Cards</a>
+                        </li>                        
                     </ul>
                 </div>
 
