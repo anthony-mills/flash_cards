@@ -15,11 +15,11 @@
                         <div class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }}">
                             <label for="new-password" class="control-label">Current Password</label>
 
-                            <input id="current-password" type="password" class="form-control" name="current-password" required>
+                            {!! Form::password('current_password', ['class' => 'form-control', 'required']) !!}
 
-                            @if ($errors->has('current-password'))
+                            @if ($errors->has('current_password'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('current-password') }}</strong>
+                                    <strong>{{ $errors->first('current_password') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -27,11 +27,11 @@
                         <div class="form-group{{ $errors->has('new-password') ? ' has-error' : '' }}">
                             <label for="new-password" class="control-label">New Password</label>
 
-                            <input id="new-password" type="password" class="form-control" name="new-password" required>
+                            {!! Form::password('new_password', ['class' => 'form-control', 'required']) !!}
 
-                            @if ($errors->has('new-password'))
+                            @if ($errors->has('new_password'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('new-password') }}</strong>
+                                    <strong>{{ $errors->first('new_password') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -39,7 +39,7 @@
                         <div class="form-group">
                             <label for="new-password-confirm" class="control-label">Confirm New Password</label>
                             
-                            <input id="new-password-confirm" type="password" class="form-control" name="new-password_confirmation" required>
+                            {!! Form::password('new_password_confirmation', ['class' => 'form-control', 'required']) !!}
                         </div>
 
                         <div class="form-group">
