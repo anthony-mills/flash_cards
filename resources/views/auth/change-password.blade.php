@@ -8,8 +8,9 @@
                 <div class="card-header">Change Password</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
-                        @csrf
+                    @include('alerts.status')
+
+                    {!! Form::open(['class' => 'form', 'route' => 'password.update']) !!}
 
                         <div class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }}">
                             <label for="new-password" class="control-label">Current Password</label>
@@ -43,12 +44,10 @@
 
                         <div class="form-group">
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary">
-                                    Update Password
-                                </button>
+                                {!! Form::submit( "Update Password", ['class' => 'btn btn-primary', 'dusk' => 'update_password']) !!}
                             </div>
                         </div>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
