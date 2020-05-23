@@ -21,15 +21,8 @@
 </head>
 <body class="d-flex flex-column">
     <div id="app">
-        <nav  class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
+        <nav  class="navbar navbar-expand-md top-nav-bar shadow-sm">
             <div class="container">
-                @guest
-
-                @else
-                    <a class="navbar-brand" href="{{ url('/dashboard') }}">
-                        <button type="button" class="btn btn-info">Admin Dashboard</button>
-                    </a>
-                @endif
                 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -45,8 +38,13 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">
+                                    <button type="button" class="btn btn-info">
+                                        {{ __('Login') }}
+                                    </button>
+                                </a>
                             </li>
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -59,6 +57,18 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ url('/') }}">
+                                        Home
+                                    </a>
+
+                                    <hr></hr>
+
+                                    <a class="dropdown-item" href="{{ url('/dashboard') }}">
+                                        Admin Dashboard
+                                    </a>
+
+                                    <hr></hr>
+                                    
                                     <a class="dropdown-item" href="{{ route('password.change') }}">
                                         Change Password
                                     </a>
