@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Get Started</div>
+            <div class="card get-started">
+                <div class="card-header">Quiz Options</div>
 
                 <div class="card-body">
                     @include('alerts.status')
