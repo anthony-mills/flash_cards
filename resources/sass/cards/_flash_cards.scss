@@ -5,6 +5,7 @@
     font-weight:normal;
     font-style:normal
 }
+
 #deck{
     height:300px;
     list-style:none;
@@ -17,11 +18,11 @@
         min-width: 300px;
     }
 
-    @media only screen and (max-width : 1000px) {
+    @media only screen and (max-width : 800px) {
         min-width: 400px;
     }
 
-    @media only screen and (min-width : 1000px) {
+    @media only screen and (min-width : 800px) {
         min-width: 500px;
     }                
 }
@@ -32,7 +33,7 @@
     color:#222;
     display:none;
     font-family:SchoolBell;
-    font-size:30px;
+    font-size:18px;
     height:300px;
     min-height: 300px;
     line-height:60px;
@@ -145,6 +146,9 @@ $button_width:     40px;
 }
 .icon {
   cursor: pointer;
+
+  -webkit-text-stroke: 2px #b5acac;
+  
   &:before {
     content: attr(data-icon);
     font-family: 'Flash Cards';
@@ -172,7 +176,12 @@ $button_width:     40px;
 #next:before { right: 0; }
 
 .card-controls {
+    margin-top: 70px;
     font-weight: 700;
     box-shadow: 0 5px 5px #000;
-    background-color: #f7f7f7;
+    background-color:rgba(0, 0, 0, 0.5);
+}
+
+.current-card-count {
+    color: #b5acac;
 }
