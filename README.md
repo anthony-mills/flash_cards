@@ -34,6 +34,14 @@ Card Creation in Admin Panel
 
 ![Card Creation](/screenshots/5.png?raw=true "Card Creation")
 
+### Text Effects
+
+By adding bold and underline styles to your card text in the editor will add effects to the text on the card.
+
+![Bold - Adds a highlighter type effect to text.](/screenshots/highlight.png?raw=true "Bold - Adds a highlighter type effect to text.")
+
+![Underline - Will underline text in red.](/screenshots/underline.png?raw=true "Underline - Will underline text in red")
+
 ### Requirements 
 
 The application is created with Laravel 7.

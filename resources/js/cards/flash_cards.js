@@ -62,7 +62,7 @@ $(document).ready(function(){
         case key.space:
           $('.current').toggleClass('flip');
 
-          if ($(".current .side_two u").length || $(".current .side_two b").length) {
+          if ($(".current u").length || $(".current b").length) {
             showTextEffect();
           }
           e.preventDefault();
@@ -75,14 +75,12 @@ $(document).ready(function(){
   function showTextEffect() {
 
     setTimeout(function() { 
-      if ($(".current .side_two u").length) {
-        let elm = document.querySelector(".current .side_two u");
-        annotation = annotate(elm, { type: 'underline', color: 'red' })
+      if ($(".current u").length) {
+        annotation = annotate(document.querySelector(".current u"), { type: 'underline', color: 'red' })
       } 
 
       if ($(".current .side_two b").length) {
-        let elm = document.querySelector(".current .side_two b");
-        annotation = annotate(elm, { type: 'highlight', color: '#FFD54F' })
+        annotation = annotate(document.querySelector(".current b"), { type: 'highlight', color: '#FFD54F' })
       }       
 
       annotation.show();  
