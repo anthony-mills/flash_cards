@@ -28,6 +28,7 @@ $darkOverlay: rgba(0,0,0,.5);
 
 .red-text {
 	color: #ba1e0d;	
+	font-size: 80%;
 }
 
 .top-nav-bar {
@@ -42,6 +43,11 @@ $darkOverlay: rgba(0,0,0,.5);
 		background-color: inherit;
 		border-bottom: dashed 1px #212529;
 	}
+}
+
+// Disable summernote notification area below the editor
+.note-status-output {
+	display: none !important;
 }
 
 #sticky-footer {
