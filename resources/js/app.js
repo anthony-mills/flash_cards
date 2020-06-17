@@ -10,10 +10,8 @@ $(document).ready(function(){
 		$('.texteditor').summernote({
 			'removeModule': 'autolink',
 	        toolbar: [
-	          ['style', ['style']],
 	          ['font', ['bold', 'underline', 'clear']],
-	          ['color', ['color']],
-	          ['para', ['ul', 'ol', 'paragraph']],
+	          ['para', ['ul', 'ol']],
 	          ['insert', ['link']]
 	        ]			
 		});
