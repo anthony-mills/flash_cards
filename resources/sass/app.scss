@@ -19,6 +19,8 @@
 // Confirm Modal Styling 
 @import '_confirm_modal';
 
+$darkOverlay: rgba(0,0,0,.5);
+
 // Center Laravel pagination elements
 .pagination {
 	justify-content: center;
@@ -29,7 +31,17 @@
 }
 
 .top-nav-bar {
-	background-color: rgba(0,0,0,.5)	
+	background-color: $darkOverlay;	
+}
+
+.card-content-area {
+	background-color: #f2f2f2;
+	padding: 20px;	
+
+	.list-group-item {
+		background-color: inherit;
+		border-bottom: dashed 1px #212529;
+	}
 }
 
 #sticky-footer {
@@ -48,13 +60,18 @@
 	}
 }
 
-.get-started {
-	background-color: rgba(0,0,0,.5) !important;
+.dark-card {
+	background-color: $darkOverlay !important;
     border: none !important;
 
 	.card-header {
 	    border: none !important;
 		color: #f2f2f2;
-		background-color: rgba(0,0,0,.6) !important;
+		background-color: $darkOverlay !important;
+	}
+
+	.card-footer {
+		background-color: $darkOverlay !important;
+    	border: none !important;	
 	}
 }
