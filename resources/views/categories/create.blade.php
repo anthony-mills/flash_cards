@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card dark-card">
                 <div class="card-header">Create New Category</div>
 
                 <div class="card-body">
