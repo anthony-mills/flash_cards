@@ -26,9 +26,9 @@ Showing Answer on Card
 
 ![Showing Answer](/screenshots/3.png?raw=true "Showing Answer")
 
-Card Categories in Admin Panel
+Saved Cards in Admin Panel
 
-![Card Categories](/screenshots/4.png?raw=true "Card Categories")
+![Stored Cards](/screenshots/4.png?raw=true "Stored Cards")
 
 Card Creation in Admin Panel
 
