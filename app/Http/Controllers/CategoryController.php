@@ -39,12 +39,14 @@ class CategoryController extends Controller
     **/
     public function saveCategory( CategoryCreateForm $formObj )
     {
-    	$formData = [ 'name' => $formObj->get('name') ];
+        $catName = $formObj->get('name');
+
+    	$formData = [ 'name' => $catName ];
 
     	$catId = CardCategories::create( $formData )->id;
 
     	if ( is_numeric($catId) ) {
-			return redirect()->route('dashboard')->with('status', 'Saved the new category.'); 
+			return redirect()->route('dashboard')->with('status', 'Saved the new category "' . $catName . '".'); 
     	} else {
 			return redirect()->route('category.create')->with('error', 'Error saving the new category.')->withInput(); 
     	} 	
