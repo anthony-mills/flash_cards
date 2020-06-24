@@ -41,8 +41,9 @@ $(document).ready(function(){
       var keyCode = e.keyCode || e.which;
       key = {left: 37, up: 38, right: 39, down: 40, enter: 13, space: 32};
 
-      if (!!annotation) {
-        annotation.remove();
+      if (annotation != null && annotation.isShowing) {
+        annotation.hide();
+        $("svg").find("*").remove();
       }
 
       switch (keyCode) {
@@ -84,7 +85,7 @@ $(document).ready(function(){
       }       
 
       annotation.show();  
-    }, 800);
+    }, 1300);
   }     
 });
 
