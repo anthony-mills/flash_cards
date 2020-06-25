@@ -39,26 +39,26 @@
 
 .btn {
 	&.btn-outline {
-	  background-color: transparent;
-	  border-color: #bbb;
-	  border-radius: unset;
-
-	  &:hover {
-	  	color: #f2f2f2;
-	  	background-color: $darkHighlight;
-	  }
+		background-color: transparent;
+		border-color: #bbb;
+		border-radius: unset;
+		box-shadow: 0 4px 5px rgba(0,0,0,.3);
+		&:hover {
+	  		color: #f2f2f2;
+	  		background-color: $darkHighlight;
+		}
 	}
 
 	&.btn-inverse {
-	  color: #f2f2f2;
-	  background-color: transparent;
-	  border-color: #bbb;
-	  border-radius: unset;
+		color: #f2f2f2;
+		background-color: transparent;
+		border-color: #bbb;
+		border-radius: unset;
 
-	  &:hover {
-	  	color: #f2f2f2;
-	  	background-color: $darkHighlight;
-	  }
+		&:hover {
+	  		color: #f2f2f2;
+	  		background-color: $darkHighlight;
+	  	}
 	}	
 }
 
