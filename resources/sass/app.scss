@@ -47,7 +47,8 @@
 		box-shadow: 0 4px 5px rgba(0,0,0,.3);
 		&:hover {
 	  		color: #f2f2f2;
-	  		background-color: $darkHighlight;
+	  		background-color: $darkOverlay;
+	  		border-color: $darkHighlight;
 		}
 	}
 
