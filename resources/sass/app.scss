@@ -19,8 +19,6 @@
 // Confirm Modal Styling 
 @import '_confirm_modal';
 
-$darkOverlay: rgba(0,0,0,.5);
-
 // Center Laravel pagination elements
 .pagination {
 	justify-content: center;
@@ -31,18 +29,40 @@ $darkOverlay: rgba(0,0,0,.5);
 	font-size: 80%;
 }
 
+.invalid-feedback {
+	font-size: 80%;		
+}
+
 .top-nav-bar {
 	background-color: $darkOverlay;	
 }
 
-.card-content-area {
-	background-color: #f2f2f2;
-	padding: 20px;	
+.btn {
+	padding: 7px 30px;	
 
-	.list-group-item {
-		background-color: inherit;
-		border-bottom: dashed 1px #212529;
+	&.btn-outline {
+		background-color: transparent;
+		border-color: #bbb;
+		border-radius: unset;
+		box-shadow: 0 4px 5px rgba(0,0,0,.3);
+		&:hover {
+	  		color: #f2f2f2;
+	  		background-color: $darkOverlay;
+	  		border-color: $darkHighlight;
+		}
 	}
+
+	&.btn-inverse {
+		color: #f2f2f2;
+		background-color: transparent;
+		border-color: #bbb;
+		border-radius: unset;
+
+		&:hover {
+	  		color: #f2f2f2;
+	  		background-color: $darkHighlight;
+	  	}
+	}	
 }
 
 // Disable summernote notification area below the editor
@@ -67,17 +87,17 @@ $darkOverlay: rgba(0,0,0,.5);
 }
 
 .dark-card {
-	background-color: $darkOverlay !important;
+	background-color: $darkOverlay;
     border: none !important;
 
 	.card-header {
+		background-color: $darkHighlight;
 	    border: none !important;
 		color: #f2f2f2;
-		background-color: $darkOverlay !important;
 	}
 
 	.card-footer {
-		background-color: $darkOverlay !important;
-    	border: none !important;	
+		background-color: $darkHighlight;	
+    	border: none;	
 	}
 }

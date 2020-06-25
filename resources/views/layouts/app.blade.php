@@ -39,7 +39,7 @@
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">
-                                    <button type="button" class="btn btn-info">
+                                    <button type="button" class="btn btn-inverse">
                                         {{ __('Login') }}
                                     </button>
                                 </a>

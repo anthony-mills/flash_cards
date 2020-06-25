@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card dark-card">
+            <div class="dark-card">
                 <div class="card-header">Quiz Options</div>
 
                 <div class="card-body">
@@ -32,7 +32,7 @@
                             </div>
 
                             <div class="text-center">
-                                {!! Form::submit('Continue', ['class' => 'btn btn-primary', 'dusk' => 'continue_button']) !!}
+                                {!! Form::submit('Continue', ['class' => 'btn btn-outline', 'dusk' => 'continue_button']) !!}
                             </div>                      
                         {!! Form::close() !!}
                     @else 
