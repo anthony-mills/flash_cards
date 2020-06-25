@@ -19,8 +19,6 @@
 // Confirm Modal Styling 
 @import '_confirm_modal';
 
-$darkOverlay: rgba(0,0,0,.5);
-
 // Center Laravel pagination elements
 .pagination {
 	justify-content: center;
@@ -31,18 +29,37 @@ $darkOverlay: rgba(0,0,0,.5);
 	font-size: 80%;
 }
 
+.invalid-feedback {
+	font-size: 80%;		
+}
+
 .top-nav-bar {
 	background-color: $darkOverlay;	
 }
 
-.btn-outline {
-  background-color: transparent;
-  border-color: #212529;
+.btn {
+	&.btn-outline {
+	  background-color: transparent;
+	  border-color: #bbb;
+	  border-radius: unset;
 
-  &:hover {
-  	color: #f2f2f2;
-  	background-color: $darkOverlay;
-  }
+	  &:hover {
+	  	color: #f2f2f2;
+	  	background-color: $darkHighlight;
+	  }
+	}
+
+	&.btn-inverse {
+	  color: #f2f2f2;
+	  background-color: transparent;
+	  border-color: #bbb;
+	  border-radius: unset;
+
+	  &:hover {
+	  	color: #f2f2f2;
+	  	background-color: $darkHighlight;
+	  }
+	}	
 }
 
 // Disable summernote notification area below the editor
@@ -71,13 +88,13 @@ $darkOverlay: rgba(0,0,0,.5);
     border: none !important;
 
 	.card-header {
+		background-color: $darkHighlight;
 	    border: none !important;
 		color: #f2f2f2;
-		background-color: $darkOverlay;
 	}
 
 	.card-footer {
-		background-color: $darkOverlay;
-    	border: none !important;	
+		background-color: $darkHighlight;	
+    	border: none;	
 	}
 }
