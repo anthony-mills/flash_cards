@@ -40,7 +40,7 @@
                         <span class="red-text"><em> ( * Denotes required fields )</em></span>
 
                         <div class="text-center">
-                            {!! Form::submit(  ( isset($cardRow->id) ? "Update Card" : "Save Card" ) , ['class' => 'btn btn-primary', 'dusk' => 'save_card']) !!}
+                            {!! Form::submit(  ( isset($cardRow->id) ? "Update Card" : "Save Card" ) , ['class' => 'btn btn-outline', 'dusk' => 'save_card']) !!}
                         </div>                      
                     {!! Form::close() !!}
                 </div>

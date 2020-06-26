@@ -22,7 +22,7 @@
                         <span class="red-text"><em> ( * Denotes required fields )</em></span>
 
                         <div class="text-center">
-                            {!! Form::submit('Save Category', ['class' => 'btn btn-primary', 'dusk' => 'save_category']) !!}
+                            {!! Form::submit('Save Category', ['class' => 'btn btn-outline', 'dusk' => 'save_category']) !!}
                         </div>                      
                     {!! Form::close() !!}
                 </div>

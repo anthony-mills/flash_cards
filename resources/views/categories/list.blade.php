@@ -31,12 +31,12 @@
                                             <td>{{ $existingCat->name }}</td>
                                             <td>{{ count($existingCat->flashCards) }}</td>
                                             <td>{{ $existingCat->created_at }}</td>     
-                                            <td>
+                                            <td class="text-center">
                                                 <a href="/card/category/{{ $existingCat->id }}">
-                                                    <button type="button" class="btn btn-info">View Cards</button>
+                                                    <button type="button" class="btn btn-outline">View Cards</button>
                                                 </a>
 
-                                                <button type="button" data-delete="/card/categories/delete/{{ $existingCat->id }}" class="delete-item btn btn-primary">Delete</button>
+                                                <button type="button" data-delete="/card/categories/delete/{{ $existingCat->id }}" class="delete-item btn btn-outline">Delete</button>
                                             </td>                                                                                           
                                         </tr>
                                     @endforeach

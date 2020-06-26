@@ -34,10 +34,10 @@
                                             <td>{{ Carbon\Carbon::parse($existingCard->created_at)->format('d/m/Y') }}</td>     
                                             <td class="text-center">
                                                 <a href="/card/edit/{{ $existingCard->id }}">
-                                                    <button type="button" class="btn btn-info btn-block btn-sm mt-1">Edit</button>
+                                                    <button type="button" class="btn btn-outline btn-block btn-sm mt-1">Edit</button>
                                                 </a>
 
-                                                <button type="button" data-delete="/card/delete/{{ $existingCard->id }}" class="btn btn-primary delete-item btn-block btn-sm mt-1">Delete</button>
+                                                <button type="button" data-delete="/card/delete/{{ $existingCard->id }}" class="btn btn-outline delete-item btn-block btn-sm mt-1">Delete</button>
                                             </td>                                                                                           
                                         </tr>
                                     @endforeach
