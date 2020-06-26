@@ -44,7 +44,7 @@
 
                         <div class="form-group">
                             <div class="text-center">
-                                {!! Form::submit( "Update Password", ['class' => 'btn btn-primary', 'dusk' => 'update_password']) !!}
+                                {!! Form::submit( "Update Password", ['class' => 'btn btn-outline', 'dusk' => 'update_password']) !!}
                             </div>
                         </div>
                     {!! Form::close() !!}
