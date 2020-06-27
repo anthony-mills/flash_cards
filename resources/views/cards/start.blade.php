@@ -18,8 +18,8 @@
                                 {!! Form::label('category', 'Topic') !!}
                                 <span class="red-text">*</span>
                                 <br />
-
-                                {!! Form::select( 'category', $cardCats->pluck('name', 'id'), null, ['class' => 'form-control form-control-lg', 'dusk' => 'card_category', 'required'] ) !!}
+                                <?php $quizOptions = [ '' => 'Random Mix' ] + $cardCats->pluck('name', 'id')->toArray(); ?>
+                                {!! Form::select( 'category', $quizOptions , null, ['class' => 'form-control form-control-lg', 'dusk' => 'card_category'] ) !!}
                             </div>
 
                             <!-- Number of cards -->

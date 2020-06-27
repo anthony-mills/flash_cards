@@ -27,7 +27,7 @@ class CardStartSetForm extends FormRequest
     public function rules()
     {
         return [
-            'category' => 'required|numeric',
+            'category' => 'nullable|numeric',
             'card_number' => 'required|numeric',                    
         ];
     }
