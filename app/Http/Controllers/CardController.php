@@ -39,10 +39,16 @@ class CardController extends Controller
     **/
     public function showCards( CardStartSetForm $formObj )
     {
-        $existingCards = Cards::where( 'category', $formObj->get('category') )
-                                ->limit( $formObj->get('card_number') )
-                                ->inRandomOrder()
-                                ->get();
+        $cardCat = $formObj->get('category');
+
+        if ( is_numeric($cardCat) ) {
+            $existingCards = Cards::where( 'category', $cardCat )
+                                    ->limit( $formObj->get('card_number') )
+                                    ->inRandomOrder()
+                                    ->get();
+        } else {
+            $existingCards = Cards::limit( $formObj->get('card_number') )->inRandomOrder()->get();
+        }
 
         return view(
             'cards.show_cards', 
