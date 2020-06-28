@@ -35,6 +35,19 @@
 
 .top-nav-bar {
 	background-color: $darkOverlay;	
+
+	.dropdown-menu {
+		background-color: $darkOverlay;		
+
+		.dropdown-item {
+			color: #f2f2f2;
+
+			&:hover {
+		  		color: $darkHighlight;
+		  		background-color: transparent;
+		  	}
+		}
+	}
 }
 
 .btn {
