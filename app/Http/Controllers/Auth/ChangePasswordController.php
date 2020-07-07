@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
@@ -38,7 +40,7 @@ class ChangePasswordController extends Controller
     **/
     public function updatePassword( Request $request )
     {
-        if (!(\Hash::check($request->get('current_password'), \Auth::user()->password))) {
+        if (!(Hash::check($request->get('current_password'), Auth::user()->password))) {
             // The passwords matches
             return redirect()->back()->with("error","Your current password does not match the password you provided.");
         }
@@ -54,7 +56,7 @@ class ChangePasswordController extends Controller
         ]);
 
         //Change Password
-        $user = \Auth::user();
+        $user = Auth::user();
         $user->password = bcrypt($request->get('new_password'));
         $user->save();
 
