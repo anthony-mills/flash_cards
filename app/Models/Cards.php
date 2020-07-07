@@ -23,7 +23,7 @@ class Cards extends Model
     *
     * @param integer $catId
     *
-    * @return Illuminate\Support\Collection $existingCats    
+    * @return \Illuminate\Support\Collection $existingCats    
     **/
     public function getByCat( $catId )
     {

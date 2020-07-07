@@ -27,7 +27,7 @@ class CardCategories extends Model
     /**
     * Return all categories and their associated cards
     * 
-    * @return Illuminate\Support\Collection $existingCats
+    * @return \Illuminate\Support\Collection $existingCats
     **/
     public function getCategories()
     {
@@ -43,7 +43,7 @@ class CardCategories extends Model
     * 
     * @param integer $catId
     *
-    * @return Illuminate\Support\Collection $existingCats
+    * @return \Illuminate\Support\Collection $existingCats
     **/
     public function getCategory( $catId )
     {
