@@ -42,7 +42,7 @@
 						</div>						
 					</div>				
 				@else 
-					@include('alerts.insufficent_cards')
+					@include('alerts.insufficient_cards')
 				@endif					
 	        </div>
 	    </div>
