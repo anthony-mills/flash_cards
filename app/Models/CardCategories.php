@@ -1,6 +1,6 @@
 <?php
 /**
-* Eloquent model for storage of falsh card categories
+* Eloquent model for storage of flash card categories
 */
 namespace App\Models;
 

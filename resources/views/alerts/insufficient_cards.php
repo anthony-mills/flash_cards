@@ -1,5 +1,5 @@
 <div class="card dark-card">
-    <div class="card-header">Insufficent Cards</div>
+    <div class="card-header">Insufficient Cards</div>
 
     <div class="card-body">
     	<div class="card-content-area">

@@ -17,7 +17,7 @@ class CategoryController extends Controller
 	}	
 
 	/**
-	* Display a page for the managaement of card categories
+	* Display a page for the management of card categories
 	*
     * @return \Illuminate\View\View	
 	**/
