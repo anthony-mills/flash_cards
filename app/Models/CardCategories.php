@@ -5,6 +5,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 
 class CardCategories extends Model
@@ -27,7 +28,7 @@ class CardCategories extends Model
     /**
     * Return all categories and their associated cards
     * 
-    * @return \Illuminate\Support\Collection $existingCats
+    * @return Collection $existingCats
     **/
     public function getCategories()
     {
@@ -43,7 +44,7 @@ class CardCategories extends Model
     * 
     * @param integer $catId
     *
-    * @return \Illuminate\Support\Collection $existingCats
+    * @return \Illuminate\Database\Eloquent\Builder|Model|Collection|object
     **/
     public function getCategory( $catId )
     {

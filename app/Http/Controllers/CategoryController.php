@@ -50,14 +50,16 @@ class CategoryController extends Controller
     	} else {
 			return redirect()->route('category.create')->with('error', 'Error saving the new category.')->withInput(); 
     	} 	
-    } 
+    }
 
     /**
-    * Delete a category from the system
-    *
-    * @param integer $catId
-    * @return \Illuminate\Http\RedirectResponse
-    **/
+     * Delete a category from the system
+     *
+     * @param integer $catId
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * @throws \Exception If non numeric $catId encountered
+     */
     public function deleteCategory( $catId )
     {
     	if (is_numeric($catId)) {
@@ -95,13 +97,15 @@ class CategoryController extends Controller
         );    	
     }
 
-	/**
-	* List all of the cards associated with a category
-	*
-	* @param integer $catId
-	*
-    * @return \Illuminate\View\View	
-	**/
+    /**
+     * List all of the cards associated with a category
+     *
+     * @param integer $catId
+     *
+     * @return \Illuminate\View\View
+     *
+     * @throws \Exception If non numeric $catId encountered
+     */
     public function getCards( $catId )
     {
     	if (is_numeric($catId)) {
