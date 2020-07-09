@@ -135,14 +135,16 @@ class CardController extends Controller
     	} else {
 			return redirect()->route('card.create')->with('error', 'Error saving the flash card.')->withInput(); 
     	} 	
-    } 
+    }
 
     /**
-    * Delete a card from the system
-    *
-    * @param integer $cardId
-    * @return \Illuminate\Http\RedirectResponse
-    **/
+     * Delete a card from the system
+     *
+     * @param integer $cardId
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * @throws \Exception if not numeric $cardId
+     */
     public function deleteCard( $cardId )
     {
     	$this->middleware('auth');
