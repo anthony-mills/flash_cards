@@ -16,7 +16,8 @@ class CreateCardsTable extends Migration
         Schema::create('cards', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->unsignedInteger('category')->nullable(); 
+            $table->unsignedInteger('category')->nullable();
+            $table->integer('difficulty')->->default(0); 
             $table->string('problem', 1000)->nullable();
             $table->string('solution', 1000)->nullable();                         
             $table->timestamps();
