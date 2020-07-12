@@ -23,6 +23,13 @@
                             {!! Form::select( 'category', $existingCats->pluck('name', 'id'), $cardRow->category ?? null, ['class' => 'form-control form-control-lg', 'dusk' => 'card_category', 'required'] ) !!}
                         </div>
 
+                        <!-- Difficulty rating of the card -->
+                        <div class="form-group">
+                            {!! Form::label('difficulty', 'Difficulty ( 0 - 5 )') !!}
+                            <span class="red-text">*</span>
+                            {!! Form::number('difficulty', $cardRow->difficulty ?? null, ['class' => 'form-control', 'min' => 0, 'max' => 5, 'dusk' => 'difficulty', 'placeholder' => '3']) !!}
+                        </div>                             
+
                         <!-- Problem on the front of the card -->
                         <div class="form-group">
                             {!! Form::label('problem', 'Problem') !!}
