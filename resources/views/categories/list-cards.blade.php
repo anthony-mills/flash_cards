@@ -19,8 +19,9 @@
                             <table class="table">
                                 <thead class="thead-dark">
                                     <th scope="col">ID</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Cards</th> 
+                                    <th scope="col">Difficulty</th>
+                                    <th scope="col">Question</th>
+                                    <th scope="col">Answer</th> 
                                     <th scope="col">Created</th>  
                                     <th scope="col">Actions</th>                                                                                    
                                 </thead>
@@ -29,6 +30,7 @@
                                     @foreach( $cardRows as $existingCard )
                                         <tr>
                                             <td>{{ $existingCard->id }}</td>
+                                            <td>{{ $existingCard->difficulty }} / 5</td>                                            
                                             <td>{!! $existingCard->problem !!}</td>
                                             <td>{!! $existingCard->solution !!}</td>
                                             <td>{{ Carbon\Carbon::parse($existingCard->created_at)->format('d/m/Y') }}</td>     

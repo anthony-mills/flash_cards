@@ -117,7 +117,8 @@ class CardController extends Controller
     	$this->middleware('auth');
 
     	$formData = array(
-    		'category' => $formObj->get('category'),
+            'category' => $formObj->get('category'),
+    		'difficulty' => $formObj->get('difficulty'),
     		'problem' => $formObj->get('problem'),
     		'solution' => $formObj->get('solution'), 
     	);
