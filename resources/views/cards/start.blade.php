@@ -24,6 +24,15 @@
 
                             <!-- Number of cards -->
                             <div class="form-group">
+                                {!! Form::label('difficulty', 'Difficulty Level') !!}
+                                <span class="red-text">*</span>
+                                <br />
+
+                                {!! Form::select( 'difficulty', $difficultyLvl, null, ['class' => 'form-control form-control-lg', 'dusk' => 'card_number', 'required'] ) !!}
+                            </div>
+
+                            <!-- Number of cards -->
+                            <div class="form-group">
                                 {!! Form::label('card_number', 'Card Number') !!}
                                 <span class="red-text">*</span>
                                 <br />

@@ -28,6 +28,7 @@ class CardStartSetForm extends FormRequest
     {
         return [
             'category' => 'nullable|numeric',
+            'difficulty' => 'required|numeric',
             'card_number' => 'required|numeric',                    
         ];
     }

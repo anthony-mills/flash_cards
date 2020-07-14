@@ -25,7 +25,8 @@ class CardController extends Controller
             'cards.start', 
             [
                 'cardCats' => $cardCats ?? array(),
-                'cardNumber' => [ 10 => 10, 20 => 20, 50 => 50 ]
+                'cardNumber' => [ 10 => 10, 20 => 20, 50 => 50 ],
+                'difficultyLvl' => [ 0 => 'All', 1, 2, 3, 4, 5 ]
             ]
         );        
     }
@@ -40,20 +41,24 @@ class CardController extends Controller
     public function showCards( CardStartSetForm $formObj )
     {
         $cardCat = $formObj->get('category');
+        $cardLevel = $formObj->get('difficulty');
+
+        $cardQuery = Cards::inRandomOrder()->limit( $formObj->get('card_number') );
+
+        if ( $cardLevel > 0 ) {
+            $cardQuery->where('difficulty', $cardLevel);
+        }
 
         if ( is_numeric($cardCat) ) {
-            $existingCards = Cards::where( 'category', $cardCat )
-                                    ->limit( $formObj->get('card_number') )
-                                    ->inRandomOrder()
-                                    ->get();
-        } else {
-            $existingCards = Cards::limit( $formObj->get('card_number') )->inRandomOrder()->get();
-        }
+            $cardQuery->where( 'category', $cardCat );
+        } 
+
+        $cardSet = $cardQuery->get(); 
 
         return view(
             'cards.show_cards', 
             [
-                'existingCards' => $existingCards ?? array()
+                'existingCards' => count($cardSet) > 0 ? $cardSet : Cards::inRandomOrder()->limit( $formObj->get('card_number') )->get()
             ]
         );      
     }
