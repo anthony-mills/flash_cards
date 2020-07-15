@@ -25,9 +25,9 @@
 
                         <!-- Difficulty rating of the card -->
                         <div class="form-group">
-                            {!! Form::label('difficulty', 'Difficulty ( 0 - 5 )') !!}
+                            {!! Form::label('difficulty', 'Difficulty ( 1 - 5 )') !!}
                             <span class="red-text">*</span>
-                            {!! Form::number('difficulty', $cardRow->difficulty ?? null, ['class' => 'form-control', 'min' => 0, 'max' => 5, 'dusk' => 'difficulty', 'placeholder' => '3']) !!}
+                            {!! Form::number('difficulty', $cardRow->difficulty ?? null, ['class' => 'form-control', 'min' => 1, 'max' => 5, 'dusk' => 'difficulty', 'placeholder' => '3']) !!}
                         </div>                             
 
                         <!-- Problem on the front of the card -->
