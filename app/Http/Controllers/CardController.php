@@ -58,7 +58,7 @@ class CardController extends Controller
         return view(
             'cards.show_cards', 
             [
-                'existingCards' => count($cardSet) > 0 ? $cardSet : Cards::inRandomOrder()->limit( $formObj->get('card_number') )->get()
+                'existingCards' => count($cardSet) > 2 ? $cardSet : Cards::inRandomOrder()->limit( $formObj->get('card_number') )->get()
             ]
         );      
     }
