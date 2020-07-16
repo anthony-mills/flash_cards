@@ -28,7 +28,7 @@
                                 <span class="red-text">*</span>
                                 <br />
 
-                                {!! Form::select( 'difficulty', $difficultyLvl, null, ['class' => 'form-control form-control-lg', 'dusk' => 'card_number', 'required'] ) !!}
+                                {!! Form::select( 'difficulty', $difficultyLvl, null, ['class' => 'form-control form-control-lg', 'dusk' => 'card_difficulty', 'required'] ) !!}
                             </div>
 
                             <!-- Number of cards -->
