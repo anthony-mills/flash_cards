@@ -14,6 +14,7 @@ class Cards extends Model
     protected $fillable = [
                             'category',
                             'problem',
+                            'difficulty',
                             'solution'
                           ];
 
