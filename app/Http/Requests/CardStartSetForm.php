@@ -7,14 +7,15 @@ use Illuminate\Http\Request;
 
 class CardStartSetForm extends FormRequest
 {
-    protected $_reqObj;
+    /** @var \Illuminate\Http\Request $reqObj */
+    protected $reqObj;
 
     /**
      * @param  \Illuminate\Http\Request $reqObj
      */
     public function __construct(Request $reqObj)
     {
-        $this->_reqObj = $reqObj;
+        $this->reqObj = $reqObj;
 
         parent::__construct();
     }
@@ -50,7 +51,7 @@ class CardStartSetForm extends FormRequest
             }
 
             if (strlen($errorMsg) > 0) {
-                $this->_reqObj->session()->put(
+                $this->reqObj->session()->put(
                     'error', 
                     '<ul>' . $errorMsg . '</ul>'
                 ); 
