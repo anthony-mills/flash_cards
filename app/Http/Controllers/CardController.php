@@ -15,28 +15,28 @@ class CardController extends Controller
     /**
     * Allow the user to select the card topic they would like to study
     *
-    * @return \Illuminate\View\View     
-    **/    
+    * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    **/
     public function beginSet()
     {
         $cardCats = ( new CardCategories )->getCategories();
 
         return view(
-            'cards.start', 
+            'cards.start',
             [
                 'cardCats' => $cardCats ?? array(),
                 'cardNumber' => [ 10 => 10, 20 => 20, 50 => 50 ],
                 'difficultyLvl' => [ 0 => 'All', 1, 2, 3, 4, 5 ]
             ]
-        );        
+        );
     }
 
     /**
     * Display the selected flashcard set to the user
     *
     * @param \App\Http\Requests\CardStartSetForm $formObj
-    *     
-    * @return \Illuminate\View\View     
+    *
+    * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     **/
     public function showCards( CardStartSetForm $formObj )
     {
@@ -51,43 +51,43 @@ class CardController extends Controller
 
         if ( is_numeric($cardCat) ) {
             $cardQuery->where( 'category', $cardCat );
-        } 
+        }
 
-        $cardSet = $cardQuery->get(); 
+        $cardSet = $cardQuery->get();
 
         return view(
-            'cards.show_cards', 
+            'cards.show_cards',
             [
                 'existingCards' => count($cardSet) > 2 ? $cardSet : Cards::inRandomOrder()->limit( $formObj->get('card_number') )->get()
             ]
-        );      
+        );
     }
 
     /**
-    * Create a new flash card 
+    * Create a new flash card
     *
-    * @return \Illuminate\View\View	
+    * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     */
     public function createCard()
     {
-    	$this->middleware('auth');
+        $this->middleware('auth');
 
-    	$existingCats = ( new CardCategories )->getCategories();
+        $existingCats = ( new CardCategories )->getCategories();
 
         return view(
-            'cards.create', 
+            'cards.create',
             [
                 'existingCats' => $existingCats
             ]
-        );   
+        );
     }
 
     /**
-    * Edit an existing flash card 
+    * Edit an existing flash card
     *
     * @param integer $cardId
-    * 
-    * @return \Illuminate\View\View 
+    *
+    * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     */
     public function editCard( $cardId )
     {
@@ -99,12 +99,12 @@ class CardController extends Controller
 
         if ( $cardRow ) {
             return view(
-                'cards.create', 
+                'cards.create',
                 [
                     'existingCats' => $existingCats,
                     'cardRow' => $cardRow
                 ]
-            );   
+            );
         }
 
         return redirect()->route('dashboard')->with('status', 'Card not found.');
@@ -114,19 +114,19 @@ class CardController extends Controller
     * Store a flash card to the database
     *
     * @param \App\Http\Requests\CardCreateForm $formObj
-    *     
+    *
     * @return \Illuminate\Http\RedirectResponse
     **/
     public function saveCard( CardCreateForm $formObj )
     {
-    	$this->middleware('auth');
+        $this->middleware('auth');
 
-    	$formData = array(
+        $formData = array(
             'category' => $formObj->get('category'),
-    		'difficulty' => $formObj->get('difficulty'),
-    		'problem' => $formObj->get('problem'),
-    		'solution' => $formObj->get('solution'), 
-    	);
+            'difficulty' => $formObj->get('difficulty'),
+            'problem' => $formObj->get('problem'),
+            'solution' => $formObj->get('solution'),
+        );
 
         if ( $formObj->get('card_id') ) {
             $cardId = $formObj->get('card_id');
@@ -136,11 +136,11 @@ class CardController extends Controller
             $cardId = Cards::create( $formData )->id;
         }
 
-    	if ( is_numeric($cardId) ) {
-			return redirect()->route('dashboard')->with('status', 'Flash card saved successfully.'); 
-    	} else {
-			return redirect()->route('card.create')->with('error', 'Error saving the flash card.')->withInput(); 
-    	} 	
+        if ( is_numeric($cardId) ) {
+            return redirect()->route('dashboard')->with('status', 'Flash card saved successfully.');
+        } else {
+            return redirect()->route('card.create')->with('error', 'Error saving the flash card.')->withInput();
+        }
     }
 
     /**
@@ -153,21 +153,21 @@ class CardController extends Controller
      */
     public function deleteCard( $cardId )
     {
-    	$this->middleware('auth');
+        $this->middleware('auth');
 
-    	if (is_numeric($cardId)) {
-    		$cardRow = Cards::where('id', $cardId)->first();
+        if (is_numeric($cardId)) {
+            $cardRow = Cards::where('id', $cardId)->first();
 
-    		if ($cardRow) {
-    			$cardRow->delete();
+            if ($cardRow) {
+                $cardRow->delete();
 
-    			return redirect()->route('dashboard')->with('status', 'Successfully deleted the flash card".'); 
-    		} else {
-    			return redirect()->route('dashboard')->with('error', 'Error deleting the card from the system.'); 
-    		}
+                return redirect()->route('dashboard')->with('status', 'Successfully deleted the flash card".');
+            } else {
+                return redirect()->route('dashboard')->with('error', 'Error deleting the card from the system.');
+            }
 
-    	}
+        }
 
-    	throw new \Exception('Non numeric card id provided.');
-    }    
+        throw new \Exception('Non numeric card id provided.');
+    }
 }

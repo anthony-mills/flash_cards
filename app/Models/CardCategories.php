@@ -10,12 +10,11 @@ use Illuminate\Support\Facades\Config;
 
 class CardCategories extends Model
 {
+    /** @var string $table */ 
     protected $table = 'card_categories';
 
-    protected $fillable = [
-                            'name',
-                          ];
-                          
+    /** @var array $fillable */    
+    protected $fillable = ['name'];
 
     /**
     * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -44,7 +43,7 @@ class CardCategories extends Model
     * 
     * @param integer $catId
     *
-    * @return \Illuminate\Database\Eloquent\Builder|Model|Collection|object
+    * @return null|object $existingCats
     **/
     public function getCategory( $catId )
     {

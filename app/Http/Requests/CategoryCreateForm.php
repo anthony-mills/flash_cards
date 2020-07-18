@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -7,14 +6,13 @@ use Illuminate\Http\Request;
 
 class CategoryCreateForm extends FormRequest
 {
-    protected $_reqObj;
+    /** @var \Illuminate\Http\Request $reqObj */
+    protected $reqObj;
 
-    /**
-     * @param  \Illuminate\Http\Request $reqObj
-     */
+    /** @param  \Illuminate\Http\Request $reqObj */
     public function __construct(Request $reqObj)
     {
-        $this->_reqObj = $reqObj;
+        $this->reqObj = $reqObj;
 
         parent::__construct();
     }
@@ -48,7 +46,7 @@ class CategoryCreateForm extends FormRequest
             }
 
             if (strlen($errorMsg) > 0) {
-                $this->_reqObj->session()->put(
+                $this->reqObj->session()->put(
                     'error', 
                     '<ul>' . $errorMsg . '</ul>'
                 ); 

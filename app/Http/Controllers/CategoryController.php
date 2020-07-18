@@ -11,45 +11,44 @@ use App\Models\Cards;
 class CategoryController extends Controller
 {
 
-	public function __construct()
-	{
-	    $this->middleware('auth');
-	}	
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
-	/**
-	* Display a page for the management of card categories
-	*
-    * @return \Illuminate\View\View	
-	**/
+    /**
+    * Display a page for the management of card categories
+    *
+    * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    **/
     public function createCategory()
     {
         return view(
-            'categories.create', 
-            [
-            ]
-        );    	
+            'categories.create',
+            []
+        );
     }
 
     /**
     * Store a card category to the database
     *
     * @param \App\Http\Requests\CategoryCreateForm $formObj
-    *     
+    *
     * @return \Illuminate\Http\RedirectResponse
     **/
     public function saveCategory( CategoryCreateForm $formObj )
     {
         $catName = $formObj->get('name');
 
-    	$formData = [ 'name' => $catName ];
+        $formData = [ 'name' => $catName ];
 
-    	$catId = CardCategories::create( $formData )->id;
+        $catId = CardCategories::create( $formData )->id;
 
-    	if ( is_numeric($catId) ) {
-			return redirect()->route('dashboard')->with('status', 'Saved the new category "' . $catName . '".'); 
-    	} else {
-			return redirect()->route('category.create')->with('error', 'Error saving the new category.')->withInput(); 
-    	} 	
+        if ( is_numeric($catId) ) {
+            return redirect()->route('dashboard')->with('status', 'Saved the new category "' . $catName . '".');
+        } else {
+            return redirect()->route('category.create')->with('error', 'Error saving the new category.')->withInput();
+        }
     }
 
     /**
@@ -62,68 +61,67 @@ class CategoryController extends Controller
      */
     public function deleteCategory( $catId )
     {
-    	if (is_numeric($catId)) {
-    		$cardCat = CardCategories::where('id', $catId)->first();
+        if (is_numeric($catId)) {
+            $cardCat = CardCategories::where('id', $catId)->first();
 
-    		if ($cardCat) {
-    			$catName = $cardCat->name;
+            if ($cardCat) {
+                $catName = $cardCat->name;
 
-    			$cardCat->delete();
+                $cardCat->delete();
 
-    			return redirect()->route('category.list')->with('status', 'Deleted the category "' . $catName . '".'); 
-    		} else {
-    			return redirect()->route('category.list')->with('error', 'Error deleting the category.'); 
-    		}
+                return redirect()->route('category.list')->with('status', 'Deleted the category "' . $catName . '".');
+            } else {
+                return redirect()->route('category.list')->with('error', 'Error deleting the category.');
+            }
 
-    	}
+        }
 
-    	throw new \Exception('Non numeric category id provided.');
+        throw new \Exception('Non numeric category id provided.');
     }
 
-	/**
-	* List all of the stored card categories
-	*
-    * @return \Illuminate\View\View	
-	**/
+    /**
+    * List all of the stored card categories
+    *
+    * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    **/
     public function listCategories()
     {
-    	$existingCats = ( new CardCategories )->getCategories();
+        $existingCats = ( new CardCategories )->getCategories();
 
         return view(
-            'categories.list', 
+            'categories.list',
             [
-            	'existingCats' => $existingCats ?? array()
+                'existingCats' => $existingCats ?? array()
             ]
-        );    	
+        );
     }
 
     /**
      * List all of the cards associated with a category
      *
-     * @param integer $catId
+     * @param int $catId
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      *
      * @throws \Exception If non numeric $catId encountered
      */
     public function getCards( $catId )
     {
-    	if (is_numeric($catId)) {
-	    	$cardRows = ( new Cards )->getByCat( $catId );
+        if (is_numeric($catId)) {
+            $cardRows = ( new Cards )->getByCat( $catId );
 
-	    	if ( $cardRows ) {
-		        return view(
-		            'categories.list-cards', 
-		            [
-		            	'cardRows' => $cardRows
-		            ]
-		        );	    		
-	    	}
+            if ( $cardRows ) {
+                return view(
+                    'categories.list-cards',
+                    [
+                        'cardRows' => $cardRows
+                    ]
+                );
+            }
 
-	    	return redirect()->route('dashboard')->with('error', 'Category not found.');
-
+            return redirect()->route('dashboard')->with('error', 'Category not found.');
         }
 
-        throw new \Exception('Non numeric category id provided.');    	
+        throw new \Exception('Non numeric category id provided.');
     }
 }
