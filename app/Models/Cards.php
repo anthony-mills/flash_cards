@@ -19,22 +19,22 @@ class Cards extends Model
                           ];
 
 
-    /** 
+    /**
     * Get cards by category
     *
     * @param integer $catId
     *
-    * @return \Illuminate\Support\Collection $existingCats    
+    * @return \Illuminate\Support\Collection $existingCats
     **/
     public function getByCat( $catId )
     {
-    	$pageResults = Config::get('flash_cards.results_per_page');
+        $pageResults = Config::get('flash_cards.results_per_page');
 
-		$catCards = $this->where('category', $catId)
-		        		->paginate( $pageResults );
+        $catCards = $this->where('category', $catId)
+                        ->paginate( $pageResults );
 
-		$catCards->count = $this->where('category', $catId)->count();
+        $catCards->count = $this->where('category', $catId)->count();
 
-		return $catCards;
-    }                           
+        return $catCards;
+    }
 }
