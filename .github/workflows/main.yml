@@ -51,7 +51,6 @@ jobs:
         with:
           path: node_modules
           key: yarn-${{ hashFiles('yarn.lock') }}
-
       - name: Run yarn
         run: |
           yarn --version
