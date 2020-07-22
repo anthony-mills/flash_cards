@@ -47,6 +47,7 @@ jobs:
           ./artisan --version
           ./artisan migrate:fresh
           ./artisan db:seed
+          ./artisan config:cache
           ./artisan serve &
       - name: Migrate database
         run: |
@@ -63,7 +64,6 @@ jobs:
           yarn && yarn dev
       - name: Run tests
         run: |
-          mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uuser -psecret database_ci -e "SHOW TABLES"
           ./vendor/bin/phpunit --version
           ./vendor/bin/phpunit
       - name: Run security checks
