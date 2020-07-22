@@ -45,10 +45,7 @@ jobs:
           echo "Running with environment variables: "
           cat .env
           ./artisan --version
-          ./artisan migrate:fresh
-          ./artisan db:seed
           ./artisan config:cache
-          ./artisan serve &
       - name: Migrate database
         run: |
           mysql --version
@@ -64,6 +61,7 @@ jobs:
           yarn && yarn dev
       - name: Run tests
         run: |
+          ./artisan serve &
           ./vendor/bin/phpunit --version
           ./vendor/bin/phpunit
       - name: Run security checks
