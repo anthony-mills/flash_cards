@@ -40,8 +40,12 @@ jobs:
       - name: Boot Laravel application
         run: |
           cp .env.github .env
-          php artisan key:generate
-          php artisan --version
+          key=$(php artisan key:generate --show)
+          echo "APP_KEY=$key" >> .env
+          echo "Running with environment variables: "
+          cat .env
+          ./artisan --version
+          ./artisan config:cache
       - name: Migrate database
         run: |
           mysql --version
@@ -51,24 +55,24 @@ jobs:
         with:
           path: node_modules
           key: yarn-${{ hashFiles('yarn.lock') }}
-
       - name: Run yarn
         run: |
           yarn --version
           yarn && yarn dev
       - name: Run tests
         run: |
-          ../../vendor/bin/phpunit --version
-          ../../vendor/bin/phpunit
+          ./artisan serve &
+          ./vendor/bin/phpunit --version
+          ./vendor/bin/phpunit
       - name: Run security checks
         run: |
           test -d security-checker || git clone https://github.com/sensiolabs/security-checker.git
           cd security-checker
           composer install
-          php security-checker security:check .../../composer.lock
+          php security-checker security:check ./composer.lock
       - name: Upload artifacts
         uses: actions/upload-artifact@master
         if: failure()
         with:
           name: Logs
-          path: ../../storage/logs
+          path: /storage/logs
