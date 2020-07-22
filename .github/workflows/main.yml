@@ -40,8 +40,11 @@ jobs:
       - name: Boot Laravel application
         run: |
           cp .env.github .env
-          php artisan key:generate
-          php artisan --version
+          key=$(php artisan key:generate --show)
+          echo "APP_KEY=$key" >> .env
+          echo "Running with environment variables: "
+          cat .env
+          ./artisan --version
       - name: Migrate database
         run: |
           mysql --version
