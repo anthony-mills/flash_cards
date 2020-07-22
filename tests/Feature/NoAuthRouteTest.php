@@ -19,6 +19,7 @@ class NoAuthRouteTest extends TestCase
     {
         $response = $this->get( Config::get('app.url') . '/');
 
+        print_r( $response->getContent() );
         $response->assertStatus(200);
     }
 
