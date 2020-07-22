@@ -45,6 +45,8 @@ jobs:
           echo "Running with environment variables: "
           cat .env
           ./artisan --version
+          ./artisan migrate:fresh
+          ./artisan db:seed
           ./artisan serve &
       - name: Migrate database
         run: |
