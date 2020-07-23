@@ -1,3 +1,5 @@
+![Tests](https://github.com/anthony-mills/flash_cards/workflows/Tests/badge.svg?branch=master)
+
 ## About Flash Cards
 
 Digital Flash Card web application built with the PHP Laravel framework. Aimed to helping you to remember information more efficently. 
