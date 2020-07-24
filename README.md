@@ -2,7 +2,7 @@
 
 ## About Flash Cards
 
-Digital Flash Card web application built with the PHP Laravel framework. Aimed to helping you to remember information more efficently. 
+Learn subject matter quick with this Digital Flash Card application built with the PHP Laravel framework. It aims to help you to remember information in a more time efficent manner. 
 
 ### Why Do I Want This?
 
@@ -54,23 +54,24 @@ Along with a MySQL server to hold the flash cards and categories.
 
 ### Getting Started
 
-composer install 
+*composer install* 
 
-cp .env.example .env
+*cp .env.example .env*
 
-./artisan key:generate
+*./artisan key:generate*
 
 Edit the newly created .env file and add the database configuration values relevant to your environment.
 
-./artisan migrate:seed
-./artisan db:seed
+*./artisan migrate:seed*
+*./artisan db:seed*
 
 ### Test User Account
 
 A test user is created with the follwing credentials:
 
-User: test.user@test.com
-Password: 2ht4eqx0
+**User:** test.user@test.com
+
+**Password:** 2ht4eqx0
 
 ### Credits
 
