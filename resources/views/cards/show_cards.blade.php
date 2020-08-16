@@ -31,9 +31,15 @@
 							<div class="col-xs-4 text-center">
 								<span class="icon" id="flipper" data-icon="/"><span class="visuallyhidden">Flip</span></span>	
 
-								<div class="current-card-count">
-									Card <span id="current-card">1</span> of {{ count($existingCards) }}
-								</div>								
+								<div class="card-set-state">
+									<div class="current-card-count">
+										Card: <span id="current-card">1</span> of {{ count($existingCards) }}
+									</div>			
+
+									<div class="current-card-side">
+										Side: <span id="current-side">Question</span>
+									</div>	
+								</div>												
 							</div>
 
 							<div class="col-xs-1 text-left">
