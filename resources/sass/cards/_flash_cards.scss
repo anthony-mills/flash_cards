@@ -201,8 +201,10 @@ $button_width:     40px;
     font-weight: 700;
     box-shadow: 0 5px 5px #000;
     background-color:rgba(0, 0, 0, 0.5);
-}
-
-.current-card-count {
     color: #b5acac;
+    font-size: 1.2em;
+    
+    .current-card-count {
+        padding: 10px;
+    }
 }

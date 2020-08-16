@@ -32,7 +32,7 @@ $(document).ready(function(){
     function onAfter(){
       $(this).addClass('current');
 
-      var cardNum = $(this).data("card-number");
+      let cardNum = $(this).data("card-number");
 
       $("#current-card").html( cardNum );
     }
@@ -70,6 +70,10 @@ $(document).ready(function(){
 
           break;
       }
+
+      let currentSide = ($('.current').hasClass('flip') ? "Answer" : "Question");
+
+      $('#current-side').html( currentSide );      
     });
   }
 
