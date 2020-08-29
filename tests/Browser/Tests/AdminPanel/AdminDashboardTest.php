@@ -16,7 +16,6 @@ use App\Models\Cards;
 
 use App\User;
 
-
 class AdminDashboardTest extends DuskTestCase
 {
     // URL for card creation
@@ -37,7 +36,7 @@ class AdminDashboardTest extends DuskTestCase
     * Test the creation of a new category with an invalid category name
     *
     * @return void
-    **/ 
+    **/
     protected function createCategoryFail()
     {
         $this->browse(function (Browser $browserObj) {
@@ -45,25 +44,25 @@ class AdminDashboardTest extends DuskTestCase
 
             $cardCount = Cards::count();
 
-            $browserObj->loginAs( $userRow )
-                    ->visit( Config::get('app.url') . $this->dashURL )
+            $browserObj->loginAs($userRow)
+                    ->visit(Config::get('app.url') . $this->dashURL)
                     ->assertSee('Flash Cards Management')
-                    ->assertSee( $userRow->name )
-                    ->assertSee( 'Create Flash Card' )
-                    ->assertSee( 'Create Category' )
-                    ->assertSee( 'Existing Categories' )
-                    ->assertSee( 'Go to Flash Cards' )                    
-                    ->assertSee( 'Currently ' . $cardCount . ' saved flash cards' )
-                    ->click( '@drop_down_menu' )
+                    ->assertSee($userRow->name)
+                    ->assertSee('Create Flash Card')
+                    ->assertSee('Create Category')
+                    ->assertSee('Existing Categories')
+                    ->assertSee('Go to Flash Cards')
+                    ->assertSee('Currently ' . $cardCount . ' saved flash cards')
+                    ->click('@drop_down_menu')
                     ->assertSee('Home')
                     ->assertSee('Admin Dashboard')
                     ->assertSee('Change Password')
                     ->assertSee('Logout')
-                    ->click( '@drop_down_menu' )
+                    ->click('@drop_down_menu')
                     ->assertDontSee('Home')
                     ->assertDontSee('Admin Dashboard')
                     ->assertDontSee('Change Password')
-                    ->assertDontSee('Logout');                                      
-        });                   
+                    ->assertDontSee('Logout');
+        });
     }
 }

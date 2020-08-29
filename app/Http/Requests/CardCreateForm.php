@@ -31,7 +31,7 @@ class CardCreateForm extends FormRequest
             'category' => 'required|numeric',
             'difficulty' => 'required|numeric|min:1|max:5',
             'problem' => 'string|required|max:1000',
-            'solution' => 'string|required|max:1000',                        
+            'solution' => 'string|required|max:1000',
         ];
     }
 
@@ -41,7 +41,7 @@ class CardCreateForm extends FormRequest
      * @param  \Illuminate\Validation\Validator  $validator
      * @return void
      */
-    public function withValidator( $validator )
+    public function withValidator($validator)
     {
         $validator->after(function ($validator) {
             $formErrors = $validator->errors();
@@ -53,10 +53,10 @@ class CardCreateForm extends FormRequest
 
             if (strlen($errorMsg) > 0) {
                 $this->reqObj->session()->put(
-                    'error', 
+                    'error',
                     '<ul>' . $errorMsg . '</ul>'
-                ); 
-            }           
+                );
+            }
         });
-    }    
+    }
 }

@@ -10,7 +10,6 @@ use App\Models\Cards;
 
 class CategoryController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -36,15 +35,15 @@ class CategoryController extends Controller
     *
     * @return \Illuminate\Http\RedirectResponse
     **/
-    public function saveCategory( CategoryCreateForm $formObj )
+    public function saveCategory(CategoryCreateForm $formObj)
     {
         $catName = $formObj->get('name');
 
         $formData = [ 'name' => $catName ];
 
-        $catId = CardCategories::create( $formData )->id;
+        $catId = CardCategories::create($formData)->id;
 
-        if ( is_numeric($catId) ) {
+        if (is_numeric($catId)) {
             return redirect()->route('dashboard')->with('status', 'Saved the new category "' . $catName . '".');
         } else {
             return redirect()->route('category.create')->with('error', 'Error saving the new category.')->withInput();
@@ -59,7 +58,7 @@ class CategoryController extends Controller
      *
      * @throws \Exception If non numeric $catId encountered
      */
-    public function deleteCategory( $catId )
+    public function deleteCategory($catId)
     {
         if (is_numeric($catId)) {
             $cardCat = CardCategories::where('id', $catId)->first();
@@ -73,7 +72,6 @@ class CategoryController extends Controller
             } else {
                 return redirect()->route('category.list')->with('error', 'Error deleting the category.');
             }
-
         }
 
         throw new \Exception('Non numeric category id provided.');
@@ -105,12 +103,12 @@ class CategoryController extends Controller
      *
      * @throws \Exception If non numeric $catId encountered
      */
-    public function getCards( $catId )
+    public function getCards($catId)
     {
         if (is_numeric($catId)) {
-            $cardRows = ( new Cards )->getByCat( $catId );
+            $cardRows = ( new Cards )->getByCat($catId);
 
-            if ( $cardRows ) {
+            if ($cardRows) {
                 return view(
                     'categories.list-cards',
                     [

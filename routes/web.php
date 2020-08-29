@@ -8,9 +8,9 @@ Auth::routes([
   'verify' => false,
 ]);
 
-Route::get('/auth/change-password','Auth\ChangePasswordController@changePassword')->name('password.change');
+Route::get('/auth/change-password', 'Auth\ChangePasswordController@changePassword')->name('password.change');
 
-Route::post('/auth/change-password','Auth\ChangePasswordController@updatePassword')->name('password.update');
+Route::post('/auth/change-password', 'Auth\ChangePasswordController@updatePassword')->name('password.update');
 
 /** Start the flash card management related routes **/
 Route::get('/', 'CardController@beginSet')->name('card.select');

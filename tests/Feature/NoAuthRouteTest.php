@@ -17,7 +17,7 @@ class NoAuthRouteTest extends TestCase
      */
     public function testRootRoute()
     {
-        $response = $this->get( Config::get('app.url') . '/');
+        $response = $this->get(Config::get('app.url') . '/');
 
         $response->assertStatus(200);
     }
@@ -29,25 +29,25 @@ class NoAuthRouteTest extends TestCase
      */
     public function testLoginRoute()
     {
-        $response = $this->get( Config::get('app.url') . '/login');
+        $response = $this->get(Config::get('app.url') . '/login');
 
         $response->assertStatus(200);
-    }    
+    }
 
     /**
-     * Test the change password path of the application / will redirect as no auth 
+     * Test the change password path of the application / will redirect as no auth
      *
      * @return void
      */
     public function testChangePasswordRoute()
     {
-        $response = $this->get( Config::get('app.url') . '/auth/change-password');
+        $response = $this->get(Config::get('app.url') . '/auth/change-password');
 
         $response->assertStatus(302);
-    }    
+    }
 
     /**
-     * Test the backend card management routes / will redirect as no auth 
+     * Test the backend card management routes / will redirect as no auth
      *
      * @return void
      */
@@ -62,13 +62,13 @@ class NoAuthRouteTest extends TestCase
             '/card/categories/list',
             '/card/categories/delete/1',
             '/card/categories/create',
-            '/card/category/1',                           
+            '/card/category/1',
         );
 
         foreach ($testPaths as $testPath) {
-            $response = $this->get( $appUrl . '/auth/change-password');
+            $response = $this->get($appUrl . '/auth/change-password');
 
             $response->assertStatus(302);
         }
-    }             
+    }
 }

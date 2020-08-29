@@ -38,19 +38,19 @@ class CardController extends Controller
     *
     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     **/
-    public function showCards( CardStartSetForm $formObj )
+    public function showCards(CardStartSetForm $formObj)
     {
         $cardCat = $formObj->get('category');
         $cardLevel = $formObj->get('difficulty');
 
-        $cardQuery = Cards::inRandomOrder()->limit( $formObj->get('card_number') );
+        $cardQuery = Cards::inRandomOrder()->limit($formObj->get('card_number'));
 
-        if ( $cardLevel > 0 ) {
+        if ($cardLevel > 0) {
             $cardQuery->where('difficulty', $cardLevel);
         }
 
-        if ( is_numeric($cardCat) ) {
-            $cardQuery->where( 'category', $cardCat );
+        if (is_numeric($cardCat)) {
+            $cardQuery->where('category', $cardCat);
         }
 
         $cardSet = $cardQuery->get();
@@ -58,7 +58,7 @@ class CardController extends Controller
         return view(
             'cards.show_cards',
             [
-                'existingCards' => count($cardSet) > 2 ? $cardSet : Cards::inRandomOrder()->limit( $formObj->get('card_number') )->get()
+                'existingCards' => count($cardSet) > 2 ? $cardSet : Cards::inRandomOrder()->limit($formObj->get('card_number'))->get()
             ]
         );
     }
@@ -89,15 +89,15 @@ class CardController extends Controller
     *
     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     */
-    public function editCard( $cardId )
+    public function editCard($cardId)
     {
         $this->middleware('auth');
 
         $existingCats = ( new CardCategories )->getCategories();
 
-        $cardRow = Cards::where( 'id', $cardId )->first();
+        $cardRow = Cards::where('id', $cardId)->first();
 
-        if ( $cardRow ) {
+        if ($cardRow) {
             return view(
                 'cards.create',
                 [
@@ -117,7 +117,7 @@ class CardController extends Controller
     *
     * @return \Illuminate\Http\RedirectResponse
     **/
-    public function saveCard( CardCreateForm $formObj )
+    public function saveCard(CardCreateForm $formObj)
     {
         $this->middleware('auth');
 
@@ -128,15 +128,15 @@ class CardController extends Controller
             'solution' => $formObj->get('solution'),
         );
 
-        if ( $formObj->get('card_id') ) {
+        if ($formObj->get('card_id')) {
             $cardId = $formObj->get('card_id');
 
-            Cards::where('id', $cardId )->update( $formData );
+            Cards::where('id', $cardId)->update($formData);
         } else {
-            $cardId = Cards::create( $formData )->id;
+            $cardId = Cards::create($formData)->id;
         }
 
-        if ( is_numeric($cardId) ) {
+        if (is_numeric($cardId)) {
             return redirect()->route('dashboard')->with('status', 'Flash card saved successfully.');
         } else {
             return redirect()->route('card.create')->with('error', 'Error saving the flash card.')->withInput();
@@ -151,7 +151,7 @@ class CardController extends Controller
      *
      * @throws \Exception if not numeric $cardId
      */
-    public function deleteCard( $cardId )
+    public function deleteCard($cardId)
     {
         $this->middleware('auth');
 
@@ -165,7 +165,6 @@ class CardController extends Controller
             } else {
                 return redirect()->route('dashboard')->with('error', 'Error deleting the card from the system.');
             }
-
         }
 
         throw new \Exception('Non numeric card id provided.');

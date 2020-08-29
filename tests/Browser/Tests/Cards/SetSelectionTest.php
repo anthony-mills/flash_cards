@@ -12,9 +12,8 @@ use App\Models\CardCategories;
 
 use App\User;
 
-
 class SetSelectionTest extends DuskTestCase
-{   
+{
     public function testSetSelection()
     {
         echo "\r\nBrowser Tests: Running card set selection tests. \r\n";
@@ -24,23 +23,23 @@ class SetSelectionTest extends DuskTestCase
 
     /**
     * Select flash card set
-    * 
-    * @return void 
+    *
+    * @return void
     **/
     protected function createCategoryFail()
     {
         $this->browse(function (Browser $browserObj) {
-            $browserObj->visit( Config::get('app.url') )
+            $browserObj->visit(Config::get('app.url'))
                     ->assertSee('Quiz Options')
                     ->assertVisible('@card_category')
-                    ->assertSelected('@card_category', '')                     
-                    ->assertVisible('@card_difficulty')                    
-                    ->assertSelected('@card_difficulty', 0)                 
+                    ->assertSelected('@card_category', '')
+                    ->assertVisible('@card_difficulty')
+                    ->assertSelected('@card_difficulty', 0)
                     ->assertVisible('@card_number')
-                    ->assertSelected('@card_number', 10)                     
-                    ->assertVisible('@continue_button')                    
+                    ->assertSelected('@card_number', 10)
+                    ->assertVisible('@continue_button')
                     ->click('@continue_button')
                     ->waitFor('.flash-card');
-        });            
+        });
     }
 }

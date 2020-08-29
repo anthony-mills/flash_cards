@@ -30,7 +30,7 @@ class CardStartSetForm extends FormRequest
         return [
             'category' => 'nullable|numeric',
             'difficulty' => 'required|numeric',
-            'card_number' => 'required|numeric',                    
+            'card_number' => 'required|numeric',
         ];
     }
 
@@ -40,7 +40,7 @@ class CardStartSetForm extends FormRequest
      * @param  \Illuminate\Validation\Validator  $validator
      * @return void
      */
-    public function withValidator( $validator )
+    public function withValidator($validator)
     {
         $validator->after(function ($validator) {
             $formErrors = $validator->errors();
@@ -52,10 +52,10 @@ class CardStartSetForm extends FormRequest
 
             if (strlen($errorMsg) > 0) {
                 $this->reqObj->session()->put(
-                    'error', 
+                    'error',
                     '<ul>' . $errorMsg . '</ul>'
-                ); 
-            }           
+                );
+            }
         });
-    }    
+    }
 }

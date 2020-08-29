@@ -12,10 +12,9 @@ use App\Models\CardCategories;
 
 use App\User;
 
-
 class CreateCategoryTest extends DuskTestCase
 {
-    // Category Name 
+    // Category Name
     protected $categoryName = 'Test Category';
 
     // URL for card creation
@@ -39,39 +38,39 @@ class CreateCategoryTest extends DuskTestCase
     * Test the creation of a new category with an invalid category name
     *
     * @return void
-    **/ 
+    **/
     protected function createCategoryFail()
     {
         $this->browse(function (Browser $browserObj) {
             $browserObj->loginAs(User::find(1))
-                    ->visit( Config::get('app.url') . $this->cardCreateURL )
+                    ->visit(Config::get('app.url') . $this->cardCreateURL)
                     ->assertVisible('@name')
                     ->assertVisible('@save_category')
                     ->type('name', '!INVALID_CATEGORY$$$NAME')
                     ->click('@save_category')
                     ->waitFor('.alert')
-                    ->assertVisible('.alert-danger')                    
+                    ->assertVisible('.alert-danger')
                     ->assertSeeIn('.alert-danger', 'The name format is invalid.');
-        });                   
+        });
     }
 
     /**
     * Test the successful creation of a new category
     *
     * @return void
-    **/ 
+    **/
     protected function createCategorySuccess()
     {
         $this->browse(function (Browser $browserObj) {
             $browserObj->loginAs(User::find(1))
-                    ->visit( Config::get('app.url') . $this->cardCreateURL )
+                    ->visit(Config::get('app.url') . $this->cardCreateURL)
                     ->assertVisible('@name')
                     ->assertVisible('@save_category')
                     ->type('name', $this->categoryName)
                     ->click('@save_category')
                     ->waitFor('.alert')
-                    ->assertVisible('.alert-success')                    
+                    ->assertVisible('.alert-success')
                     ->assertSeeIn('.alert-success', 'Saved the new category "' . $this->categoryName . '".');
-        });                   
+        });
     }
 }

@@ -16,7 +16,7 @@ class CreateCardCategoriesTable extends Migration
         Schema::create('card_categories', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name', 100)->nullable();         
+            $table->string('name', 100)->nullable();
             $table->timestamps();
         });
     }

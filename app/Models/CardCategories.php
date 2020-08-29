@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Config;
 
 class CardCategories extends Model
 {
-    /** @var string $table */ 
+    /** @var string $table */
     protected $table = 'card_categories';
 
-    /** @var array $fillable */    
+    /** @var array $fillable */
     protected $fillable = ['name'];
 
     /**
@@ -26,26 +26,26 @@ class CardCategories extends Model
 
     /**
     * Return all categories and their associated cards
-    * 
+    *
     * @return Collection $existingCats
     **/
     public function getCategories()
     {
         $pageResults = Config::get('flash_cards.results_per_page');
 
-        $existingCats = $this->orderBy('name', 'ASC')->paginate( $pageResults );
+        $existingCats = $this->orderBy('name', 'ASC')->paginate($pageResults);
 
         return $existingCats;
     }
 
     /**
     * Return a category along with its associated Cards
-    * 
+    *
     * @param integer $catId
     *
     * @return null|object $existingCats
     **/
-    public function getCategory( $catId )
+    public function getCategory($catId)
     {
         $existingCats = $this->with(
             'flashCards'
@@ -53,5 +53,5 @@ class CardCategories extends Model
         ->orderBy('name', 'ASC')->first();
 
         return $existingCats;
-    }            
+    }
 }

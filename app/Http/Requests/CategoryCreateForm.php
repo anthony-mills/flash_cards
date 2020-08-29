@@ -35,7 +35,7 @@ class CategoryCreateForm extends FormRequest
      * @param  \Illuminate\Validation\Validator  $validator
      * @return void
      */
-    public function withValidator( $validator )
+    public function withValidator($validator)
     {
         $validator->after(function ($validator) {
             $formErrors = $validator->errors();
@@ -47,10 +47,10 @@ class CategoryCreateForm extends FormRequest
 
             if (strlen($errorMsg) > 0) {
                 $this->reqObj->session()->put(
-                    'error', 
+                    'error',
                     '<ul>' . $errorMsg . '</ul>'
-                ); 
-            }           
+                );
+            }
         });
-    }    
+    }
 }
