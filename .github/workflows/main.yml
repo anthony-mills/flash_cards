@@ -67,9 +67,9 @@ jobs:
           ./vendor/bin/phpunit
       - name: Run dusk tests
         run: |
-          #./artisan dusk:chrome-driver
-          #nohup bash -c './vendor/laravel/dusk/bin/chromedriver-linux > /dev/null 2>&1 &'
-          #./artisan dusk          
+          ./artisan dusk:chrome-driver 84
+          nohup bash -c './vendor/laravel/dusk/bin/chromedriver-linux > /dev/null 2>&1 &'
+          ./artisan dusk          
       - name: Run security checks
         run: |
           test -d security-checker || git clone https://github.com/sensiolabs/security-checker.git
