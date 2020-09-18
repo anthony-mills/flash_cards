@@ -84,7 +84,7 @@ class CategoryController extends Controller
     **/
     public function listCategories()
     {
-        $existingCats = ( new CardCategories )->getCategories();
+        $existingCats = ( new CardCategories )->getCategories(1);
 
         return view(
             'categories.list',
