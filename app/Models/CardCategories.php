@@ -26,14 +26,19 @@ class CardCategories extends Model
 
     /**
     * Return all categories and their associated cards
+    * 
+    * @param integer $paginateResults
     *
     * @return Collection $existingCats
     **/
-    public function getCategories()
+    public function getCategories( $paginateResults = 0 )
     {
-        $pageResults = Config::get('flash_cards.results_per_page');
-
-        $existingCats = $this->orderBy('name', 'ASC')->paginate($pageResults);
+        if ($paginateResults > 0) {
+            $pageResults = Config::get('flash_cards.results_per_page'); 
+            $existingCats = $this->orderBy('name', 'ASC')->paginate($pageResults);
+        } else {
+            $existingCats = $this->orderBy('name', 'ASC');           
+        }
 
         return $existingCats;
     }
