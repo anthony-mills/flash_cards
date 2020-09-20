@@ -6,11 +6,11 @@ Learn subject matter quick with this Digital Flash Card application built with t
 
 ### Why Do I Want This?
 
-A flash card is a tool that aids the [process of memorisation](https://en.wikipedia.org/wiki/Flashcard). Recently while studying to sit an AWS certification I was haunted by the feeling that key facts were just not sticking in my memory as well as they could. Sure I could revise the content again but what if it didn't stick the next time around either? 
+A flash card is a tool that aids the [process of memorisation](https://en.wikipedia.org/wiki/Flashcard). Recently while studying to sit an AWS certification I was haunted by a feeling that key facts were just not sticking in my memory as well as they could. Sure I could revise the content again but what if it didn't stick the next time around either? 
 
 A new approach was needed to quickly revise key facts without wasting time having to go over the same content in its entirety. So I decided to create this flash card tool with Laravel so I could create my own sets of topics and related cards to study.
 
-It is a simple application the frontend allows users to cycle though the cards available. While a simple backend admin system that allows the creation and management of cards and their associated categories.
+It frontend allows unauthenticated users to cycle though a subset of cards under each category available. While a simple backend admin system that allows the creation and management of cards and their associated categories.
 
 ### Screenshots
 
