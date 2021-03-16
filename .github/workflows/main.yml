@@ -5,7 +5,7 @@ on: [push]
 jobs:
   tests:
     name: Run tests
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     services:
       mysql:
@@ -21,16 +21,22 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-
       - name: Verify MySQL connection
         run: |
           mysql --version
           sudo apt-get update
           sudo apt-get install -y mysql-client
           mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uuser -psecret -e "SHOW DATABASES"
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+            php-version: '7.4'
+            extensions: mbstring, intl, zip, curl
       - name: Cache composer dependencies
         uses: actions/cache@v1
-        with:
+        with:   
+                  
           path: vendor
           key: composer-${{ hashFiles('composer.lock') }}
 
