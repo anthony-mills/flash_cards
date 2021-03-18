@@ -80,12 +80,7 @@ jobs:
 
       - name: Run dusk tests
         run: ./artisan dusk          
-      - name: Run security checks
-        run: |
-          test -d security-checker || git clone https://github.com/sensiolabs/security-checker.git
-          cd security-checker
-          composer install
-          php security-checker security:check ./composer.lock
+
       - name: Upload artifacts
         uses: actions/upload-artifact@master
         if: failure()
