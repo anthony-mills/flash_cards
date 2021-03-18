@@ -36,7 +36,11 @@ abstract class DuskTestCase extends BaseTestCase
         );
         
         if ($this->headlessTest) {
-            array_push($chromeArgs, '--disable-gpu', '--headless');
+            array_push(
+                $chromeArgs, 
+                '--disable-gpu', 
+                '--headless'
+            );
         }
 
         $options = (new ChromeOptions)->addArguments($chromeArgs);

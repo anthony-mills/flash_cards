@@ -25,14 +25,14 @@ jobs:
         run: |
           mysql --version
           sudo apt-get update
-          sudo apt-get install -y mysql-client
+          sudo apt-get install -y mysql-client openssl
           mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uuser -psecret -e "SHOW DATABASES"
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
             php-version: '7.4'
-            extensions: mbstring, intl, zip, curl
+            extensions: mbstring, intl, zip, curl, mysql, json, xml
       - name: Cache composer dependencies
         uses: actions/cache@v1
         with:   
@@ -74,7 +74,7 @@ jobs:
       - name: Run dusk tests
         run: |
           ./artisan dusk:chrome-driver 84
-          nohup bash -c './vendor/laravel/dusk/bin/chromedriver-linux > /dev/null 2>&1 &'
+          //nohup bash -c './vendor/laravel/dusk/bin/chromedriver-linux > /dev/null 2>&1 &'
           ./artisan dusk          
       - name: Run security checks
         run: |
