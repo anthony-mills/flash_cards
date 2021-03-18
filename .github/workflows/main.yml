@@ -71,11 +71,15 @@ jobs:
           ./artisan serve &
           ./vendor/bin/phpunit --version
           ./vendor/bin/phpunit
+
+      - name: Install Chrome Driver
+        run: php artisan dusk:chrome-driver `/opt/google/chrome/chrome --version | cut -d " " -f3 | cut -d "." -f1`
+
+      - name: Start Chrome Driver
+        run: ./vendor/laravel/dusk/bin/chromedriver-linux &
+
       - name: Run dusk tests
-        run: |
-          ./artisan dusk:chrome-driver 84
-          //nohup bash -c './vendor/laravel/dusk/bin/chromedriver-linux > /dev/null 2>&1 &'
-          ./artisan dusk          
+        run: ./artisan dusk          
       - name: Run security checks
         run: |
           test -d security-checker || git clone https://github.com/sensiolabs/security-checker.git
