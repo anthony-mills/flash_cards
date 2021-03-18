@@ -5,7 +5,7 @@ on: [push]
 jobs:
   tests:
     name: Run tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     services:
       mysql:
@@ -21,16 +21,22 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-
       - name: Verify MySQL connection
         run: |
           mysql --version
           sudo apt-get update
-          sudo apt-get install -y mysql-client
+          sudo apt-get install -y mysql-client openssl
           mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uuser -psecret -e "SHOW DATABASES"
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+            php-version: '7.4'
+            extensions: mbstring, intl, zip, curl, mysql, json, xml
       - name: Cache composer dependencies
         uses: actions/cache@v1
-        with:
+        with:   
+                  
           path: vendor
           key: composer-${{ hashFiles('composer.lock') }}
 
@@ -65,17 +71,16 @@ jobs:
           ./artisan serve &
           ./vendor/bin/phpunit --version
           ./vendor/bin/phpunit
+
+      - name: Install Chrome Driver
+        run: php artisan dusk:chrome-driver `/opt/google/chrome/chrome --version | cut -d " " -f3 | cut -d "." -f1`
+
+      - name: Start Chrome Driver
+        run: ./vendor/laravel/dusk/bin/chromedriver-linux &
+
       - name: Run dusk tests
-        run: |
-          ./artisan dusk:chrome-driver 84
-          nohup bash -c './vendor/laravel/dusk/bin/chromedriver-linux > /dev/null 2>&1 &'
-          ./artisan dusk          
-      - name: Run security checks
-        run: |
-          test -d security-checker || git clone https://github.com/sensiolabs/security-checker.git
-          cd security-checker
-          composer install
-          php security-checker security:check ./composer.lock
+        run: ./artisan dusk          
+
       - name: Upload artifacts
         uses: actions/upload-artifact@master
         if: failure()
