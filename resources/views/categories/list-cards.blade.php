@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card dark-card">
-                <div class="card-header">Showing {{ $cardRows->count() }}  of {{ $cardRows->count }} Existing Cards</div>
+                <div class="card-header">Showing {{ $cardRows->count() }}  of {{$cardRows->total() }} Existing Cards</div>
 
                 <div class="card-body">
                     <div class="card-content-area">
@@ -14,7 +14,7 @@
 
                         @if ( count($cardRows) > 0 )   
 
-                            {{ $cardRows->links() }}
+                            {!! $cardRows->links("layouts.pagination") !!}
 
                             <table class="table">
                                 <thead class="thead-dark">
@@ -46,7 +46,7 @@
                                 </tbody>
                             </table>
 
-                            {{ $cardRows->links() }}
+                            {{ $cardRows->links("layouts.pagination") }}
 
                         @else 
                             <p>Category contains no cards.</p>
