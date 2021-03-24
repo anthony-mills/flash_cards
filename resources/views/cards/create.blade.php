@@ -34,14 +34,26 @@
                         <div class="form-group">
                             {!! Form::label('problem', 'Problem') !!}
                             <span class="red-text">*</span>
-                             {!! Form::textarea('problem', $cardRow->problem ?? null, ['dusk' => 'category_name','class' => 'form-control texteditor', 'placeholder' => 'Front of Card  ( Max 250 Characters )', 'maxlength' => 250]) !!}
+                             {!! Form::textarea('problem', $cardRow->problem ?? null, ['dusk' => 'card_problem','class' => 'form-control texteditor', 'placeholder' => 'Front of Card  ( Max 250 Characters )', 'maxlength' => 250]) !!}
                         </div>        
 
                         <!-- Solution on the back of the card -->
                         <div class="form-group">
                             {!! Form::label('solution', 'Solution') !!}
                             <span class="red-text">*</span>
-                             {!! Form::textarea('solution', $cardRow->solution ?? null, ['dusk' => 'category_name','class' => 'form-control texteditor', 'placeholder' => 'Back of Card ( Max 250 Characters )', 'maxlength' => 250]) !!}
+                             {!! Form::textarea('solution', $cardRow->solution ?? null, ['dusk' => 'card_solution','class' => 'form-control texteditor', 'placeholder' => 'Back of Card ( Max 250 Characters )', 'maxlength' => 250]) !!}
+                        </div>    
+
+                        <!-- Tags related to the card -->
+                        <div class="form-group">
+                            {!! Form::label('tags', 'Tags') !!}
+                            <select multiple class="tag-input" class="form-control">
+                              <option value="devops">Devops</option>
+                              <option value="Fargate">Fargate</option>
+                              <option value="ECR">ECR</option>
+                              <option value="Lambda">Lambda</option>
+                              <option value="Storage Gateway">Storage Gateway</option>
+                            </select>
                         </div>    
 
                         <span class="red-text"><em> ( * Denotes required fields )</em></span>
