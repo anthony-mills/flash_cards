@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+
 use App\Http\Requests\CardCreateForm;
 use App\Http\Requests\CardStartSetForm;
 
 use App\Models\CardCategories;
 use App\Models\Cards;
+use App\Models\Tags;
 
 class CardController extends Controller
 {
@@ -122,19 +125,18 @@ class CardController extends Controller
         $this->middleware('auth');
 
         $formData = array(
+            'id' => ($formObj->get('card_id') ?? null),
             'category' => $formObj->get('category'),
             'difficulty' => $formObj->get('difficulty'),
             'problem' => $formObj->get('problem'),
             'solution' => $formObj->get('solution'),
         );
 
-        if ($formObj->get('card_id')) {
-            $cardId = $formObj->get('card_id');
+        Cards::upsert( $formData, 'id' );
 
-            Cards::where('id', $cardId)->update($formData);
-        } else {
-            $cardId = Cards::create($formData)->id;
-        }
+        $cardId = (is_numeric($formData['id'])) ? is_numeric($formData['id']) : DB::getPdo()->lastInsertId();
+
+        ( new Tags )->saveCardTags( $cardId, $formObj->get('tags') );
 
         if (is_numeric($cardId)) {
             return redirect()->route('dashboard')->with('status', 'Flash card saved successfully.');
