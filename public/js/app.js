@@ -42680,7 +42680,7 @@ $(document).ready(function () {
   }
 
   var cardTags = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace("tag"),
+    datumTokenizer: Bloodhound.tokenizers.whitespace,
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     prefetch: {
       url: "/api/card/tags"
@@ -42690,19 +42690,20 @@ $(document).ready(function () {
   $('#tag-input').tagsinput({
     maxTags: 5,
     trimValue: true,
-    confirmKeys: [13, 44, 32],
+    confirmKeys: [13, 44],
     cancelConfirmKeysOnEmpty: false,
-    itemValue: "id",
-    itemText: "tag",
     typeaheadjs: {
       name: "cardTags",
-      displayKey: "tag",
       source: cardTags.ttAdapter()
     }
   });
-  $('form input').keydown(function (event) {
+  $('#tag-input').on('beforeItemAdd', function (event) {
+    var tag = event.item; //mytagsinput.tagsinput('add', { id: 1, text: 'mytext'});   
+
+    console.log(event);
+
     if (event.keyCode == 13) {
-      event.preventDefault();
+      console.log('Prevented form submission');
       return false;
     }
   });

@@ -15,6 +15,6 @@ class ApiController extends Controller
     **/
     public function getTags()
     {
-        return response()->json(Tags::all(['id', 'tag']), 200);
+        return response()->json(Tags::all()->pluck('tag'), 200);
     }
 }
