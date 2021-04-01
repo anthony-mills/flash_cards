@@ -33,19 +33,21 @@ class Tags extends Model
     * Handle the saving of tags to a card
     * 
     * @param int $cardId
-    * @param array $cardTags
+    * @param array|null $cardTags
     *
     * @return void 
     **/
-    public function saveCardTags( int $cardId, array $cardTags ) : void
+    public function saveCardTags( int $cardId, $cardTags ) : void
     {
         $tagIds = [];
 
-        foreach($cardTags as $cardTag) {
-            $newTag = SELF::firstOrCreate(['tag' => $cardTag]);
+        if (is_array($cardTags)) {
+            foreach($cardTags as $cardTag) {
+                $newTag = SELF::firstOrCreate(['tag' => $cardTag]);
 
-            CardTags::firstOrCreate(['card_id' => $cardId, 'tag_id' => $newTag->id]);
-            $tagIds[] = $newTag->id;
+                CardTags::firstOrCreate(['card_id' => $cardId, 'tag_id' => $newTag->id]);
+                $tagIds[] = $newTag->id;
+            }
         }
 
         CardTags::where('card_id', $cardId)->whereNotIn('tag_id', $tagIds)->delete();

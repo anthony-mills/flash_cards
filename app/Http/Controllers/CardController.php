@@ -10,6 +10,7 @@ use App\Http\Requests\CardCreateForm;
 
 use App\Models\CardCategories;
 use App\Models\Cards;
+use App\Models\CardTags;
 use App\Models\Tags;
 
 class CardController extends Controller
@@ -63,7 +64,8 @@ class CardController extends Controller
                 'cards.create',
                 [
                     'existingCats' => $existingCats,
-                    'cardRow' => $cardRow
+                    'cardRow' => $cardRow,
+                    'cardTags' => CardTags::join('tags', 'card_tags.tag_id', '=', 'tags.id')->where('card_id', $cardId)->get()
                 ]
             );
         }
@@ -92,7 +94,7 @@ class CardController extends Controller
 
         Cards::upsert( $formData, 'id' );
 
-        $cardId = (is_numeric($formData['id'])) ? is_numeric($formData['id']) : DB::getPdo()->lastInsertId();
+        $cardId = (is_numeric($formData['id'])) ? $formData['id'] : DB::getPdo()->lastInsertId();
 
         ( new Tags )->saveCardTags( $cardId, $formObj->get('tags') );
 

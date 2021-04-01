@@ -47,7 +47,13 @@
                         <!-- Tags related to the card -->
                         <div class="form-group">
                             {!! Form::label('tags', 'Tags') !!}
-                            <select multiple id="tag-input" class="form-control" name="tags[]"></select>
+                            <select multiple id="tag-input" class="form-control" name="tags[]">
+                                @if (isset($cardTags))
+                                    @foreach($cardTags->pluck('tag') as $cardTag)
+                                        <option value="{{ $cardTag }}">{{ $cardTag }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
                         </div>    
 
                         <span class="red-text"><em> ( * Denotes required fields )</em></span>
