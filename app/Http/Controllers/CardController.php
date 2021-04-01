@@ -171,4 +171,14 @@ class CardController extends Controller
 
         throw new \Exception('Non numeric card id provided.');
     }
+
+    /**
+    * Return a JSON array of all stored card tags
+    *
+    * @return \Illuminate\Http\Response
+    **/
+    public function getTags()
+    {
+        return response()->json(Tags::all(['id', 'tag']), 200);
+    }
 }

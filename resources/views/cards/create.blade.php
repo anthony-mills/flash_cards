@@ -47,13 +47,7 @@
                         <!-- Tags related to the card -->
                         <div class="form-group">
                             {!! Form::label('tags', 'Tags') !!}
-                            <select multiple class="tag-input" class="form-control" name="tags[]">
-                              <option value="devops">Devops</option>
-                              <option value="Fargate">Fargate</option>
-                              <option value="ECR">ECR</option>
-                              <option value="Lambda">Lambda</option>
-                              <option value="Storage Gateway">Storage Gateway</option>
-                            </select>
+                            <select multiple id="tag-input" class="form-control" name="tags[]"></select>
                         </div>    
 
                         <span class="red-text"><em> ( * Denotes required fields )</em></span>
