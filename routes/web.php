@@ -12,11 +12,13 @@ Route::get('/auth/change-password', 'Auth\ChangePasswordController@changePasswor
 
 Route::post('/auth/change-password', 'Auth\ChangePasswordController@updatePassword')->name('password.update');
 
+/** Start the flash card selection and view related routes **/
+Route::get('/', 'FlashSetController@beginSet')->name('card.select');
+
+Route::post('/', 'FlashSetController@showCards')->name('card.begin');
+/** End the flash card selection and view related routes **/
+
 /** Start the flash card management related routes **/
-Route::get('/', 'CardController@beginSet')->name('card.select');
-
-Route::post('/', 'CardController@showCards')->name('card.begin');
-
 Route::get('/card/edit/{cardId}', 'CardController@editCard')->name('card.edit');
 
 Route::get('/card/create', 'CardController@createCard')->name('card.create');

@@ -18,4 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/card/tags', 'CardController@getTags')->name('card.tags');
+Route::get('/card/tags', 'ApiController@getTags')->name('card.tags');
