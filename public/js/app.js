@@ -42697,16 +42697,6 @@ $(document).ready(function () {
       source: cardTags.ttAdapter()
     }
   });
-  $('#tag-input').on('beforeItemAdd', function (event) {
-    var tag = event.item; //mytagsinput.tagsinput('add', { id: 1, text: 'mytext'});   
-
-    console.log(event);
-
-    if (event.keyCode == 13) {
-      console.log('Prevented form submission');
-      return false;
-    }
-  });
   $('.delete-item').click(function (e) {
     e.preventDefault();
     $.confirmModal('Are you sure to delete this item?', {
