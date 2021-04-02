@@ -32,6 +32,7 @@ class CardCreateForm extends FormRequest
             'difficulty' => 'required|numeric|min:1|max:5',
             'problem' => 'string|required|max:1000',
             'solution' => 'string|required|max:1000',
+            'tags' => 'array'
         ];
     }
 

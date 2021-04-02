@@ -27,6 +27,7 @@
         "webpack-cli": "^3.3.11"
     },
     "dependencies": {
+        "bloodhound-js": "^1.2.3",
         "compass": "^0.1.1"
     }
 }

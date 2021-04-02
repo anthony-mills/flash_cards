@@ -4,63 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+
 use App\Http\Requests\CardCreateForm;
-use App\Http\Requests\CardStartSetForm;
 
 use App\Models\CardCategories;
 use App\Models\Cards;
+use App\Models\CardTags;
+use App\Models\Tags;
 
 class CardController extends Controller
 {
     /**
-    * Allow the user to select the card topic they would like to study
-    *
-    * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-    **/
-    public function beginSet()
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        $cardCats = ( new CardCategories )->getCategories();
-
-        return view(
-            'cards.start',
-            [
-                'cardCats' => $cardCats ?? array(),
-                'cardNumber' => [ 10 => 10, 20 => 20, 50 => 50 ],
-                'difficultyLvl' => [ 0 => 'All', 1, 2, 3, 4, 5 ]
-            ]
-        );
-    }
-
-    /**
-    * Display the selected flashcard set to the user
-    *
-    * @param \App\Http\Requests\CardStartSetForm $formObj
-    *
-    * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-    **/
-    public function showCards(CardStartSetForm $formObj)
-    {
-        $cardCat = $formObj->get('category');
-        $cardLevel = $formObj->get('difficulty');
-
-        $cardQuery = Cards::inRandomOrder()->limit($formObj->get('card_number'));
-
-        if ($cardLevel > 0) {
-            $cardQuery->where('difficulty', $cardLevel);
-        }
-
-        if (is_numeric($cardCat)) {
-            $cardQuery->where('category', $cardCat);
-        }
-
-        $cardSet = $cardQuery->get();
-
-        return view(
-            'cards.show_cards',
-            [
-                'existingCards' => count($cardSet) > 2 ? $cardSet : Cards::inRandomOrder()->limit($formObj->get('card_number'))->get()
-            ]
-        );
+        $this->middleware('auth');
     }
 
     /**
@@ -102,7 +64,8 @@ class CardController extends Controller
                 'cards.create',
                 [
                     'existingCats' => $existingCats,
-                    'cardRow' => $cardRow
+                    'cardRow' => $cardRow,
+                    'cardTags' => CardTags::join('tags', 'card_tags.tag_id', '=', 'tags.id')->where('card_id', $cardId)->get()
                 ]
             );
         }
@@ -122,19 +85,18 @@ class CardController extends Controller
         $this->middleware('auth');
 
         $formData = array(
+            'id' => ($formObj->get('card_id') ?? null),
             'category' => $formObj->get('category'),
             'difficulty' => $formObj->get('difficulty'),
             'problem' => $formObj->get('problem'),
             'solution' => $formObj->get('solution'),
         );
 
-        if ($formObj->get('card_id')) {
-            $cardId = $formObj->get('card_id');
+        Cards::upsert( $formData, 'id' );
 
-            Cards::where('id', $cardId)->update($formData);
-        } else {
-            $cardId = Cards::create($formData)->id;
-        }
+        $cardId = (is_numeric($formData['id'])) ? $formData['id'] : DB::getPdo()->lastInsertId();
+
+        ( new Tags )->saveCardTags( $cardId, $formObj->get('tags') );
 
         if (is_numeric($cardId)) {
             return redirect()->route('dashboard')->with('status', 'Flash card saved successfully.');
@@ -168,5 +130,15 @@ class CardController extends Controller
         }
 
         throw new \Exception('Non numeric card id provided.');
+    }
+
+    /**
+    * Return a JSON array of all stored card tags
+    *
+    * @return \Illuminate\Http\Response
+    **/
+    public function getTags()
+    {
+        return response()->json(Tags::all(['id', 'tag']), 200);
     }
 }

@@ -1,4 +1,12 @@
 /*!
+    * @overview es6-promise - a tiny implementation of Promises/A+.
+    * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
+    * @license   Licensed under MIT license
+    *            See https://raw.githubusercontent.com/jakearchibald/es6-promise/master/LICENSE
+    * @version   3.0.2
+    */
+
+/*!
   * Bootstrap v4.4.1 (https://getbootstrap.com/)
   * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -58,6 +66,12 @@
  * Copyright (c) 2018 Trim C.
  * Released under the MIT license
  * Description : simple to use plugin replacing the browser's default confirm box with bootstrap 4 modal
+ */
+
+/*!
+ * typeahead.js 0.11.1
+ * https://github.com/twitter/typeahead.js
+ * Copyright 2013-2015 Twitter, Inc. and other contributors; Licensed MIT
  */
 
 /*! jQuery v3.5.0 | (c) JS Foundation and other contributors | jquery.org/license */
