@@ -30,7 +30,7 @@ class Cards extends Model
     {
         $pageResults = Config::get('flash_cards.results_per_page');
 
-        $catCards = $this->where('category', $catId)->paginate($pageResults);
+        $catCards = $this->where('category', $catId)->orderBy('id', 'DESC')->paginate($pageResults);
 
         return $catCards;
     }
