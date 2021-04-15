@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests\CardCreateForm;
-
 use App\Models\CardCategories;
 use App\Models\Cards;
 use App\Models\CardTags;
@@ -28,7 +25,7 @@ class CardController extends Controller
     /**
     * Create a new flash card
     *
-    * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    * @return \Illuminate\View\View
     */
     public function createCard()
     {
@@ -49,7 +46,7 @@ class CardController extends Controller
     *
     * @param integer $cardId
     *
-    * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
     */
     public function editCard($cardId)
     {
@@ -135,7 +132,7 @@ class CardController extends Controller
     /**
     * Return a JSON array of all stored card tags
     *
-    * @return \Illuminate\Http\Response
+    * @return \Illuminate\Http\JsonResponse
     **/
     public function getTags()
     {
