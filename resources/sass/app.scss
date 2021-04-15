@@ -1,11 +1,5 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
-
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
 
 // Base Theme
 @import '_base_theme';
@@ -16,31 +10,31 @@
 // Card Styles
 @import 'cards/_flash_cards';
 
-// Confirm Modal Styling 
+// Confirm Modal Styling
 @import '_confirm_modal';
+
+// Bootstrap Tags Editor
+@import 'vendor/_bootstrap-tagsinput';
 
 // Center Laravel pagination elements
 .pagination {
 	justify-content: center;
 }
 
-// Bootstrap Tags Editor
-@import 'vendor/_bootstrap-tagsinput';
-
 .red-text {
-	color: #ba1e0d;	
+	color: #ba1e0d;
 	font-size: 80%;
 }
 
 .invalid-feedback {
-	font-size: 80%;		
+	font-size: 80%;
 }
 
 .top-nav-bar {
-	background-color: $dark-overlay;	
+	background-color: $dark-overlay;
 
 	.dropdown-menu {
-		background-color: $dark-overlay;		
+		background-color: $dark-overlay;
 
 		.dropdown-item {
 			color:  $light-text;
@@ -54,7 +48,7 @@
 }
 
 .btn {
-	padding: 7px 30px;	
+	padding: 7px 30px;
 
 	&.btn-outline {
 		background-color: transparent;
@@ -78,7 +72,7 @@
 	  		color:  $light-text;
 	  		background-color: $dark-highlight;
 	  	}
-	}	
+	}
 }
 
 // Disable summernote notification area below the editor
@@ -90,7 +84,7 @@
 	border-top: #000 1px solid;
 	-webkit-box-shadow: 0px -4px 3px rgba(0, 0, 0, 0.30);
 	-moz-box-shadow: 0px -4px 3px rgba(0, 0, 0, 0.30);
-	box-shadow: 0px -4px 3px rgba(0, 0, 0, 0.30);	
+	box-shadow: 0px -4px 3px rgba(0, 0, 0, 0.30);
 	background-color: #000 !important;
 
 	color:  $light-text;
@@ -113,8 +107,8 @@
 	}
 
 	.card-footer {
-		background-color: $dark-highlight;	
-    	border: none;	
+		background-color: $dark-highlight;
+    	border: none;
 	}
 
 	.pagination {
@@ -122,7 +116,7 @@
 			background-color: inherit;
 			border-color: $dark-highlight;
 			color: $dark-highlight;
-		} 
+		}
 
 		.page-link {
 			background-color: $dark-highlight;
