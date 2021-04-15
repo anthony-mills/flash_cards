@@ -12,8 +12,7 @@
                         @include('alerts.status')
                         
                         @if ( count($existingCats) > 0 )           
-
-                            {{ $existingCats->links() }}
+                            {!! $existingCats->links("layouts.pagination") !!}
 
                             <table class="table">
                                 <thead class="thead-dark">
@@ -43,7 +42,7 @@
                                 </tbody>
                             </table>
 
-                            {{ $existingCats->links() }}                        
+                            {!! $existingCats->links("layouts.pagination") !!}                        
                         @else 
                             <p>There are no stored card categories to display.</p>
                         @endif
