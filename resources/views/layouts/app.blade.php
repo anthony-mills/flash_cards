@@ -11,10 +11,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -23,7 +19,7 @@
     <div id="app">
         <nav  class="navbar navbar-expand-md top-nav-bar shadow-sm">
             <div class="container">
-                
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -68,13 +64,13 @@
                                     </a>
 
                                     <hr></hr>
-                                    
+
                                     <a class="dropdown-item" href="{{ route('password.change') }}">
                                         Change Password
                                     </a>
 
                                     <hr></hr>
-                                    
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -94,7 +90,7 @@
 
         <main class="py-4">
             @yield('content')
-        </main>        
+        </main>
     </div>
 
   <footer id="sticky-footer" class="py-2 bg-light">
