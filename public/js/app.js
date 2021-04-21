@@ -42714,9 +42714,14 @@ $(document).ready(function () {
       source: cardTags.ttAdapter()
     }
   });
-  $('.delete-item').click(function (e) {
-    e.preventDefault();
-    $.confirmModal('Are you sure to delete this item?', {
+  $('.delete-item').click(function () {
+    var delMsg = $(this).data('msg');
+
+    if (delMsg === undefined) {
+      delMsg = 'Are you sure to delete this item?';
+    }
+
+    $.confirmModal(delMsg, {
       messageHeader: 'Confirm Deletion'
     }, function (el) {
       var deleteLink = $(el).data('delete');

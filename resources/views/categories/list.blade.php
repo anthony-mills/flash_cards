@@ -40,7 +40,9 @@
                                                     View Cards
                                                 </a>
 
-                                                <button type="button" data-delete="/card/categories/delete/{{ $existingCat->id }}" class="delete-item btn btn-outline">Delete</button>
+                                                <button type="button" data-msg="{!! config('flash_cards.card_categories.delete_confirm') !!}" data-delete="/card/categories/delete/{{ $existingCat->id }}" class="delete-item btn btn-outline">
+                                                    Delete
+                                                </button>
                                             </td>
                                         </tr>
                                     @endforeach
