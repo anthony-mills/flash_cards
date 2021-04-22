@@ -54,7 +54,11 @@
                             {{ $cardRows->links("layouts.pagination") }}
 
                         @else
-                            <p>Category contains no cards.</p>
+                            <div class="text-center">
+                                <p>Category contains no cards.</p>
+
+                                <a href="/card/create" class="btn btn-outline btn-sm mt-1">Create a new Card</a>
+                            </div>
                         @endif
                     </div>
                 </div>

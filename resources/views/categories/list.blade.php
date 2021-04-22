@@ -51,7 +51,7 @@
 
                             {!! $existingCats->links("layouts.pagination") !!}
                         @else
-                            <p>There are no stored card categories to display.</p>
+                            <p class="text-center">There are no stored card categories to display.</p>
                         @endif
                     </div>
                 </div>
