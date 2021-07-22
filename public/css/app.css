@@ -12148,6 +12148,11 @@ a.text-dark:focus {
   padding: 10px;
 }
 
+.feedback-icon img {
+  border: none;
+  -webkit-box-shadow: none;
+}
+
 .highlight table td {
   padding: 5px;
 }
