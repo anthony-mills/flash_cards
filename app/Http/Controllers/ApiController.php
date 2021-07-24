@@ -35,7 +35,7 @@ class ApiController extends Controller
         $reqData = array_merge(
             $reqObj->all(),
             [
-                'user_id' => (is_numeric(Auth::id()) ? Auth::id() : ''),
+                'user_id' => (is_numeric(Auth::id()) ? Auth::id() : null),
                 'user_agent' => $reqObj->header('user-agent'),
                 'ip' => $reqObj->ip()
             ]
