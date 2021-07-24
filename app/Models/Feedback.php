@@ -15,6 +15,7 @@ class Feedback extends Model
                             'card_id',
                             'feedback',
                             'user_agent',
-                            'ip'
+                            'ip',
+                            'user_id'
                           ];
 }

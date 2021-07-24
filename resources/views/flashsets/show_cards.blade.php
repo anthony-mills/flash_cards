@@ -8,7 +8,7 @@
 	        		<?php $cardCount=1; ?>
 					<ul id="deck">
 						@foreach( $existingCards as $existingCard )
-							<li class="flash-card" data-card-number="{{ $cardCount++ }}">
+							<li class="flash-card" data-card-number="{!! $cardCount++ !!}" data-card-id="{!! $existingCard->id !!}">
 								<div class="side_one">
 									<div class="flash-card-content">{!! $existingCard->problem !!}</div>
 								</div>
@@ -74,7 +74,6 @@
 									<form id="card-feedback">
 										{!! Form::token() !!}
 
-
 										<div class="form-group">
 										{!! Form::textarea(
 											'feedback',  
@@ -91,7 +90,7 @@
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									<button type="button" class="btn btn-primary">Send</button>									
+									<button type="button" id="save-feedback" class="btn btn-primary">Send</button>									
 							</div>
 						</div>
 					</div>

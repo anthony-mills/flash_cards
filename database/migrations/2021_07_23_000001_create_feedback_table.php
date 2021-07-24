@@ -15,7 +15,9 @@ class CreateFeedbackTable extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->engine = 'InnoDB';
+            $table->increments('id');
             $table->unsignedInteger('card_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable();            
             $table->string('feedback', 255)->nullable();
             $table->string('user_agent', 255)->nullable();
             $table->string('ip', 16)->nullable();            
