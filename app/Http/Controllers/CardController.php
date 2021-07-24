@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests\CardCreateForm;
 use App\Models\CardCategories;
 use App\Models\Cards;
 use App\Models\CardTags;
+use App\Models\Feedback;
 use App\Models\Tags;
 
 class CardController extends Controller
@@ -29,8 +31,6 @@ class CardController extends Controller
     */
     public function createCard()
     {
-        $this->middleware('auth');
-
         $existingCats = ( new CardCategories )->getCategories();
 
         return view(
@@ -50,8 +50,6 @@ class CardController extends Controller
     */
     public function editCard($cardId)
     {
-        $this->middleware('auth');
-
         $existingCats = ( new CardCategories )->getCategories();
 
         $cardRow = Cards::where('id', $cardId)->first();
@@ -79,8 +77,6 @@ class CardController extends Controller
     **/
     public function saveCard(CardCreateForm $formObj)
     {
-        $this->middleware('auth');
-
         $formData = array(
             'id' => ($formObj->get('card_id') ?? null),
             'category' => $formObj->get('category'),
@@ -112,8 +108,6 @@ class CardController extends Controller
      */
     public function deleteCard($cardId)
     {
-        $this->middleware('auth');
-
         if (is_numeric($cardId)) {
             $cardRow = Cards::where('id', $cardId)->first();
 
@@ -123,6 +117,46 @@ class CardController extends Controller
                 return redirect()->route('dashboard')->with('status', 'Successfully deleted the flash card".');
             } else {
                 return redirect()->route('dashboard')->with('error', 'Error deleting the card from the system.');
+            }
+        }
+
+        throw new \Exception('Non numeric card id provided.');
+    }
+
+    /**
+    * View stored card feedback
+    *
+    * @return \Illuminate\View\View
+    **/
+    public function viewFeedback()
+    {
+        return view(
+            'cards.feedback',
+            [
+                'cardFeedback' => Feedback::orderBy('id', 'DESC')->paginate(Config::get('flash_cards.results_per_page'))
+            ]
+        );
+    }
+
+    /**
+    * Delete a feedback comment from the system
+    *
+    * @param integer $commentId
+    * @return \Illuminate\Http\RedirectResponse
+    *
+    * @throws \Exception if not numeric $cardId
+    **/
+    public function deleteFeedback($commentId)
+    {
+        if (is_numeric($commentId)) {
+            $feedbackRow = Feedback::where('id', $commentId)->first();
+
+            if ($feedbackRow) {
+                $feedbackRow->delete();
+
+                return redirect()->route('card.feedback')->with('status', 'Successfully deleted the feedback".');
+            } else {
+                return redirect()->route('card.feedback')->with('error', 'Error deleting the comment from the system.');
             }
         }
 
