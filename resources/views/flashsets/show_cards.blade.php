@@ -42,7 +42,7 @@
 								</div>
 								
 								<div class="feedback-icon">
-									<a href="#" data-toggle="modal" data-target="#feedback-modal" title="Leave Card Feedback">
+									<a href="#" data-toggle="modal" data-target="#feedback-modal" dusk="open-feedback-modal" title="Leave Card Feedback">
 										<img src="/img/feedback.png"/>
 									</a>
 								</div>
@@ -58,7 +58,7 @@
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h5 class="modal-title">Leave Card Feedback</h5>
+									<h5 class="modal-title" dusk="leave-card-feedback">Leave Card Feedback</h5>
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
@@ -80,7 +80,7 @@
 											'feedback',  
 											null, 
 											[
-												'dusk' => 'card_feedback',
+												'dusk' => 'card-feedback-field',
 												'class' => 'form-control', 
 												'placeholder' => 'Message ( Max 250 Characters )', 
 												'maxlength' => 250 
@@ -91,7 +91,7 @@
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									<button type="button" id="save-feedback" class="btn btn-primary">Send</button>	
+									<button type="button" id="save-feedback" class="btn btn-primary" dusk="save-feedback">Send</button>	
 								</div>								
 							</div>
 						</div>

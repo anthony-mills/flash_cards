@@ -49,6 +49,7 @@ class AdminDashboardTest extends DuskTestCase
                     ->assertSee('Flash Cards Management')
                     ->assertSee($userRow->name)
                     ->assertSee('Create Flash Card')
+                    ->assertSee('View Flash Card Feedback')                    
                     ->assertSee('Create Category')
                     ->assertSee('Existing Categories')
                     ->assertSee('Go to Flash Cards')
