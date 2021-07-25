@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/card/tags', 'ApiController@getTags')->name('card.tags');
+
+Route::post('/store/feedback', 'ApiController@storeFeedback')->name('store.feedback');

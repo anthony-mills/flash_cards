@@ -15,7 +15,11 @@
                             <li class="list-group-item">
                                 <a href="/card/create">Create Flash Card</a>
                             </li>                        
-                            
+
+                            <li class="list-group-item">
+                                <a href="/card/feedback/view">View Flash Card Feedback</a>
+                            </li>             
+
                             <li class="list-group-item">
                                 <a href="/card/categories/create">Create Category</a>
                             </li>
