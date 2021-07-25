@@ -24,7 +24,7 @@
                             <table class="table">
                                 <thead class="thead-dark">
                                     <th scope="col">User ID</th>
-                                    <th scope="col">Difficulty</th>
+                                    <th scope="col">Card Comment</th>
                                     <th scope="col">User Agent</th>
                                     <th scope="col">IP</th>
                                     <th scope="col">Created</th>
