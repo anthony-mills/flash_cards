@@ -56,7 +56,7 @@ class CardFeedbackTest extends DuskTestCase
                     ->assertSee('Send')
                     ->type('feedback', $this->feedbackComment)
                     ->click('@save-feedback')
-                    ->pause(1000)
+                    ->pause(4000)
                     ->assertDontSee('Send');
         });
 
