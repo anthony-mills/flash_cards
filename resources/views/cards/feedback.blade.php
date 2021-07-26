@@ -24,7 +24,7 @@
                             <table class="table">
                                 <thead class="thead-dark">
                                     <th scope="col">User ID</th>
-                                    <th scope="col">Difficulty</th>
+                                    <th scope="col">Card Comment</th>
                                     <th scope="col">User Agent</th>
                                     <th scope="col">IP</th>
                                     <th scope="col">Created</th>
@@ -34,13 +34,13 @@
                                 <tbody>
                                     @foreach( $cardFeedback as $cardComment )
                                         <tr>
-                                            <td>{{ (is_numeric($cardComment->id) ? $cardComment->id : '') }}</td>
+                                            <td>{{ (is_numeric($cardComment->user_id) ? $cardComment->user_id : '') }}</td>
                                             <td>{{ $cardComment->feedback }}</td>                                            
                                             <td>{{ $cardComment->user_agent }}</td>
                                             <td>{{ $cardComment->ip }}</td>                                            
                                             <td>{{ Carbon\Carbon::parse($cardComment->created_at)->format('d/m/Y') }}</td>
                                             <td class="text-center">
-                                                <a href="/card/edit/{{ $cardComment->id }}" class="btn btn-outline btn-block btn-sm mt-1">
+                                                <a href="/card/edit/{{ $cardComment->card_id }}" class="btn btn-outline btn-block btn-sm mt-1">
                                                     View Card
                                                 </a>
 

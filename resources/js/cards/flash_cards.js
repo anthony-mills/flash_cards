@@ -99,7 +99,7 @@ $(document).ready(function(){
     $.post(
       "/api/store/feedback", 
       {
-        'card_id' : $(".flash-card").data("card-id"),
+        'card_id' : $(".current").data("card-id"),
         'feedback' : $("#card-feedback textarea[name=feedback]").val(), 
         '_token' : $("#card-feedback input[name=_token]").val(),       
       },

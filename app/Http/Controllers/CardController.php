@@ -154,7 +154,7 @@ class CardController extends Controller
             if ($feedbackRow) {
                 $feedbackRow->delete();
 
-                return redirect()->route('card.feedback')->with('status', 'Successfully deleted the feedback".');
+                return redirect()->route('card.feedback')->with('status', 'Successfully deleted the feedback.');
             } else {
                 return redirect()->route('card.feedback')->with('error', 'Error deleting the comment from the system.');
             }
