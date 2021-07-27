@@ -13,20 +13,24 @@
                     <div class="card-content-area">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
-                                <a href="/card/create">Create Flash Card</a>
-                            </li>                        
-
-                            <li class="list-group-item">
-                                <a href="/card/feedback/view">View Flash Card Feedback</a>
-                            </li>             
-
-                            <li class="list-group-item">
                                 <a href="/card/categories/create">Create Category</a>
                             </li>
 
                             <li class="list-group-item">
+                                <a href="/card/create">Create Flash Card</a>
+                            </li>                        
+
+                            <li class="list-group-item">
+                                <a href="/resource/create">Create Learning Resource</a>
+                            </li> 
+
+                            <li class="list-group-item">
                                 <a href="/card/categories/list">Existing Categories</a>
-                            </li>
+                            </li>                            
+
+                            <li class="list-group-item">
+                                <a href="/card/feedback/view">View Flash Card Feedback</a>
+                            </li>             
 
                             <li class="list-group-item">
                                 <a href="/">Go to Flash Cards</a>

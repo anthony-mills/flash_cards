@@ -40,6 +40,10 @@
                                                     View Cards
                                                 </a>
 
+                                                <a href="/resources/category/{{ $existingCat->id }}" class="btn btn-outline">
+                                                    View Resources
+                                                </a>
+
                                                 <button type="button" data-msg="{!! config('flash_cards.card_categories.delete_confirm') !!}" data-delete="/card/categories/delete/{{ $existingCat->id }}" class="delete-item btn btn-outline">
                                                     Delete
                                                 </button>
