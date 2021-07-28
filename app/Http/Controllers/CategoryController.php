@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests\CategoryCreateForm;
 use App\Models\CardCategories;
 use App\Models\Cards;
+use App\Models\Resources;
 
 class CategoryController extends Controller
 {
@@ -89,7 +91,8 @@ class CategoryController extends Controller
         return view(
             'categories.list',
             [
-                'existingCats' => $existingCats ?? array()
+                'existingCats' => $existingCats ?? array(),
+                'resourceCounts' => Resources::select(['category', DB::raw("COUNT(*) as count")])->groupBy('category')->get()
             ]
         );
     }

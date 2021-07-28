@@ -64,7 +64,33 @@ class ResourceController extends Controller
             return redirect()->route('resource.create')->with('error', 'Error saving the learning resource.')->withInput();
         }
     }  
-    
+
+    /**
+    * Edit an existing learning resource
+    *
+    * @param integer $resourceId
+    *
+    * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
+    */
+    public function editResource($resourceId)
+    {
+        $existingCats = ( new CardCategories )->getCategories();
+
+        $dbRow = Resources::where('id', $resourceId)->first();
+
+        if ($dbRow) {
+            return view(
+                'resources.create',
+                [
+                    'existingCats' => $existingCats,
+                    'resourceRow' => $dbRow,
+                ]
+            );
+        }
+
+        return redirect()->route('dashboard')->with('status', 'Learning resource not found.');
+    }
+
     /**
      * Delete a resource from the system
      *

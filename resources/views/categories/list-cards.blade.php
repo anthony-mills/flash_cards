@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card dark-card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    Showing {{ $cardRows->count() }}  of {{$cardRows->total() }} Existing Cards
+                    Showing {{ $cardRows->count() }} of {{$cardRows->total() }} save flash cards.
                     <a type="button" href="{{ url('/dashboard') }}" class="btn btn-sm btn-inverse">
                         Dashboard
                     </a>
