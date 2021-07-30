@@ -23,7 +23,7 @@
                                 <thead class="thead-dark">
                                     <th scope="col">ID</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Cards</th>
+                                    <th scope="col">Cards / Resources</th>
                                     <th scope="col">Created</th>
                                     <th scope="col">Actions</th>
                                 </thead>
@@ -33,11 +33,18 @@
                                         <tr>
                                             <td>{{ $existingCat->id }}</td>
                                             <td>{{ $existingCat->name }}</td>
-                                            <td>{{ count($existingCat->flashCards) }}</td>
+                                            <td>
+                                                {{ count($existingCat->flashCards) }} / 
+                                                {{ $resourceCounts->firstWhere('category', $existingCat->id )['count'] ?? 0 }}
+                                            </td>
                                             <td>{{ $existingCat->created_at }}</td>
                                             <td class="text-center">
                                                 <a href="/card/category/{{ $existingCat->id }}" class="btn btn-outline">
                                                     View Cards
+                                                </a>
+
+                                                <a href="/resources/category/{{ $existingCat->id }}" class="btn btn-outline">
+                                                    View Resources
                                                 </a>
 
                                                 <button type="button" data-msg="{!! config('flash_cards.card_categories.delete_confirm') !!}" data-delete="/card/categories/delete/{{ $existingCat->id }}" class="delete-item btn btn-outline">

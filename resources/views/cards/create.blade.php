@@ -39,14 +39,14 @@
                         <div class="form-group">
                             {!! Form::label('problem', 'Problem') !!}
                             <span class="red-text">*</span>
-                             {!! Form::textarea('problem', $cardRow->problem ?? null, ['dusk' => 'card_problem','class' => 'form-control texteditor', 'placeholder' => 'Front of Card  ( Max 250 Characters )', 'maxlength' => 250]) !!}
+                             {!! Form::textarea('problem', $cardRow->problem ?? null, ['dusk' => 'card_problem','class' => 'form-control texteditor', 'placeholder' => 'Front of Card  ( Max 1000 Characters )', 'maxlength' => 1000]) !!}
                         </div>
 
                         <!-- Solution on the back of the card -->
                         <div class="form-group">
                             {!! Form::label('solution', 'Solution') !!}
                             <span class="red-text">*</span>
-                             {!! Form::textarea('solution', $cardRow->solution ?? null, ['dusk' => 'card_solution','class' => 'form-control texteditor', 'placeholder' => 'Back of Card ( Max 250 Characters )', 'maxlength' => 250]) !!}
+                             {!! Form::textarea('solution', $cardRow->solution ?? null, ['dusk' => 'card_solution','class' => 'form-control texteditor', 'placeholder' => 'Back of Card ( Max 1000 Characters )', 'maxlength' => 1000]) !!}
                         </div>
 
                         <!-- Tags related to the card -->

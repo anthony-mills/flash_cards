@@ -114,7 +114,7 @@ class CardController extends Controller
             if ($cardRow) {
                 $cardRow->delete();
 
-                return redirect()->route('dashboard')->with('status', 'Successfully deleted the flash card".');
+                return redirect()->route('dashboard')->with('status', 'Successfully deleted the flash card.');
             } else {
                 return redirect()->route('dashboard')->with('error', 'Error deleting the card from the system.');
             }

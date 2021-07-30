@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card dark-card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    Showing {{ $cardRows->count() }} of {{$cardRows->total() }} save flash cards.
+                    Showing {{ $resourceRows->count() }} of {{$resourceRows->total() }} saved resources.
                     <a type="button" href="{{ url('/dashboard') }}" class="btn btn-sm btn-inverse">
                         Dashboard
                     </a>
@@ -17,44 +17,42 @@
                     <div class="card-content-area">
                         @include('alerts.status')
 
-                        @if ( count($cardRows) > 0 )
+                        @if ( count($resourceRows) > 0 )
 
-                            {!! $cardRows->links("layouts.pagination") !!}
+                            {!! $resourceRows->links("layouts.pagination") !!}
 
                             <table class="table">
                                 <thead class="thead-dark">
                                     <th scope="col">ID</th>
-                                    <th scope="col">Difficulty</th>
-                                    <th scope="col">Question</th>
-                                    <th scope="col">Answer</th>
+                                    <th scope="col">Link</th>
+                                    <th scope="col">Description</th>
                                     <th scope="col">Created</th>
                                     <th scope="col">Actions</th>
                                 </thead>
 
                                 <tbody>
-                                    @foreach( $cardRows as $existingCard )
+                                    @foreach( $resourceRows as $existingResource )
                                         <tr>
-                                            <td>{{ $existingCard->id }}</td>
-                                            <td>{{ $existingCard->difficulty }} / 5</td>
-                                            <td>{!! $existingCard->problem !!}</td>
-                                            <td>{!! $existingCard->solution !!}</td>
-                                            <td>{{ Carbon\Carbon::parse($existingCard->created_at)->format('d/m/Y') }}</td>
+                                            <td>{{ $existingResource->id }}</td>
+                                            <td><a href="{{ $existingResource->link }}" target="_blank">{{ $existingResource->link }}</a></td>
+                                            <td>{!! $existingResource->description !!}</td>
+                                            <td>{{ Carbon\Carbon::parse($existingResource->created_at)->format('d/m/Y') }}</td>
                                             <td class="text-center">
-                                                <a href="/card/edit/{{ $existingCard->id }}" class="btn btn-outline btn-block btn-sm mt-1">
+                                                <a href="/resource/edit/{{ $existingResource->id }}" class="btn btn-outline btn-block btn-sm mt-1">
                                                     Edit
                                                 </a>
 
-                                                <button type="button" data-delete="/card/delete/{{ $existingCard->id }}" class="btn btn-outline delete-item btn-block btn-sm mt-1">Delete</button>
+                                                <button type="button" data-delete="/resource/delete/{{ $existingResource->id }}" class="btn btn-outline delete-item btn-block btn-sm mt-1">Delete</button>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
 
-                            {{ $cardRows->links("layouts.pagination") }}
+                            {{ $resourceRows->links("layouts.pagination") }}
 
                         @else
-                            <p>Category contains no cards.</p>
+                            <p>Category contains no saved resources.</p>
                         @endif
                     </div>
                 </div>
