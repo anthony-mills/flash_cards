@@ -40,11 +40,19 @@
 										Side: <span id="current-side">Question</span>
 									</div>	
 								</div>
-								
-								<div class="feedback-icon">
-									<a href="#" data-toggle="modal" data-target="#feedback-modal" dusk="open-feedback-modal" title="Leave Card Feedback">
-										<img src="/img/feedback.png"/>
-									</a>
+					
+								<div class="row justify-content-center">
+									<div class="card-action-icon">
+										<a href="/" title="Exit cards and return home.">
+											<img src="/img/home.png"/>
+										</a>
+									</div>
+
+									<div class="card-action-icon">
+										<a href="#" data-toggle="modal" data-target="#feedback-modal" dusk="open-feedback-modal" title="Leave Card Feedback">
+											<img src="/img/feedback.png"/>
+										</a>
+									</div>
 								</div>
 							</div>
 
