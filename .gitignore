@@ -10,5 +10,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-.idea/
+.idea
 .phplint-cache
+tests/Browser/ExampleTest.php
