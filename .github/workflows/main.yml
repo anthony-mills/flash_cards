@@ -35,8 +35,8 @@ jobs:
             extensions: mbstring, intl, zip, curl, mysql, json, xml
       - name: Cache composer dependencies
         uses: actions/cache@v1
-        with:   
-                  
+        with:
+
           path: vendor
           key: composer-${{ hashFiles('composer.lock') }}
 
@@ -57,15 +57,6 @@ jobs:
         run: |
           mysql --version
           php artisan migrate:fresh --seed
-      - name: Cache yarn dependencies
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: yarn-${{ hashFiles('yarn.lock') }}
-      - name: Run yarn
-        run: |
-          yarn --version
-          yarn && yarn dev
       - name: Run tests
         run: |
           ./artisan serve &
@@ -79,7 +70,7 @@ jobs:
         run: ./vendor/laravel/dusk/bin/chromedriver-linux &
 
       - name: Run dusk tests
-        run: ./artisan dusk          
+        run: ./artisan dusk
 
       - name: Upload artifacts
         uses: actions/upload-artifact@master
