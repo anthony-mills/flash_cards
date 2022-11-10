@@ -15,7 +15,7 @@
         "cross-env": "^7.0",
         "fibers": "^4.0.2",
         "jquery": "^3.2",
-        "laravel-mix": "^5.0.1",
+        "laravel-mix": "^6.0.49",
         "lodash": "^4.17.13",
         "node-sass": "^4.14.1",
         "popper.js": "^1.12",
