@@ -5,7 +5,7 @@ on: [push]
 jobs:
   tests:
     name: Run tests
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     services:
       mysql:
@@ -31,7 +31,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-            php-version: '7.4'
+            php-version: '8.1'
             extensions: mbstring, intl, zip, curl, mysql, json, xml
       - name: Cache composer dependencies
         uses: actions/cache@v1
