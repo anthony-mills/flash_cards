@@ -87,7 +87,7 @@ A test user is created with the follwing credentials:
 
 ### Licence
 
-Copyright (C) 2020 [Anthony Mills](http://www.anthony-mills.com)
+Copyright (C) 2022 [Anthony Mills](http://www.anthony-mills.com)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
