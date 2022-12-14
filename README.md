@@ -12,6 +12,10 @@ A new approach was needed to quickly revise key facts without wasting time havin
 
 It frontend allows unauthenticated users to cycle though a subset of cards under each category available. While a simple backend admin system that allows the creation and management of cards and their associated categories.
 
+### Live Demo
+
+A demo version of the [application is online with AWS related flash cards](https://aws.anthonymills.dev) to play with.
+
 ### Screenshots
 
 ![Viewing Cards](/screenshots/cards.gif?raw=true "Looking at flash cards")
