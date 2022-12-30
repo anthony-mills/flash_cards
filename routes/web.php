@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 Auth::routes([
-  'register' => false,
-  'reset' => false,
+  'register' => true,
+  'reset' => true,
   'verify' => false,
 ]);
 
