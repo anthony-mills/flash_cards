@@ -17,7 +17,7 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 // Web routes related to flash cards and their management
 require_once('cards/web.php');
 
-// Web routes related to learning resources and their management
+// Web routes related to learning categories and their management
 require_once('categories/web.php');
 
 // Web routes related to learning resources and their management
