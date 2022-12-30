@@ -50,6 +50,7 @@ class CardFeedbackTest extends DuskTestCase
                     ->click('@open-feedback-modal')
                     ->waitFor('.modal-content')
                     ->assertVisible('@card-feedback-field')
+                    ->pause(2000)
                     ->assertSee('Send')
                     ->type('feedback', $this->feedbackComment)
                     ->click('@save-feedback')
@@ -58,7 +59,7 @@ class CardFeedbackTest extends DuskTestCase
         });
 
         $commentId = Feedback::pluck('id')->last();
-
+        echo "Created a card feedback item Id #: "  . $commentId;
         return $commentId;
     }
 
