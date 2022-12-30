@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
@@ -41,7 +40,7 @@ class ResourceController extends Controller
     /**
     * Store a learning resource to the database
     *
-    * @param \App\Http\Requests\CardResourceForm $formObj
+    * @param ResourceCreateForm $formObj
     *
     * @return \Illuminate\Http\RedirectResponse
     **/
@@ -63,7 +62,7 @@ class ResourceController extends Controller
         } else {
             return redirect()->route('resource.create')->with('error', 'Error saving the learning resource.')->withInput();
         }
-    }  
+    }
 
     /**
     * Edit an existing learning resource
@@ -117,13 +116,13 @@ class ResourceController extends Controller
     }
 
     /**
-     * List all of the learning resources associated with a category
+     * List all the learning resources associated with a category
      *
      * @param int $catId
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      *
-     * @throws \Exception If non numeric $catId encountered
+     * @throws \Exception If non-numeric $catId encountered
      */
     public function resourceCategory($catId)
     {
@@ -143,5 +142,5 @@ class ResourceController extends Controller
         }
 
         throw new \Exception('Non numeric category id provided.');
-    }    
+    }
 }
