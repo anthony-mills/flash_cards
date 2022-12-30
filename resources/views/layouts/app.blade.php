@@ -63,11 +63,21 @@
 
                                     <hr/>
 
-                                    <a class="dropdown-item" href="{{ url('/dashboard') }}">
-                                        Admin Dashboard
-                                    </a>
+                                    @role('admin')
+                                        <a class="dropdown-item" href="{{ url('/dashboard') }}">
+                                            Admin Panel
+                                        </a>
 
-                                    <hr/>
+                                        <hr/>
+                                    @endrole
+
+                                    @hasanyrole('user|admin')
+                                        <a class="dropdown-item" href="{{ url('/dashboard') }}">
+                                            Dashboard
+                                        </a>
+
+                                        <hr/>
+                                    @endhasanyrole
 
                                     <a class="dropdown-item" href="{{ route('password.change') }}">
                                         Change Password

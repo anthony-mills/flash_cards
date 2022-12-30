@@ -14,6 +14,8 @@ Route::post('/auth/change-password', 'Auth\ChangePasswordController@updatePasswo
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
+Route::get('/admin/dashboard', 'HomeController@index')->name('admin-dashboard');
+
 // Web routes related to flash cards and their management
 require_once('cards/web.php');
 

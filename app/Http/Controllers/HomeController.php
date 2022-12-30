@@ -32,4 +32,19 @@ class HomeController extends Controller
             ]
         );
     }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function admin()
+    {
+        return view(
+            'admin.dashboard',
+            [
+                'cardCount' => Cards::count()
+            ]
+        );
+    }
 }

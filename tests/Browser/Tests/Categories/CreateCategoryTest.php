@@ -2,15 +2,12 @@
 
 namespace tests\Browser\Tests\Categories;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use App\Models\CardCategories;
+use App\Models\User;
 use Illuminate\Support\Facades\Config;
 use Laravel\Dusk\Browser;
-use Tests\DuskTestCase;
 use Tests\Browser\Pages\AuthSession;
-
-use App\Models\CardCategories;
-
-use App\User;
+use Tests\DuskTestCase;
 
 class CreateCategoryTest extends DuskTestCase
 {
@@ -23,7 +20,7 @@ class CreateCategoryTest extends DuskTestCase
     // User account to run tests under
     protected $testUser = 1;
 
-    
+
     public function testCreation()
     {
         echo "\r\nBrowser Tests: Running category creation tests. \r\n";

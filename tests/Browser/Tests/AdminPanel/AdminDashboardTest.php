@@ -2,19 +2,12 @@
 
 namespace tests\Browser\Tests\Categories;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
-
-use Laravel\Dusk\Browser;
-use Tests\DuskTestCase;
-use Tests\Browser\Pages\AuthSession;
-
-use App\Models\CardCategories;
 use App\Models\Cards;
-
-use App\User;
+use App\Models\User;
+use Illuminate\Support\Facades\Config;
+use Laravel\Dusk\Browser;
+use Tests\Browser\Pages\AuthSession;
+use Tests\DuskTestCase;
 
 class AdminDashboardTest extends DuskTestCase
 {
@@ -24,7 +17,7 @@ class AdminDashboardTest extends DuskTestCase
     // User account to run tests under
     protected $testUser = 1;
 
-    
+
     public function testCreation()
     {
         echo "\r\nBrowser Tests: Running admin dashboard tests. \r\n";
@@ -49,7 +42,7 @@ class AdminDashboardTest extends DuskTestCase
                     ->assertSee('Flash Cards Management')
                     ->assertSee($userRow->name)
                     ->assertSee('Create Flash Card')
-                    ->assertSee('View Flash Card Feedback')                    
+                    ->assertSee('View Flash Card Feedback')
                     ->assertSee('Create Category')
                     ->assertSee('Existing Categories')
                     ->assertSee('Go to Flash Cards')
