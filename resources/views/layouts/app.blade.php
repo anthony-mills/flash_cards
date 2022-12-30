@@ -64,7 +64,7 @@
                                     <hr/>
 
                                     @role('admin')
-                                        <a class="dropdown-item" href="{{ url('/dashboard') }}">
+                                        <a class="dropdown-item" href="{{ url('/admin/dashboard') }}">
                                             Admin Panel
                                         </a>
 
