@@ -1,10 +1,10 @@
 <?php
-namespace Database\Seeders;
-
 use Illuminate\Database\Seeder;
+
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
+use App\Models\User;
 
 class DefineUserRolesSeeder extends Seeder
 {
@@ -37,10 +37,22 @@ class DefineUserRolesSeeder extends Seeder
         $role2->givePermissionTo('manage users');
         $role2->givePermissionTo('admin dashboard');
 
-        $role3 = Role::create(['name' => 'Super-Admin']);
+        $newUser = User::create([
+            'name' => 'Test User',
+            'email' => 'test.user@test.com',
+            'email_verified_at' => '2020-01-01 00:00:00',
+            'password' => '$2y$10$coq8FcG/V6wkjHQUmq0bNuTz8PMykS2qbuyWZyL7vm00PusSOE1Xu'
+        ]);
 
-        // gets all permissions via Gate::before rule; see AuthServiceProvider
-        $user = \App\Models\User::first();
-        $user->assignRole($role3);
+        $newUser->assignRole('user');
+
+        $newUser = User::create([
+            'name' => 'Test Admin',
+            'email' => 'test.admin@test.com',
+            'email_verified_at' => '2020-01-01 00:00:00',
+            'password' => '$2y$10$coq8FcG/V6wkjHQUmq0bNuTz8PMykS2qbuyWZyL7vm00PusSOE1Xu'
+        ]);
+
+        $newUser->assignRole('admin');
     }
 }

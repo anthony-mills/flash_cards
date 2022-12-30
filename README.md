@@ -67,9 +67,15 @@ Edit the newly created .env file and add the database configuration values relev
 
 ### Test User Account
 
-A test user is created with the follwing credentials:
+A test user is created with the following credentials:
 
 **User:** test.user@test.com
+
+**Password:** 2ht4eqx0
+
+A test admin account can also be accessed with the following credentials:
+
+**User:** test.admin@test.com
 
 **Password:** 2ht4eqx0
 
