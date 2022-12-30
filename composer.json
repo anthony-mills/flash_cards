@@ -25,7 +25,7 @@
         "orangehill/iseed": "^3.0.2",
         "overtrue/phplint": "^5.0.0",
         "phpunit/phpunit": "^9.0.0",
-        "vimeo/psalm": "^5.0"
+        "vimeo/psalm": "^5.4.0"
     },
     "config": {
         "optimize-autoloader": true,
