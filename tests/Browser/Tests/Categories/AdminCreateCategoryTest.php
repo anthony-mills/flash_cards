@@ -9,7 +9,7 @@ use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\AuthSession;
 use Tests\DuskTestCase;
 
-class CreateCategoryTest extends DuskTestCase
+class AdminCreateCategoryTest extends DuskTestCase
 {
     // Category Name
     protected $categoryName = 'Test Category';

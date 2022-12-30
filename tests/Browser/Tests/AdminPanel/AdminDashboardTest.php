@@ -12,7 +12,7 @@ use Tests\DuskTestCase;
 class AdminDashboardTest extends DuskTestCase
 {
     // URL for card creation
-    protected $dashURL = '/dashboard';
+    protected $dashURL = '/admin/dashboard';
 
     // User account to run tests under
     protected $testUser = 1;
@@ -49,7 +49,7 @@ class AdminDashboardTest extends DuskTestCase
                     ->assertSee('Currently ' . $cardCount . ' saved flash cards')
                     ->click('@drop_down_menu')
                     ->assertSee('Home')
-                    ->assertSee('Admin Dashboard')
+                    ->assertSee('Admin Panel')
                     ->assertSee('Change Password')
                     ->assertSee('Logout')
                     ->click('@drop_down_menu')

@@ -38,6 +38,15 @@ class DefineUserRolesSeeder extends Seeder
         $role2->givePermissionTo('admin dashboard');
 
         $newUser = User::create([
+            'name' => 'Test Admin',
+            'email' => 'test.admin@test.com',
+            'email_verified_at' => '2020-01-01 00:00:00',
+            'password' => '$2y$10$coq8FcG/V6wkjHQUmq0bNuTz8PMykS2qbuyWZyL7vm00PusSOE1Xu'
+        ]);
+
+        $newUser->assignRole('admin');
+
+        $newUser = User::create([
             'name' => 'Test User',
             'email' => 'test.user@test.com',
             'email_verified_at' => '2020-01-01 00:00:00',
@@ -46,13 +55,5 @@ class DefineUserRolesSeeder extends Seeder
 
         $newUser->assignRole('user');
 
-        $newUser = User::create([
-            'name' => 'Test Admin',
-            'email' => 'test.admin@test.com',
-            'email_verified_at' => '2020-01-01 00:00:00',
-            'password' => '$2y$10$coq8FcG/V6wkjHQUmq0bNuTz8PMykS2qbuyWZyL7vm00PusSOE1Xu'
-        ]);
-
-        $newUser->assignRole('admin');
     }
 }
