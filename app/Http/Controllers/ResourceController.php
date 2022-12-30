@@ -60,7 +60,7 @@ class ResourceController extends Controller
         if (is_numeric($resourceId)) {
             return redirect()->route('dashboard')->with('status', 'Learning resource saved successfully.');
         } else {
-            return redirect()->route('resource.create')->with('error', 'Error saving the learning resource.')->withInput();
+            return redirect()->route('resource.create')->with('errors', 'Error saving the learning resource.')->withInput();
         }
     }
 
@@ -108,7 +108,7 @@ class ResourceController extends Controller
 
                 return redirect()->route('dashboard')->with('status', 'Successfully deleted the learning resource.');
             } else {
-                return redirect()->route('dashboard')->with('error', 'Error deleting the learning resource from the system.');
+                return redirect()->route('dashboard')->with('errors', 'Error deleting the learning resource from the system.');
             }
         }
 
@@ -138,7 +138,7 @@ class ResourceController extends Controller
                 );
             }
 
-            return redirect()->route('dashboard')->with('error', 'Category not found.');
+            return redirect()->route('dashboard')->with('errors', 'Category not found.');
         }
 
         throw new \Exception('Non numeric category id provided.');

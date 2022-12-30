@@ -12,7 +12,7 @@
 
                     {!! Form::open(['class' => 'form', 'route' => 'password.update']) !!}
 
-                        <div class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('current-password') ? ' has-errors' : '' }}">
                             <label for="new-password" class="control-label">Current Password</label>
 
                             {!! Form::password('current_password', ['class' => 'form-control', 'required']) !!}
@@ -24,7 +24,7 @@
                             @endif
                         </div>
 
-                        <div class="form-group{{ $errors->has('new-password') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('new-password') ? ' has-errors' : '' }}">
                             <label for="new-password" class="control-label">New Password</label>
 
                             {!! Form::password('new_password', ['class' => 'form-control', 'required']) !!}
@@ -38,7 +38,7 @@
 
                         <div class="form-group">
                             <label for="new-password-confirm" class="control-label">Confirm New Password</label>
-                            
+
                             {!! Form::password('new_password_confirmation', ['class' => 'form-control', 'required']) !!}
                         </div>
 

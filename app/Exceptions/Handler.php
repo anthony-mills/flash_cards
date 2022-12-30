@@ -53,7 +53,7 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         if ($exception instanceof UnauthorizedException) {
-            return response()->view("error.forbidden", [
+            return response()->view("errors.forbidden", [
                 "exception" => $exception
             ], 403);
         }

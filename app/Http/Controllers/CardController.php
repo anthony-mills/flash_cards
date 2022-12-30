@@ -94,7 +94,7 @@ class CardController extends Controller
         if (is_numeric($cardId)) {
             return redirect()->route('dashboard')->with('status', 'Flash card saved successfully.');
         } else {
-            return redirect()->route('card.create')->with('error', 'Error saving the flash card.')->withInput();
+            return redirect()->route('card.create')->with('errors', 'Error saving the flash card.')->withInput();
         }
     }
 
@@ -116,7 +116,7 @@ class CardController extends Controller
 
                 return redirect()->route('dashboard')->with('status', 'Successfully deleted the flash card.');
             } else {
-                return redirect()->route('dashboard')->with('error', 'Error deleting the card from the system.');
+                return redirect()->route('dashboard')->with('errors', 'Error deleting the card from the system.');
             }
         }
 
@@ -156,7 +156,7 @@ class CardController extends Controller
 
                 return redirect()->route('card.feedback')->with('status', 'Successfully deleted the feedback.');
             } else {
-                return redirect()->route('card.feedback')->with('error', 'Error deleting the comment from the system.');
+                return redirect()->route('card.feedback')->with('errors', 'Error deleting the comment from the system.');
             }
         }
 
