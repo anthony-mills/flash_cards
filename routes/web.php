@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 Auth::routes([
-  'register' => false,
-  'reset' => false,
+  'register' => true,
+  'reset' => true,
   'verify' => false,
 ]);
 
@@ -17,8 +17,14 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 // Web routes related to flash cards and their management
 require_once('cards/web.php');
 
-// Web routes related to learning resources and their management
-require_once('categories/web.php');
+Route::middleware('auth')->group(function () {
 
-// Web routes related to learning resources and their management
-require_once('resources/web.php');
+    // Routes restricted to users with admin role
+    Route::group(['middleware' => ['role:admin']], function () {
+        Route::get('/admin/dashboard', 'HomeController@admin')->name('admin-dashboard');
+
+        require_once('categories/admin_web.php');
+        require_once('resources/admin_web.php');
+        require_once('cards/admin_web.php');
+    });
+});

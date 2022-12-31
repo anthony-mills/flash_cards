@@ -43,7 +43,11 @@
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">
+                                        <button type="button" class="btn btn-inverse">
+                                            {{ __('Register') }}
+                                        </button>
+                                    </a>
                                 </li>
                             @endif
                         @else
@@ -57,19 +61,29 @@
                                         Home
                                     </a>
 
-                                    <hr></hr>
+                                    <hr/>
 
-                                    <a class="dropdown-item" href="{{ url('/dashboard') }}">
-                                        Admin Dashboard
-                                    </a>
+                                    @role('admin')
+                                        <a class="dropdown-item" href="{{ url('/admin/dashboard') }}">
+                                            Admin Panel
+                                        </a>
 
-                                    <hr></hr>
+                                        <hr/>
+                                    @endrole
+
+                                    @hasanyrole('user|admin')
+                                        <a class="dropdown-item" href="{{ url('/dashboard') }}">
+                                            Dashboard
+                                        </a>
+
+                                        <hr/>
+                                    @endhasanyrole
 
                                     <a class="dropdown-item" href="{{ route('password.change') }}">
                                         Change Password
                                     </a>
 
-                                    <hr></hr>
+                                    <hr/>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -96,7 +110,7 @@
   <footer id="sticky-footer" class="py-2 bg-light">
     <div class="container text-center">
       <small>
-        Flash Cards was written by <a href="https://www.anthony-mills.com" target="_blank">Anthony Mills</a> and is distributed under a <a target="_blank" href="https://github.com/anthony-mills/flash_cards/">GPLV3 licence</a>.
+        Flash Cards was written by <a href="https://www.anthony-mills.com" target="_blank">Anthony Mills</a> and is distributed under a <a target="_blank" href="https://github.com/anthony-mills/flash_cards/">GPL V3 licence</a>.
       </small>
     </div>
   </footer>

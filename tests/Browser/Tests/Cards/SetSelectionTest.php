@@ -2,15 +2,10 @@
 
 namespace tests\Browser\Tests\Cards;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Config;
 use Laravel\Dusk\Browser;
-use Tests\DuskTestCase;
 use Tests\Browser\Pages\AuthSession;
-
-use App\Models\CardCategories;
-
-use App\User;
+use Tests\DuskTestCase;
 
 class SetSelectionTest extends DuskTestCase
 {

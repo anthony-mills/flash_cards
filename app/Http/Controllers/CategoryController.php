@@ -48,7 +48,7 @@ class CategoryController extends Controller
         if (is_numeric($catId)) {
             return redirect()->route('dashboard')->with('status', 'Saved the new category "' . $catName . '".');
         } else {
-            return redirect()->route('category.create')->with('error', 'Error saving the new category.')->withInput();
+            return redirect()->route('category.create')->with('errors', 'Error saving the new category.')->withInput();
         }
     }
 
@@ -72,7 +72,7 @@ class CategoryController extends Controller
 
                 return redirect()->route('category.list')->with('status', 'Deleted the category "' . $catName . '".');
             } else {
-                return redirect()->route('category.list')->with('error', 'Error deleting the category.');
+                return redirect()->route('category.list')->with('errors', 'Error deleting the category.');
             }
         }
 
@@ -120,7 +120,7 @@ class CategoryController extends Controller
                 );
             }
 
-            return redirect()->route('dashboard')->with('error', 'Category not found.');
+            return redirect()->route('dashboard')->with('errors', 'Category not found.');
         }
 
         throw new \Exception('Non numeric category id provided.');

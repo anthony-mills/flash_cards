@@ -16,7 +16,7 @@ class CategoryCreateForm extends FormRequest
 
         parent::__construct();
     }
-        
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -47,7 +47,7 @@ class CategoryCreateForm extends FormRequest
 
             if (strlen($errorMsg) > 0) {
                 $this->reqObj->session()->put(
-                    'error',
+                    'errors',
                     '<ul>' . $errorMsg . '</ul>'
                 );
             }

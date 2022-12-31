@@ -2,29 +2,22 @@
 
 namespace tests\Browser\Tests\Categories;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
-
-use Laravel\Dusk\Browser;
-use Tests\DuskTestCase;
-use Tests\Browser\Pages\AuthSession;
-
-use App\Models\CardCategories;
 use App\Models\Cards;
-
-use App\User;
+use App\Models\User;
+use Illuminate\Support\Facades\Config;
+use Laravel\Dusk\Browser;
+use Tests\Browser\Pages\AuthSession;
+use Tests\DuskTestCase;
 
 class AdminDashboardTest extends DuskTestCase
 {
     // URL for card creation
-    protected $dashURL = '/dashboard';
+    protected $dashURL = '/admin/dashboard';
 
     // User account to run tests under
     protected $testUser = 1;
 
-    
+
     public function testCreation()
     {
         echo "\r\nBrowser Tests: Running admin dashboard tests. \r\n";
@@ -49,14 +42,14 @@ class AdminDashboardTest extends DuskTestCase
                     ->assertSee('Flash Cards Management')
                     ->assertSee($userRow->name)
                     ->assertSee('Create Flash Card')
-                    ->assertSee('View Flash Card Feedback')                    
+                    ->assertSee('View Flash Card Feedback')
                     ->assertSee('Create Category')
                     ->assertSee('Existing Categories')
                     ->assertSee('Go to Flash Cards')
                     ->assertSee('Currently ' . $cardCount . ' saved flash cards')
                     ->click('@drop_down_menu')
                     ->assertSee('Home')
-                    ->assertSee('Admin Dashboard')
+                    ->assertSee('Admin Panel')
                     ->assertSee('Change Password')
                     ->assertSee('Logout')
                     ->click('@drop_down_menu')

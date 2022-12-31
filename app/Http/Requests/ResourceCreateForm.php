@@ -30,7 +30,7 @@ class ResourceCreateForm extends FormRequest
         return [
             'category' => 'required|numeric',
             'link' => 'required|url',
-            'description' => 'string|required|max:500',            
+            'description' => 'string|required|max:500',
         ];
     }
 
@@ -52,7 +52,7 @@ class ResourceCreateForm extends FormRequest
 
             if (strlen($errorMsg) > 0) {
                 $this->reqObj->session()->put(
-                    'error',
+                    'errors',
                     '<ul>' . $errorMsg . '</ul>'
                 );
             }

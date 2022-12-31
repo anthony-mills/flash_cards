@@ -52,7 +52,7 @@ class CardStartSetForm extends FormRequest
 
             if (strlen($errorMsg) > 0) {
                 $this->reqObj->session()->put(
-                    'error',
+                    'errors',
                     '<ul>' . $errorMsg . '</ul>'
                 );
             }

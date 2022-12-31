@@ -19,7 +19,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the application dashboard for an authenticated user.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -27,6 +27,21 @@ class HomeController extends Controller
     {
         return view(
             'users.dashboard',
+            [
+                'cardCount' => Cards::count()
+            ]
+        );
+    }
+
+    /**
+     * Show the application dashboard for an admin user.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function admin()
+    {
+        return view(
+            'admin.dashboard',
             [
                 'cardCount' => Cards::count()
             ]

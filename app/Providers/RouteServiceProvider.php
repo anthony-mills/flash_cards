@@ -17,11 +17,18 @@ class RouteServiceProvider extends ServiceProvider
     protected $namespace = 'App\Http\Controllers';
 
     /**
-     * The path to the "home" route for your application.
+     * The path to the "home" route for unauthenticated users of the application.
      *
      * @var string
      */
     public const HOME = '/home';
+
+    /**
+     * The path to the "home" route for your application.
+     *
+     * @var string
+     */
+    public const USERHOME = '/dashboard';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -45,8 +52,6 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
-
-        //
     }
 
     /**
