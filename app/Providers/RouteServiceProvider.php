@@ -21,7 +21,14 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const USERHOME = '/dashboard';
+
+    /**
+     * The path to the "home" route for administrators application.
+     *
+     * @var string
+     */
+    public const ADMINHOME = '/admin/dashboard';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -45,8 +52,6 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
-
-        //
     }
 
     /**

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests\CategoryCreateForm;
@@ -46,9 +46,9 @@ class CategoryController extends Controller
         $catId = CardCategories::create($formData)->id;
 
         if (is_numeric($catId)) {
-            return redirect()->route('dashboard')->with('status', 'Saved the new category "' . $catName . '".');
+            return redirect(RouteServiceProvider::ADMINHOME)->with('status', 'Saved the new category "' . $catName . '".');
         } else {
-            return redirect()->route('category.create')->with('error', 'Error saving the new category.')->withInput();
+            return redirect()->route('category.create')->with('errors', 'Error saving the new category.')->withInput();
         }
     }
 
@@ -58,7 +58,7 @@ class CategoryController extends Controller
      * @param integer $catId
      * @return \Illuminate\Http\RedirectResponse
      *
-     * @throws \Exception If non numeric $catId encountered
+     * @throws \Exception If non-numeric $catId encountered
      */
     public function deleteCategory($catId)
     {
@@ -72,7 +72,7 @@ class CategoryController extends Controller
 
                 return redirect()->route('category.list')->with('status', 'Deleted the category "' . $catName . '".');
             } else {
-                return redirect()->route('category.list')->with('error', 'Error deleting the category.');
+                return redirect()->route('category.list')->with('errors', 'Error deleting the category.');
             }
         }
 
@@ -80,7 +80,7 @@ class CategoryController extends Controller
     }
 
     /**
-    * List all of the stored card categories
+    * List all the stored card categories
     *
     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     **/
@@ -98,13 +98,13 @@ class CategoryController extends Controller
     }
 
     /**
-     * List all of the cards associated with a category
+     * List all the cards associated with a category
      *
      * @param int $catId
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      *
-     * @throws \Exception If non numeric $catId encountered
+     * @throws \Exception If non-numeric $catId encountered
      */
     public function getCards($catId)
     {
@@ -120,7 +120,7 @@ class CategoryController extends Controller
                 );
             }
 
-            return redirect()->route('dashboard')->with('error', 'Category not found.');
+            return redirect(RouteServiceProvider::ADMINHOME)->with('errors', 'Category not found.');
         }
 
         throw new \Exception('Non numeric category id provided.');

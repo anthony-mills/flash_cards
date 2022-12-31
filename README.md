@@ -12,6 +12,10 @@ A new approach was needed to quickly revise key facts without wasting time havin
 
 It frontend allows unauthenticated users to cycle though a subset of cards under each category available. While a simple backend admin system that allows the creation and management of cards and their associated categories.
 
+### Live Demo
+
+A demo version of the [application is online with AWS related flash cards](https://aws.anthonymills.dev) to play with.
+
 ### Screenshots
 
 ![Viewing Cards](/screenshots/cards.gif?raw=true "Looking at flash cards")
@@ -67,9 +71,15 @@ Edit the newly created .env file and add the database configuration values relev
 
 ### Test User Account
 
-A test user is created with the follwing credentials:
+A test user is created with the following credentials:
 
 **User:** test.user@test.com
+
+**Password:** 2ht4eqx0
+
+A test admin account can also be accessed with the following credentials:
+
+**User:** test.admin@test.com
 
 **Password:** 2ht4eqx0
 
@@ -83,7 +93,7 @@ A test user is created with the follwing credentials:
 
 ### Licence
 
-Copyright (C) 2020 [Anthony Mills](http://www.anthony-mills.com)
+Copyright (C) 2022 [Anthony Mills](http://www.anthony-mills.com)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

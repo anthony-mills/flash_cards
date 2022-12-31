@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
@@ -41,7 +41,7 @@ class ResourceController extends Controller
     /**
     * Store a learning resource to the database
     *
-    * @param \App\Http\Requests\CardResourceForm $formObj
+    * @param ResourceCreateForm $formObj
     *
     * @return \Illuminate\Http\RedirectResponse
     **/
@@ -59,11 +59,11 @@ class ResourceController extends Controller
         $resourceId = (is_numeric($formData['id'])) ? $formData['id'] : DB::getPdo()->lastInsertId();
 
         if (is_numeric($resourceId)) {
-            return redirect()->route('dashboard')->with('status', 'Learning resource saved successfully.');
+            return redirect(RouteServiceProvider::ADMINHOME)->with('status', 'Learning resource saved successfully.');
         } else {
-            return redirect()->route('resource.create')->with('error', 'Error saving the learning resource.')->withInput();
+            return redirect(RouteServiceProvider::ADMINHOME)->with('errors', 'Error saving the learning resource.')->withInput();
         }
-    }  
+    }
 
     /**
     * Edit an existing learning resource
@@ -107,9 +107,9 @@ class ResourceController extends Controller
             if ($resourceRow) {
                 $resourceRow->delete();
 
-                return redirect()->route('dashboard')->with('status', 'Successfully deleted the learning resource.');
+                return redirect(RouteServiceProvider::ADMINHOME)->with('status', 'Successfully deleted the learning resource.');
             } else {
-                return redirect()->route('dashboard')->with('error', 'Error deleting the learning resource from the system.');
+                return redirect(RouteServiceProvider::ADMINHOME)->with('errors', 'Error deleting the learning resource from the system.');
             }
         }
 
@@ -117,13 +117,13 @@ class ResourceController extends Controller
     }
 
     /**
-     * List all of the learning resources associated with a category
+     * List all the learning resources associated with a category
      *
      * @param int $catId
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      *
-     * @throws \Exception If non numeric $catId encountered
+     * @throws \Exception If non-numeric $catId encountered
      */
     public function resourceCategory($catId)
     {
@@ -139,9 +139,9 @@ class ResourceController extends Controller
                 );
             }
 
-            return redirect()->route('dashboard')->with('error', 'Category not found.');
+            return redirect(RouteServiceProvider::ADMINHOME)->with('errors', 'Category not found.');
         }
 
         throw new \Exception('Non numeric category id provided.');
-    }    
+    }
 }

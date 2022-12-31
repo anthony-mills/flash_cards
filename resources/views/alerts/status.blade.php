@@ -4,8 +4,8 @@
     </div>
 @endif
 
-@if (session('error'))
+@if (session('errors'))
     <div class="alert alert-danger" role="alert">
-        {!! session('error') . \Session::forget('error')  !!}
+        {!! session('errors') . \Session::forget('errors')  !!}
     </div>
 @endif

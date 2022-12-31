@@ -2,15 +2,12 @@
 
 namespace tests\Browser\Tests\Cards;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use App\Models\Feedback;
+use App\Models\User;
 use Illuminate\Support\Facades\Config;
 use Laravel\Dusk\Browser;
-use Tests\DuskTestCase;
 use Tests\Browser\Pages\AuthSession;
-
-use App\Models\Feedback;
-
-use App\User;
+use Tests\DuskTestCase;
 
 class CardFeedbackTest extends DuskTestCase
 {
@@ -21,7 +18,7 @@ class CardFeedbackTest extends DuskTestCase
 
     /**
      * Browser test related to card feedback
-     * 
+     *
      * @return void
      */
     public function testCardFeedbackListing() : void
@@ -53,6 +50,7 @@ class CardFeedbackTest extends DuskTestCase
                     ->click('@open-feedback-modal')
                     ->waitFor('.modal-content')
                     ->assertVisible('@card-feedback-field')
+                    ->pause(2000)
                     ->assertSee('Send')
                     ->type('feedback', $this->feedbackComment)
                     ->click('@save-feedback')
@@ -61,30 +59,30 @@ class CardFeedbackTest extends DuskTestCase
         });
 
         $commentId = Feedback::pluck('id')->last();
-
+        echo "Created a card feedback item Id #: "  . $commentId;
         return $commentId;
     }
 
     /**
     * List the stored card feedback
-    * 
+    *
     * @return void
     */
-    protected function listStoredFeedback() : void 
+    protected function listStoredFeedback() : void
     {
         $this->browse(function (Browser $browserObj) {
             $userRow = User::find(1);
-                 
-            $browserObj->loginAs($userRow)            
+
+            $browserObj->loginAs($userRow)
                     ->visit(Config::get('app.url') . $this->dashURL)
                     ->assertSee('User ID')
                     ->assertSee('Card Comment')
                     ->assertSee('User Agent')
                     ->assertSee('IP')
                     ->assertSee($this->feedbackComment)
-                    ->assertSee('127.0.0.1')                                                                                
+                    ->assertSee('127.0.0.1')
                     ->assertSee('View Card')
                     ->assertSee('Delete Comment');
-        });        
+        });
     }
 }
