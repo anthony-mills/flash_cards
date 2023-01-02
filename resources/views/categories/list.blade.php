@@ -7,7 +7,7 @@
             <div class="card dark-card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     Existing Categories
-                    <a type="button" href="{{ url('/dashboard') }}" class="btn btn-sm btn-inverse">
+                    <a type="button" href="{{ url(\App\Providers\RouteServiceProvider::ADMINHOME) }}" class="btn btn-sm btn-inverse">
                         Dashboard
                     </a>
                 </div>

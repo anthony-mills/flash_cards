@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
@@ -65,7 +66,7 @@ class CardController extends Controller
             );
         }
 
-        return redirect()->route('dashboard')->with('status', 'Card not found.');
+        return redirect(RouteServiceProvider::ADMINHOME)->with('status', 'Card not found.');
     }
 
     /**
@@ -92,7 +93,7 @@ class CardController extends Controller
         ( new Tags )->saveCardTags( $cardId, $formObj->get('tags') );
 
         if (is_numeric($cardId)) {
-            return redirect()->route('dashboard')->with('status', 'Flash card saved successfully.');
+            return redirect(RouteServiceProvider::ADMINHOME)->with('status', 'Flash card saved successfully.');
         } else {
             return redirect()->route('card.create')->with('errors', 'Error saving the flash card.')->withInput();
         }
@@ -114,9 +115,9 @@ class CardController extends Controller
             if ($cardRow) {
                 $cardRow->delete();
 
-                return redirect()->route('dashboard')->with('status', 'Successfully deleted the flash card.');
+                return redirect(RouteServiceProvider::ADMINHOME)->with('status', 'Successfully deleted the flash card.');
             } else {
-                return redirect()->route('dashboard')->with('errors', 'Error deleting the card from the system.');
+                return redirect(RouteServiceProvider::ADMINHOME)->with('errors', 'Error deleting the card from the system.');
             }
         }
 

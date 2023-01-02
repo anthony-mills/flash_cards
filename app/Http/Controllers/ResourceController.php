@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
@@ -58,9 +59,9 @@ class ResourceController extends Controller
         $resourceId = (is_numeric($formData['id'])) ? $formData['id'] : DB::getPdo()->lastInsertId();
 
         if (is_numeric($resourceId)) {
-            return redirect()->route('dashboard')->with('status', 'Learning resource saved successfully.');
+            return redirect(RouteServiceProvider::ADMINHOME)->with('status', 'Learning resource saved successfully.');
         } else {
-            return redirect()->route('resource.create')->with('errors', 'Error saving the learning resource.')->withInput();
+            return redirect(RouteServiceProvider::ADMINHOME)->with('errors', 'Error saving the learning resource.')->withInput();
         }
     }
 
@@ -106,9 +107,9 @@ class ResourceController extends Controller
             if ($resourceRow) {
                 $resourceRow->delete();
 
-                return redirect()->route('dashboard')->with('status', 'Successfully deleted the learning resource.');
+                return redirect(RouteServiceProvider::ADMINHOME)->with('status', 'Successfully deleted the learning resource.');
             } else {
-                return redirect()->route('dashboard')->with('errors', 'Error deleting the learning resource from the system.');
+                return redirect(RouteServiceProvider::ADMINHOME)->with('errors', 'Error deleting the learning resource from the system.');
             }
         }
 
@@ -138,7 +139,7 @@ class ResourceController extends Controller
                 );
             }
 
-            return redirect()->route('dashboard')->with('errors', 'Category not found.');
+            return redirect(RouteServiceProvider::ADMINHOME)->with('errors', 'Category not found.');
         }
 
         throw new \Exception('Non numeric category id provided.');
