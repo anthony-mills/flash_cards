@@ -30,7 +30,7 @@
                         <div class="form-group">
                             {!! Form::label('link', 'Resource Link') !!}
                             <span class="red-text">*</span>
-                            {!! Form::text('link', $resourceRow->link ?? null, ['class' => 'form-control form-control-lg', 'dusk' => 'resource_link', 'required', 'placeholder' => 'Resource Description  ( Max 200 Characters )', 'maxlength' => 200]); !!}
+                            {!! Form::text('link', $resourceRow->link ?? null, ['class' => 'form-control form-control-lg', 'dusk' => 'resource_link', 'required', 'placeholder' => 'URL  ( Max 200 Characters )', 'maxlength' => 200]); !!}
                         </div>
 
                         <!-- Resource Description -->

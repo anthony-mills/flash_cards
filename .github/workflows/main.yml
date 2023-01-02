@@ -57,7 +57,7 @@ jobs:
         run: |
           mysql --version
           php artisan migrate:fresh --seed
-      - name: Run tests
+      - name: Run PHPUnit tests
         run: |
           ./artisan serve &
           ./vendor/bin/phpunit --version
