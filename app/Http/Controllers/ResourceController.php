@@ -144,4 +144,17 @@ class ResourceController extends Controller
 
         throw new \Exception('Non numeric category id provided.');
     }
+
+    /**
+     * View the existing resources created by an admin user
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function viewResources()
+    {
+        return view(
+            'resources.view',
+            [ 'resourceRows' => Resources::orderBy('category', 'ASC')->paginate()]
+        );
+    }
 }

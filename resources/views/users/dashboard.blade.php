@@ -13,6 +13,10 @@
                     <div class="card-content-area">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
+                                <a href="/resources/view">Learning Resources</a>
+                            </li>
+
+                            <li class="list-group-item">
                                 <a href="/">Go to Flash Cards</a>
                             </li>
                         </ul>
