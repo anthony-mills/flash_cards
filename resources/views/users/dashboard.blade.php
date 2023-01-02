@@ -17,7 +17,7 @@
                             </li>
 
                             <li class="list-group-item">
-                                <a href="/">Go to Flash Cards</a>
+                                <a href="/">Flash Cards</a>
                             </li>
                         </ul>
                     </div>
