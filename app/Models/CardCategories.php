@@ -6,7 +6,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
+
 
 class CardCategories extends Model
 {
@@ -26,7 +28,7 @@ class CardCategories extends Model
 
     /**
     * Return all categories and their associated cards
-    * 
+    *
     * @param integer $paginateResults
     *
     * @return Collection $existingCats
@@ -34,10 +36,10 @@ class CardCategories extends Model
     public function getCategories( $paginateResults = 0 )
     {
         if ($paginateResults > 0) {
-            $pageResults = Config::get('flash_cards.results_per_page'); 
+            $pageResults = Config::get('flash_cards.results_per_page');
             $existingCats = $this->orderBy('name', 'ASC')->paginate($pageResults);
         } else {
-            $existingCats = $this->orderBy('name', 'ASC');           
+            $existingCats = $this->orderBy('name', 'ASC');
         }
 
         return $existingCats;
@@ -58,5 +60,23 @@ class CardCategories extends Model
         ->orderBy('name', 'ASC')->first();
 
         return $existingCats;
+    }
+
+    /**
+     * Get category name by id
+     *
+     * @param integer $catId
+     *
+     * @return string
+     */
+    public static function getCategoryName(int $catId) : string
+    {
+        if (Cache::has( 'categories' )) {
+            $savedCats  = Cache::get( 'categories' );
+        } else {
+            $savedCats = CardCategories::orderBy('name', 'ASC')->get();
+        }
+
+        return $savedCats->where('id', $catId)->pluck('name')->first();
     }
 }

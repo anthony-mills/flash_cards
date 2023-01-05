@@ -17,6 +17,9 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 // Web routes related to flash cards and their management
 require_once('cards/web.php');
 
+// User routes related to learning resources
+require_once('resources/web.php');
+
 Route::middleware('auth')->group(function () {
 
     // Routes restricted to users with admin role

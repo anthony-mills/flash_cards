@@ -15,5 +15,4 @@ class Resources extends Model
                             'category',
                             'link',
                           ];
-
 }
