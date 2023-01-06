@@ -18,30 +18,30 @@
 
                             <li class="list-group-item">
                                 <a href="/card/create">Create Flash Card</a>
-                            </li>                        
+                            </li>
 
                             <li class="list-group-item">
                                 <a href="/resource/create">Create Learning Resource</a>
-                            </li> 
+                            </li>
 
                             <li class="list-group-item">
                                 <a href="/card/categories/list">Existing Categories</a>
-                            </li>                            
+                            </li>
 
                             <li class="list-group-item">
                                 <a href="/card/feedback/view">View Flash Card Feedback</a>
-                            </li>             
+                            </li>
 
                             <li class="list-group-item">
                                 <a href="/">Go to Flash Cards</a>
-                            </li>                        
+                            </li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="card-footer text-muted text-center">
-                    Currently {{ $cardCount }} saved flash cards
-                </div>                
+                    Currently {{ $cardCount }} saved flash cards & {{ $userCount }} users.
+                </div>
             </div>
         </div>
     </div>
