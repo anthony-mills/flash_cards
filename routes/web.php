@@ -26,8 +26,9 @@ Route::middleware('auth')->group(function () {
     Route::group(['middleware' => ['role:admin']], function () {
         Route::get('/admin/dashboard', 'AdminController@dashboard')->name('admin-dashboard');
 
+        require_once('cards/admin_web.php');
         require_once('categories/admin_web.php');
         require_once('resources/admin_web.php');
-        require_once('cards/admin_web.php');
+        require_once('users/admin_web.php');
     });
 });

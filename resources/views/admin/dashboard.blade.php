@@ -33,6 +33,10 @@
                             </li>
 
                             <li class="list-group-item">
+                                <a href="/users/list">View Users</a>
+                            </li>
+
+                            <li class="list-group-item">
                                 <a href="/">Go to Flash Cards</a>
                             </li>
                         </ul>
