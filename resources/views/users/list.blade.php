@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card dark-card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    Existing Categories
+                    Existing Users
                     <a type="button" href="{{ url(\App\Providers\RouteServiceProvider::ADMINHOME) }}" class="btn btn-sm btn-inverse">
                         Dashboard
                     </a>
@@ -36,7 +36,9 @@
                                             <td>{{ $sysUser->email }}</td>
                                             <td>{{ $sysUser->created_at }}</td>
                                             <td class="text-center">
-                                                TBD
+                                                <a href="/users/details/{{ $sysUser->id }}" class="btn btn-outline">
+                                                    Details
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
