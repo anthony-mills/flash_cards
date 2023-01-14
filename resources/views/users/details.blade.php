@@ -7,8 +7,8 @@
             <div class="card dark-card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     User Details
-                    <a type="button" href="{{ url(\App\Providers\RouteServiceProvider::ADMINHOME) }}" class="btn btn-sm btn-inverse">
-                        Dashboard
+                    <a type="button" href="{{ url()->previous() }}" class="btn btn-sm btn-inverse">
+                        User Listing
                     </a>
                 </div>
 
