@@ -24,7 +24,19 @@
                             <div class="col">
                                 <b>Email:</b> {{ $user->email }}
                             </div>
+
+                            <div class="col">
+                                <b>Roles:</b>
+                                @if (count($user->getRoleNames()) > 0)
+                                    @foreach($user->getRoleNames() as $roleName)
+                                        {{ $roleName }}
+                                    @endforeach
+                                @else
+                                    No permissions defined.
+                                @endif
+                            </div>
                         </div>
+
                         <h3 class="pb-3">Login Events</h3>
 
                         @if ($logins->count() > 0)
