@@ -29,7 +29,7 @@
                                 <b>Roles:</b>
                                 @if (count($user->getRoleNames()) > 0)
                                     @foreach($user->getRoleNames() as $roleName)
-                                        {{ $roleName }}
+                                        {{ ucfirst($roleName) }}
                                     @endforeach
                                 @else
                                     No permissions defined.
