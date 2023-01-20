@@ -24,10 +24,11 @@ Route::middleware('auth')->group(function () {
 
     // Routes restricted to users with admin role
     Route::group(['middleware' => ['role:admin']], function () {
-        Route::get('/admin/dashboard', 'HomeController@admin')->name('admin-dashboard');
+        Route::get('/admin/dashboard', 'AdminController@dashboard')->name('admin-dashboard');
 
+        require_once('cards/admin_web.php');
         require_once('categories/admin_web.php');
         require_once('resources/admin_web.php');
-        require_once('cards/admin_web.php');
+        require_once('users/admin_web.php');
     });
 });
