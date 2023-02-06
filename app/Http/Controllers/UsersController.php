@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserLogins;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Config;
+use Illuminate\View\View;
 
 class UsersController extends Controller
 {
@@ -21,9 +25,9 @@ class UsersController extends Controller
     /**
      * List the system users
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
-    public function listUsers(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    public function listUsers(): Factory|View
     {
         return view(
             'users.list',
@@ -33,15 +37,14 @@ class UsersController extends Controller
         );
     }
 
-
     /**
      * User details
      *
      * @param int $userId
      *
-     * @return \Illuminate\Routing\Redirector|\Illuminate\View\View|\Illuminate\Http\RedirectResponse
+     * @return Redirector|View|RedirectResponse
      */
-    public function userDetails(int $userId): \Illuminate\Routing\Redirector|\Illuminate\View\View|\Illuminate\Http\RedirectResponse
+    public function userDetails(int $userId): Redirector|View|RedirectResponse
     {
         $userDetails = User::where('id', $userId)->first();
 

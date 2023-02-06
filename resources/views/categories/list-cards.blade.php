@@ -1,37 +1,40 @@
+@php use App\Providers\RouteServiceProvider; @endphp
+
 @extends('layouts.app')
 
 @section('content')
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card dark-card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    Showing {{ $cardRows->count() }} of {{$cardRows->total() }} save flash cards.
-                    <a type="button" href="{{ url(\App\Providers\RouteServiceProvider::ADMINHOME) }}" class="btn btn-sm btn-inverse">
-                        Dashboard
-                    </a>
-                </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card dark-card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        Showing {{ $cardRows->count() }} of {{$cardRows->total() }} save flash cards.
+                        <a type="button" href="{{ url(RouteServiceProvider::ADMINHOME) }}"
+                           class="btn btn-sm btn-inverse">
+                            Dashboard
+                        </a>
+                    </div>
 
-                <div class="card-body">
-                    <div class="card-content-area">
-                        @include('alerts.status')
+                    <div class="card-body">
+                        <div class="card-content-area">
+                            @include('alerts.status')
 
-                        @if ( count($cardRows) > 0 )
+                            @if ( count($cardRows) > 0 )
 
-                            {!! $cardRows->links("layouts.pagination") !!}
+                                {!! $cardRows->links("layouts.pagination") !!}
 
-                            <table class="table">
-                                <thead class="thead-dark">
+                                <table class="table">
+                                    <thead class="thead-dark">
                                     <th scope="col">ID</th>
                                     <th scope="col">Difficulty</th>
                                     <th scope="col">Question</th>
                                     <th scope="col">Answer</th>
                                     <th scope="col">Created</th>
                                     <th scope="col">Actions</th>
-                                </thead>
+                                    </thead>
 
-                                <tbody>
+                                    <tbody>
                                     @foreach( $cardRows as $existingCard )
                                         <tr>
                                             <td>{{ $existingCard->id }}</td>
@@ -40,26 +43,29 @@
                                             <td>{!! $existingCard->solution !!}</td>
                                             <td>{{ Carbon\Carbon::parse($existingCard->created_at)->format('d/m/Y') }}</td>
                                             <td class="text-center">
-                                                <a href="/card/edit/{{ $existingCard->id }}" class="btn btn-outline btn-block btn-sm mt-1">
+                                                <a href="/card/edit/{{ $existingCard->id }}"
+                                                   class="btn btn-outline btn-block btn-sm mt-1">
                                                     Edit
                                                 </a>
 
-                                                <button type="button" data-delete="/card/delete/{{ $existingCard->id }}" class="btn btn-outline delete-item btn-block btn-sm mt-1">Delete</button>
+                                                <button type="button" data-delete="/card/delete/{{ $existingCard->id }}"
+                                                        class="btn btn-outline delete-item btn-block btn-sm mt-1">Delete
+                                                </button>
                                             </td>
                                         </tr>
                                     @endforeach
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
 
-                            {{ $cardRows->links("layouts.pagination") }}
+                                {{ $cardRows->links("layouts.pagination") }}
 
-                        @else
-                            <p>Category contains no cards.</p>
-                        @endif
+                            @else
+                                <p>Category contains no cards.</p>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
