@@ -5,7 +5,7 @@ on: [push]
 jobs:
   tests:
     name: Run tests
-    runs-on: ubuntu-23.04
+    runs-on: ubuntu-latest
 
     services:
       mysql:
