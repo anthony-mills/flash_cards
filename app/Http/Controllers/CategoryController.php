@@ -9,6 +9,7 @@ use App\Http\Requests\CategoryCreateForm;
 use App\Models\CardCategories;
 use App\Models\Cards;
 use App\Models\Resources;
+use Overtrue\PHPLint\Cache;
 
 class CategoryController extends Controller
 {
@@ -44,6 +45,7 @@ class CategoryController extends Controller
         $formData = [ 'name' => $catName ];
 
         $catId = CardCategories::create($formData)->id;
+        Cache::forget('categories');
 
         if (is_numeric($catId)) {
             return redirect(RouteServiceProvider::ADMINHOME)->with('status', 'Saved the new category "' . $catName . '".');
@@ -69,6 +71,7 @@ class CategoryController extends Controller
                 $catName = $cardCat->name;
 
                 $cardCat->delete();
+                Cache::forget('categories');
 
                 return redirect()->route('category.list')->with('status', 'Deleted the category "' . $catName . '".');
             } else {

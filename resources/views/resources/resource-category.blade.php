@@ -7,10 +7,30 @@
         <div class="col-md-12">
             <div class="card dark-card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    Showing {{ $resourceRows->count() }} of {{$resourceRows->total() }} saved resources.
-                    <a type="button" href="{{ url(\App\Providers\RouteServiceProvider::ADMINHOME) }}" class="btn btn-sm btn-inverse">
-                        Dashboard
-                    </a>
+                    <div class="col-md-4">
+                        Showing {{ $resourceRows->count() }} of {{$resourceRows->total() }} saved resources.
+                    </div>
+
+                    <div class="col-md-6">
+                        Selected Category:
+                        <select name="selected-cat">
+                            @if ($catId == 0)
+                                <option value="" SELECTED>All</option>
+                            @endif
+
+                            @foreach($catList as $catItem)
+                                <option value="{{ $catItem->id }}" {{ ($catItem->id == $catId) ? 'SELECTED' : '' }}>
+                                    {{ $catItem->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <a type="button" href="{{ url(\App\Providers\RouteServiceProvider::ADMINHOME) }}" class="btn btn-sm btn-inverse">
+                            Dashboard
+                        </a>
+                    </div>
                 </div>
 
                 <div class="card-body">
