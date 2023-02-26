@@ -13,7 +13,7 @@
 
                     <div class="col-md-6">
                         Selected Category:
-                        <select name="selected-cat">
+                        <select name="selected-cat" class="select-card-category">
                             @if ($catId == 0)
                                 <option value="" SELECTED>All</option>
                             @endif

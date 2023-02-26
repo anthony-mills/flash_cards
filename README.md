@@ -93,7 +93,7 @@ A test admin account can also be accessed with the following credentials:
 
 ### Licence
 
-Copyright (C) 2022 [Anthony Mills](http://www.anthony-mills.com)
+Copyright (C) 2023 [Anthony Mills](http://www.anthony-mills.com)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

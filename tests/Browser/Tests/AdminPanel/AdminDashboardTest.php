@@ -12,7 +12,7 @@ use Tests\DuskTestCase;
 class AdminDashboardTest extends DuskTestCase
 {
     // URL for card creation
-    protected $dashURL = '/admin/dashboard';
+    protected $dashURL = '/learning_resources/dashboard';
 
     // User account to run tests under
     protected $testUser = 1;
@@ -20,7 +20,7 @@ class AdminDashboardTest extends DuskTestCase
 
     public function testCreation()
     {
-        echo "\r\nBrowser Tests: Running admin dashboard tests. \r\n";
+        echo "\r\nBrowser Tests: Running learning_resources dashboard tests. \r\n";
 
         $this->createCategoryFail();
     }

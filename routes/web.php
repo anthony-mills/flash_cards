@@ -17,14 +17,13 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 // Web routes related to flash cards and their management
 require_once('cards/web.php');
 
-// User routes related to learning resources
-require_once('resources/web.php');
-
 Route::middleware('auth')->group(function () {
+    // User routes related to learning resources
+    require_once('resources/web.php');
 
-    // Routes restricted to users with admin role
-    Route::group(['middleware' => ['role:admin']], function () {
-        Route::get('/admin/dashboard', 'AdminController@dashboard')->name('admin-dashboard');
+    // Routes restricted to users with learning_resources role
+    Route::group(['middleware' => ['role:learning_resources']], function () {
+        Route::get('/learning_resources/dashboard', 'AdminController@dashboard')->name('learning_resources-dashboard');
 
         require_once('cards/admin_web.php');
         require_once('categories/admin_web.php');
