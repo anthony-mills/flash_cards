@@ -25,7 +25,7 @@ class AdminController extends Controller
     public function dashboard()
     {
         return view(
-            'learning_resources.dashboard',
+            'admin.dashboard',
             [
                 'userCount' => User::count(),
                 'cardCount' => Cards::count()

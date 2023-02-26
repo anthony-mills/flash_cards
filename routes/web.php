@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function () {
     require_once('resources/web.php');
 
     // Routes restricted to users with learning_resources role
-    Route::group(['middleware' => ['role:learning_resources']], function () {
+    Route::group(['middleware' => ['role:admin']], function () {
         Route::get('/learning_resources/dashboard', 'AdminController@dashboard')->name('learning_resources-dashboard');
 
         require_once('cards/admin_web.php');

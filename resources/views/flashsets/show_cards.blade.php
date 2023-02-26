@@ -17,7 +17,7 @@
 									<div class="flash-card-content">{!! $existingCard->solution !!}</div>
 								</div>
 							</li>
-						@endforeach				
+						@endforeach
 					</ul>
 			</div>
 
@@ -26,21 +26,21 @@
 						<div class="row justify-content-center">
 							<div class="col-xs-1 text-right">
 								<span class="icon" id="prev" data-icon="<"><span class="visuallyhidden">Previous</span></span>
-							</div> 
+							</div>
 
 							<div class="col-xs-4 text-center">
-								<span class="icon" id="flipper" data-icon="/"><span class="visuallyhidden">Flip</span></span>	
+								<span class="icon" id="flipper" data-icon="/"><span class="visuallyhidden">Flip</span></span>
 
 								<div class="card-set-state">
 									<div class="current-card-count">
 										Card: <span id="current-card">1</span> of {{ count($existingCards) }}
-									</div>			
+									</div>
 
 									<div class="current-card-side">
 										Side: <span id="current-side">Question</span>
-									</div>	
+									</div>
 								</div>
-					
+
 								<div class="row justify-content-center">
 									<div class="card-action-icon">
 										<a href="/" title="Exit cards and return home.">
@@ -49,7 +49,7 @@
 									</div>
 
 									<div class="card-action-icon">
-										<a href="#" data-toggle="modal" data-target="#feedback-modal" dusk="open-feedback-modal" title="Leave Card Feedback">
+										<a href="#" data-bs-toggle="modal" data-bs-target="#feedback-modal" dusk="open-feedback-modal" title="Leave Card Feedback">
 											<img src="/img/feedback.png"/>
 										</a>
 									</div>
@@ -57,17 +57,17 @@
 							</div>
 
 							<div class="col-xs-1 text-left">
-								<span class="icon" id="next" data-icon=">"><span class="visuallyhidden">Next</span></span>									
-							</div> 																
-						</div>						
+								<span class="icon" id="next" data-icon=">"><span class="visuallyhidden">Next</span></span>
+							</div>
+						</div>
 					</div>
-					
+
 					<div class="modal fade" id="feedback-modal" tabindex="-1" role="dialog" aria-hidden="true">
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
 									<h5 class="modal-title" dusk="leave-card-feedback">Leave Card Feedback</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
@@ -85,28 +85,28 @@
 
 										<div class="form-group">
 										{!! Form::textarea(
-											'feedback',  
-											null, 
+											'feedback',
+											null,
 											[
 												'dusk' => 'card-feedback-field',
-												'class' => 'form-control', 
-												'placeholder' => 'Message ( Max 250 Characters )', 
-												'maxlength' => 250 
+												'class' => 'form-control',
+												'placeholder' => 'Message ( Max 250 Characters )',
+												'maxlength' => 250
 											])
 										!!}
 										</div>
 									</form>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									<button type="button" id="save-feedback" class="btn btn-primary" dusk="save-feedback">Send</button>	
-								</div>								
+									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+									<button type="button" id="save-feedback" class="btn btn-primary" dusk="save-feedback">Send</button>
+								</div>
 							</div>
 						</div>
-					</div>									
-				@else 
+					</div>
+				@else
 					@include('alerts.insufficient_cards')
-				@endif					
+				@endif
 	        </div>
 	    </div>
 	</div>

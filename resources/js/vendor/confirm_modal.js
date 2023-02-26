@@ -25,7 +25,7 @@
                 var confirmButton = $defaultsConfirmModal.confirmButton;
             }
             if ($defaultsConfirmModal.cancelButton === undefined) {
-                var cancelButton = 'Cancel'; 
+                var cancelButton = 'Cancel';
             } else {
                 var cancelButton = $defaultsConfirmModal.cancelButton;
             }
@@ -58,7 +58,7 @@
                 } else {
                     var blurSize = '0.1rem';
                 }
-                var elements = settings.backgroundBlur[0];                
+                var elements = settings.backgroundBlur[0];
                 $(elements).attr('style', '-webkit-filter: blur(' + blurSize + '); -moz-filter: blur(' + blurSize + '); -o-filter: blur(' + blurSize + '); -ms-filter: blur(' + blurSize + '); filter: blur(' + blurSize + ');');
                 $(document).one('hide.bs.modal', '.modalConfirm', function () { $(elements).removeAttr('style'); });
             }
@@ -66,14 +66,14 @@
                 $(document).one('shown.bs.modal', '.modalConfirm', function () { $('.confirmButton').focus(); });
             }
         }
-        
+
         var html = `
             <div style="z-index: 5000;" class="modal ` + fadeAnimation + ` modalConfirm" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
                 <div style="max-width: ` + modalBoxWidth + `;" class="modal-dialog ` + modalVerticalCenter + `" role="document">
                     <div class="modal-content">
                         <div style="padding: 0.6rem" class="modal-header">
                             <h6 class="modal-title">` + messageHeader + `</h6>
-                            <button type="button" style="padding: 0.45rem 0.8rem;" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <button type="button" style="padding: 0.45rem 0.8rem;" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div style="padding: 0.8rem; font-size: 0.9rem;" class="modal-body text-break">` + message + `</div>
                         <div style="padding: 0.55rem; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;" class="modal-footer">
