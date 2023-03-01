@@ -29,8 +29,9 @@ class ResourceCreateForm extends FormRequest
     {
         return [
             'category' => 'required|numeric',
+            'name' => 'string|required',
             'link' => 'required|url',
-            'description' => 'string|required|max:500',
+            'description' => 'string|max:500',
         ];
     }
 

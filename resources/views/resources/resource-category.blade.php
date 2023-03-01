@@ -43,27 +43,31 @@
 
                             <table class="table">
                                 <thead class="thead-dark">
-                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
                                     <th scope="col">Link</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Created</th>
-                                    <th scope="col">Actions</th>
+                                    @role('admin')
+                                        <th scope="col">Actions</th>
+                                    @endrole
                                 </thead>
 
                                 <tbody>
                                     @foreach( $resourceRows as $existingResource )
                                         <tr>
-                                            <td>{{ $existingResource->id }}</td>
+                                            <td>{{ $existingResource->name }}</td>
                                             <td><a href="{{ $existingResource->link }}" target="_blank">{{ $existingResource->link }}</a></td>
                                             <td>{!! $existingResource->description !!}</td>
                                             <td>{{ Carbon\Carbon::parse($existingResource->created_at)->format('d/m/Y') }}</td>
-                                            <td class="text-center">
-                                                <a href="/resource/edit/{{ $existingResource->id }}" class="btn btn-outline btn-block btn-sm mt-1">
-                                                    Edit
-                                                </a>
+                                            @role('admin')
+                                                <td class="text-center">
+                                                    <a href="/resource/edit/{{ $existingResource->id }}" class="btn btn-outline btn-block btn-sm mt-1">
+                                                        Edit
+                                                    </a>
 
-                                                <button type="button" data-delete="/resource/delete/{{ $existingResource->id }}" class="btn btn-outline delete-item btn-block btn-sm mt-1">Delete</button>
-                                            </td>
+                                                    <button type="button" data-delete="/resource/delete/{{ $existingResource->id }}" class="btn btn-outline delete-item btn-block btn-sm mt-1">Delete</button>
+                                                </td>
+                                            @endrole
                                         </tr>
                                     @endforeach
                                 </tbody>

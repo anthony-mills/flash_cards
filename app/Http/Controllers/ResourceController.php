@@ -49,6 +49,7 @@ class ResourceController extends Controller
     {
         $formData = array(
             'id' => ($formObj->get('resource_id') ?? null),
+            'name' => ($formObj->get('name') ?? null),
             'category' => $formObj->get('category'),
             'link' => $formObj->get('link'),
             'description' => $formObj->get('description'),
