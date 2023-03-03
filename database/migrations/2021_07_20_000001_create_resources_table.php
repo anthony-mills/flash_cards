@@ -13,8 +13,13 @@ class CreateResourcesTable extends Migration
      */
     public function up() : void
     {
-        Schema::table('resources', function (Blueprint $table) {
-            $table->string('name')->nullable()->after('id');
+        Schema::create('resources', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->increments('id');
+            $table->unsignedInteger('category')->nullable();
+            $table->string('link', 200)->nullable();
+            $table->string('description', 500)->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +30,6 @@ class CreateResourcesTable extends Migration
      */
     public function down() : void
     {
-        Schema::table('resources', function (Blueprint $table) {
-            $table->dropColumn('name');
-        });
+        Schema::dropIfExists('cards');
     }
 }
