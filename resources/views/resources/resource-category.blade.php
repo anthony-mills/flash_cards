@@ -44,7 +44,6 @@
                             <table class="table">
                                 <thead class="thead-dark">
                                     <th scope="col">Name</th>
-                                    <th scope="col">Link</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Created</th>
                                     @role('admin')
@@ -55,8 +54,11 @@
                                 <tbody>
                                     @foreach( $resourceRows as $existingResource )
                                         <tr>
-                                            <td>{{ $existingResource->name }}</td>
-                                            <td><a href="{{ $existingResource->link }}" target="_blank">{{ $existingResource->link }}</a></td>
+                                            <td>
+                                                <a href="{{ $existingResource->link }}" target="_blank">
+                                                    {{ $existingResource->name }}
+                                                </a>
+                                            </td>
                                             <td>{!! $existingResource->description !!}</td>
                                             <td>{{ Carbon\Carbon::parse($existingResource->created_at)->format('d/m/Y') }}</td>
                                             @role('admin')

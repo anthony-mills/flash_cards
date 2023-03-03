@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\Browser\Tests\Categories;
+namespace tests\Browser\Tests\AdminPanel;
 
 use App\Models\Cards;
 use App\Models\User;
@@ -20,7 +20,7 @@ class AdminDashboardTest extends DuskTestCase
 
     public function testCreation()
     {
-        echo "\r\nBrowser Tests: Running learning_resources dashboard tests. \r\n";
+        echo "\r\nBrowser Tests: Running admin dashboard tests. \r\n";
 
         $this->createCategoryFail();
     }
