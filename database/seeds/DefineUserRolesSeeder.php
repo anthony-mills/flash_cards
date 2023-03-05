@@ -39,7 +39,7 @@ class DefineUserRolesSeeder extends Seeder
 
         $newUser = User::create([
             'name' => 'Test Admin',
-            'email' => 'test.learning_resources@test.com',
+            'email' => 'test.admin@test.com',
             'email_verified_at' => '2020-01-01 00:00:00',
             'password' => '$2y$10$coq8FcG/V6wkjHQUmq0bNuTz8PMykS2qbuyWZyL7vm00PusSOE1Xu'
         ]);
