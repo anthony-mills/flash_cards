@@ -39,8 +39,9 @@ class AdminDashboardTest extends DuskTestCase
 
             $browserObj->loginAs($userRow)
                     ->visit(Config::get('app.url') . $this->dashURL)
-                    ->assertSee('Flash Cards Management')
+                    ->pause(1000)
                     ->assertSee($userRow->name)
+                    ->assertSee('Flash Cards Management')
                     ->assertSee('Create Category')
                     ->assertSee('Create Flash Card')
                     ->assertSee('Existing Categories')
