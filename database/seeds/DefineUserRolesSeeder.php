@@ -29,7 +29,7 @@ class DefineUserRolesSeeder extends Seeder
         // create roles and assign existing permissions
         $role1 = Role::create(['name' => 'user']);
 
-        $role2 = Role::create(['name' => 'learning_resources']);
+        $role2 = Role::create(['name' => 'admin']);
         $role2->givePermissionTo('create category');
         $role2->givePermissionTo('create card');
         $role2->givePermissionTo('create resource');
@@ -44,7 +44,7 @@ class DefineUserRolesSeeder extends Seeder
             'password' => '$2y$10$coq8FcG/V6wkjHQUmq0bNuTz8PMykS2qbuyWZyL7vm00PusSOE1Xu'
         ]);
 
-        $newUser->assignRole('learning_resources');
+        $newUser->assignRole('admin');
 
         $newUser = User::create([
             'name' => 'Test User',
