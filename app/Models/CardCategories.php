@@ -36,13 +36,17 @@ class CardCategories extends Model
     public function getCategories( $paginateResults = 0 )
     {
         if ($paginateResults > 0) {
-            $pageResults = Config::get('flash_cards.results_per_page');
-            $existingCats = $this->orderBy('name', 'ASC')->paginate($pageResults);
+            $savedCats = CardCategories::orderBy('name', 'ASC')->paginate(Config::get('flash_cards.results_per_page'));
         } else {
-            $existingCats = $this->orderBy('name', 'ASC');
+            if (Cache::has( 'categories' )) {
+                $savedCats = Cache::get('categories');
+            } else {
+                $savedCats = CardCategories::orderBy('name', 'ASC')->get();
+                Cache::put('categories', $savedCats);
+            }
         }
 
-        return $existingCats;
+        return $savedCats;
     }
 
     /**

@@ -54,7 +54,7 @@ class UsersController extends Controller
                 'user' => $userDetails,
                 'logins' => UserLogins::where('user_id', $userId)->orderBy('id', 'DESC')->limit(5)->get()
             ]
-        ) : redirect('/admin/dashboard');
+        ) : redirect('/learning_resources/dashboard');
 
     }
 }

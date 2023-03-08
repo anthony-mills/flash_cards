@@ -17,7 +17,6 @@ class Tags extends Model
                             'tag',
                           ];
 
-
     /**
      * Transform tag to upper case.
      *
@@ -31,11 +30,11 @@ class Tags extends Model
 
     /**
     * Handle the saving of tags to a card
-    * 
+    *
     * @param int $cardId
     * @param array|null $cardTags
     *
-    * @return void 
+    * @return void
     **/
     public function saveCardTags( int $cardId, $cardTags ) : void
     {

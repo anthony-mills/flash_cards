@@ -26,6 +26,13 @@
                             {!! Form::select( 'category', $existingCats->pluck('name', 'id'), $resourceRow->category ?? null, ['class' => 'form-control form-control-lg', 'dusk' => 'resource_category', 'required'] ) !!}
                         </div>
 
+                        <!-- Resource Name-->
+                        <div class="form-group">
+                            {!! Form::label('name', 'Name') !!}
+                            <span class="red-text">*</span>
+                            {!! Form::text('name', $resourceRow->name ?? null, ['class' => 'form-control form-control-lg', 'dusk' => 'resource_nane', 'required', 'placeholder' => 'Name ( Min 2 / Max 200 Characters )', 'minlength' => 2, 'maxlength' => 200]); !!}
+                        </div>
+
                         <!-- Resource link -->
                         <div class="form-group">
                             {!! Form::label('link', 'Resource Link') !!}
@@ -36,8 +43,7 @@
                         <!-- Resource Description -->
                         <div class="form-group">
                             {!! Form::label('description', 'Description') !!}
-                            <span class="red-text">*</span>
-                             {!! Form::textarea('description', $resourceRow->description ?? null, ['dusk' => 'resource_description','class' => 'form-control texteditor', 'placeholder' => 'Resource Description  ( Max 500 Characters )', 'maxlength' => 500]) !!}
+                            {!! Form::textarea('description', $resourceRow->description ?? null, ['dusk' => 'resource_description','class' => 'form-control texteditor', 'placeholder' => 'Resource Description  ( Max 500 Characters )', 'maxlength' => 500]) !!}
                         </div>
 
                         <span class="red-text"><em> ( * Denotes required fields )</em></span>

@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\Browser\Tests\Categories;
+namespace tests\Browser\Tests\AdminPanel;
 
 use App\Models\Cards;
 use App\Models\User;
@@ -12,7 +12,7 @@ use Tests\DuskTestCase;
 class AdminDashboardTest extends DuskTestCase
 {
     // URL for card creation
-    protected $dashURL = '/admin/dashboard';
+    protected $dashURL = '/learning_resources/dashboard';
 
     // User account to run tests under
     protected $testUser = 1;
@@ -39,12 +39,13 @@ class AdminDashboardTest extends DuskTestCase
 
             $browserObj->loginAs($userRow)
                     ->visit(Config::get('app.url') . $this->dashURL)
-                    ->assertSee('Flash Cards Management')
                     ->assertSee($userRow->name)
-                    ->assertSee('Create Flash Card')
-                    ->assertSee('View Flash Card Feedback')
+                    ->assertSee('Flash Cards Management')
                     ->assertSee('Create Category')
+                    ->assertSee('Create Flash Card')
                     ->assertSee('Existing Categories')
+                    ->assertSee('View Flash Card Feedback')
+                    ->assertSee('Users')
                     ->assertSee('Go to Flash Cards')
                     ->assertSee('Currently ' . $cardCount . ' saved flash cards')
                     ->click('@drop_down_menu')

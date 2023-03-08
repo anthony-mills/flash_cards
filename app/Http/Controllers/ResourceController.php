@@ -49,6 +49,7 @@ class ResourceController extends Controller
     {
         $formData = array(
             'id' => ($formObj->get('resource_id') ?? null),
+            'name' => ($formObj->get('name') ?? null),
             'category' => $formObj->get('category'),
             'link' => $formObj->get('link'),
             'description' => $formObj->get('description'),
@@ -121,40 +122,22 @@ class ResourceController extends Controller
      *
      * @param int $catId
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      *
      * @throws \Exception If non-numeric $catId encountered
      */
-    public function resourceCategory($catId)
+    public function resourceCategory($catId=0)
     {
-        if (is_numeric($catId)) {
+        if (is_numeric($catId) && $catId > 0) {
             $resourceRows = Resources::where('category', $catId)->paginate(Config::get('flash_cards.results_per_page'));
-
-            if ($resourceRows) {
-                return view(
-                    'resources.resource-category',
-                    [
-                        'resourceRows' => $resourceRows
-                    ]
-                );
-            }
-
-            return redirect(RouteServiceProvider::ADMINHOME)->with('errors', 'Category not found.');
+        } else {
+            $resourceRows = Resources::orderBy('category', 'ASC')->paginate();
         }
-
-        throw new \Exception('Non numeric category id provided.');
-    }
-
-    /**
-     * View the existing resources created by an admin user
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
-     */
-    public function viewResources()
-    {
-        return view(
-            'resources.view',
-            [ 'resourceRows' => Resources::orderBy('category', 'ASC')->paginate()]
-        );
+        return view('resources.resource-category',
+        [
+            'resourceRows' => $resourceRows,
+            'catId' => $catId,
+            'catList' => (new CardCategories())->getCategories()
+        ]);
     }
 }

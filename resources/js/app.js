@@ -6,11 +6,11 @@ require('./vendor/typeahead');
 require('./vendor/bootstrap_tagsinput');
 require('./cards/jquery_cycle');
 require('./cards/flash_cards');
+require('./learning_resources/view.js');
 
 const Bloodhound = require('bloodhound-js');
 
 $(document).ready(function(){
-
 
 	if ($('.texteditor').length) {
 		$('.texteditor').summernote({
@@ -19,7 +19,7 @@ $(document).ready(function(){
 	          ['font', ['bold', 'underline', 'clear']],
 	          ['para', ['ul', 'ol']],
 	          ['insert', ['link']]
-	        ]			
+	        ]
 		});
 	}
 
@@ -28,7 +28,7 @@ $(document).ready(function(){
 		queryTokenizer: Bloodhound.tokenizers.whitespace,
 		prefetch: {
 			url: "/api/card/tags"
-		}		 
+		}
 	});
 
 	cardTags.initialize();
@@ -49,15 +49,14 @@ $(document).ready(function(){
 
 		if (delMsg === undefined) {
 			delMsg = 'Are you sure to delete this item?';
-		} 
+		}
 
 		$.confirmModal( delMsg, {
 			messageHeader: 'Confirm Deletion'
 		}, function(el) {
 			var deleteLink = $(el).data('delete');
-			
+
 			window.location = deleteLink;
 		});
-	});	 
-
+	});
 });

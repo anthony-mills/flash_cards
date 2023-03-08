@@ -7,10 +7,30 @@
         <div class="col-md-12">
             <div class="card dark-card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    Showing {{ $resourceRows->count() }} of {{$resourceRows->total() }} saved resources.
-                    <a type="button" href="{{ url(\App\Providers\RouteServiceProvider::ADMINHOME) }}" class="btn btn-sm btn-inverse">
-                        Dashboard
-                    </a>
+                    <div class="col-md-4">
+                        Showing {{ $resourceRows->count() }} of {{$resourceRows->total() }} saved resources.
+                    </div>
+
+                    <div class="col-md-6">
+                        Selected Category:
+                        <select name="selected-cat" class="select-card-category">
+                            @if ($catId == 0)
+                                <option value="" SELECTED>All</option>
+                            @endif
+
+                            @foreach($catList as $catItem)
+                                <option value="{{ $catItem->id }}" {{ ($catItem->id == $catId) ? 'SELECTED' : '' }}>
+                                    {{ $catItem->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <a type="button" href="{{ url(\App\Providers\RouteServiceProvider::ADMINHOME) }}" class="btn btn-sm btn-inverse">
+                            Dashboard
+                        </a>
+                    </div>
                 </div>
 
                 <div class="card-body">
@@ -23,27 +43,33 @@
 
                             <table class="table">
                                 <thead class="thead-dark">
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Link</th>
+                                    <th scope="col">Name</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Created</th>
-                                    <th scope="col">Actions</th>
+                                    @role('admin')
+                                        <th scope="col">Actions</th>
+                                    @endrole
                                 </thead>
 
                                 <tbody>
                                     @foreach( $resourceRows as $existingResource )
                                         <tr>
-                                            <td>{{ $existingResource->id }}</td>
-                                            <td><a href="{{ $existingResource->link }}" target="_blank">{{ $existingResource->link }}</a></td>
+                                            <td>
+                                                <a href="{{ $existingResource->link }}" target="_blank">
+                                                    {{ $existingResource->name }}
+                                                </a>
+                                            </td>
                                             <td>{!! $existingResource->description !!}</td>
                                             <td>{{ Carbon\Carbon::parse($existingResource->created_at)->format('d/m/Y') }}</td>
-                                            <td class="text-center">
-                                                <a href="/resource/edit/{{ $existingResource->id }}" class="btn btn-outline btn-block btn-sm mt-1">
-                                                    Edit
-                                                </a>
+                                            @role('admin')
+                                                <td class="text-center">
+                                                    <a href="/resource/edit/{{ $existingResource->id }}" class="btn btn-outline btn-block btn-sm mt-1">
+                                                        Edit
+                                                    </a>
 
-                                                <button type="button" data-delete="/resource/delete/{{ $existingResource->id }}" class="btn btn-outline delete-item btn-block btn-sm mt-1">Delete</button>
-                                            </td>
+                                                    <button type="button" data-delete="/resource/delete/{{ $existingResource->id }}" class="btn btn-outline delete-item btn-block btn-sm mt-1">Delete</button>
+                                                </td>
+                                            @endrole
                                         </tr>
                                     @endforeach
                                 </tbody>
