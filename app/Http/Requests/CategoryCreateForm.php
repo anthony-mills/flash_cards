@@ -3,13 +3,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Validator;
 
 class CategoryCreateForm extends FormRequest
 {
-    /** @var \Illuminate\Http\Request $reqObj */
-    protected $reqObj;
+    /** @var Request $reqObj */
+    protected Request $reqObj;
 
-    /** @param  \Illuminate\Http\Request $reqObj */
+    /** @param Request $reqObj */
     public function __construct(Request $reqObj)
     {
         $this->reqObj = $reqObj;
@@ -22,7 +23,7 @@ class CategoryCreateForm extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules() : array
     {
         return [
             'name' => 'required|min:2|unique:card_categories,name|regex:/^[\pL0-9$ ()]+$/u',
@@ -32,10 +33,10 @@ class CategoryCreateForm extends FormRequest
     /**
      * Configure the validator instance.
      *
-     * @param  \Illuminate\Validation\Validator  $validator
+     * @param Validator $validator
      * @return void
      */
-    public function withValidator($validator)
+    public function withValidator(Validator $validator) : void
     {
         $validator->after(function ($validator) {
             $formErrors = $validator->errors();

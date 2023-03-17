@@ -4,14 +4,15 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Validator;
 
 class CardCreateForm extends FormRequest
 {
-    /** @var \Illuminate\Http\Request $reqObj */
-    protected $reqObj;
+    /** @var Request $reqObj */
+    protected Request $reqObj;
 
     /**
-     * @param  \Illuminate\Http\Request $reqObj
+     * @param Request $reqObj
      */
     public function __construct(Request $reqObj)
     {
@@ -39,10 +40,10 @@ class CardCreateForm extends FormRequest
     /**
      * Configure the validator instance.
      *
-     * @param  \Illuminate\Validation\Validator  $validator
+     * @param  Validator  $validator
      * @return void
      */
-    public function withValidator($validator)
+    public function withValidator(Validator $validator) : void
     {
         $validator->after(function ($validator) {
             $formErrors = $validator->errors();
