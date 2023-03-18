@@ -3,7 +3,6 @@ namespace App\Providers\Cards;
 use App\Http\Requests\CardCreateForm;
 use App\Models\Cards;
 use App\Models\Tags;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
 /**

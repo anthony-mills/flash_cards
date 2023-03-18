@@ -3,7 +3,6 @@ namespace App\Providers\Cards;
 
 use App\Models\Cards;
 use App\Providers\Interfaces\CardInterface;
-use Illuminate\Database\Eloquent\Collection;
 
 /**
  * @property $typeId
