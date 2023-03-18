@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Providers\CardTypes\CardTypes;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
@@ -12,6 +14,7 @@ use App\Models\Cards;
 use App\Models\CardTags;
 use App\Models\Feedback;
 use App\Models\Tags;
+use Illuminate\View\View;
 
 class CardController extends Controller
 {
@@ -28,9 +31,9 @@ class CardController extends Controller
     /**
     * Create a new flash card
     *
-    * @return \Illuminate\View\View
+    * @return View
     */
-    public function createCard()
+    public function createCard(): View
     {
         $existingCats = ( new CardCategories )->getCategories();
 
@@ -45,11 +48,11 @@ class CardController extends Controller
     /**
     * Edit an existing flash card
     *
-    * @param integer $cardId
+    * @param int $cardId
     *
-    * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
+    * @return RedirectResponse|View
     */
-    public function editCard($cardId)
+    public function editCard(int $cardId)
     {
         $existingCats = ( new CardCategories )->getCategories();
 
@@ -74,12 +77,13 @@ class CardController extends Controller
     *
     * @param \App\Http\Requests\CardCreateForm $formObj
     *
-    * @return \Illuminate\Http\RedirectResponse
+    * @return RedirectResponse
     **/
     public function saveCard(CardCreateForm $formObj)
     {
         $formData = array(
             'id' => ($formObj->get('card_id') ?? null),
+            'type' => CardTypes::id("FLASH"),
             'category' => $formObj->get('category'),
             'difficulty' => $formObj->get('difficulty'),
             'problem' => $formObj->get('problem'),
@@ -87,9 +91,7 @@ class CardController extends Controller
         );
 
         Cards::upsert( $formData, 'id' );
-
         $cardId = (is_numeric($formData['id'])) ? $formData['id'] : DB::getPdo()->lastInsertId();
-
         ( new Tags )->saveCardTags( $cardId, $formObj->get('tags') );
 
         if (is_numeric($cardId)) {
@@ -103,7 +105,7 @@ class CardController extends Controller
      * Delete a card from the system
      *
      * @param integer $cardId
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      *
      * @throws \Exception if not numeric $cardId
      */
@@ -127,7 +129,7 @@ class CardController extends Controller
     /**
     * View stored card feedback
     *
-    * @return \Illuminate\View\View
+    * @return View
     **/
     public function viewFeedback()
     {
@@ -143,7 +145,7 @@ class CardController extends Controller
     * Delete a feedback comment from the system
     *
     * @param integer $commentId
-    * @return \Illuminate\Http\RedirectResponse
+    * @return RedirectResponse
     *
     * @throws \Exception if not numeric $cardId
     **/

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Providers\CardTypes\CardTypes;
 use App\Providers\RouteServiceProvider;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
@@ -117,7 +118,7 @@ class CategoryController extends Controller
     public function getCards($catId): View|Factory|RedirectResponse|Application
     {
         if (is_numeric($catId)) {
-            $cardRows = ( new Cards )->getByCat($catId);
+            $cardRows = ( new Cards )->getByCat($catId, CardTypes::id("FLASH"));
 
             if ($cardRows) {
                 return view(
