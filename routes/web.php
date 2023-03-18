@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::group(['middleware' => ['role:admin']], function () {
         Route::get('/learning_resources/dashboard', 'AdminController@dashboard')->name('learning_resources-dashboard');
 
+        require_once('card_feedback/admin_web.php');
         require_once('cards/admin_web.php');
         require_once('categories/admin_web.php');
         require_once('resources/admin_web.php');

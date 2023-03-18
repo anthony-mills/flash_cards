@@ -11,11 +11,13 @@ class CardTypes implements CardTypesInterface
      * Get type
      *
      * @param $typeName
-     * @return Collection
+     * @param bool $retVal
+     * @return Mixed
      */
-    public static function getType($typeName) : Collection
+    public static function getType($typeName, $retVal=true) : Mixed
     {
-        return collect(SELF::getTypes()->firstWhere('key', $typeName));
+        $confVal = SELF::getTypes()->firstWhere('key', $typeName);
+        return ($retVal == 'collection') ? collect($confVal) : (object) $confVal;
     }
 
     /**
@@ -27,8 +29,6 @@ class CardTypes implements CardTypesInterface
     {
         return collect(Config::get('card_types'));
     }
-
-
 
     /**
      * Return an id for a card type
