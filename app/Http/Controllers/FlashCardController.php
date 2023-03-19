@@ -38,7 +38,7 @@ class FlashCardController extends Controller
     public function createCard(): View
     {
         return view(
-            'cards.create',
+            'cards.create-flash-card',
             ['existingCats' => ( new CardCategories )->getCategories()]
         );
     }
@@ -53,7 +53,7 @@ class FlashCardController extends Controller
     public function editCard(int $cardId)
     {
         return view(
-            'cards.create',
+            'cards.create-flash-card',
             [
                 'existingCats' =>  ( new CardCategories )->getCategories(),
                 'cardRow' => $this->cardInstance->get($cardId),
@@ -78,7 +78,7 @@ class FlashCardController extends Controller
             return redirect(RouteServiceProvider::ADMINHOME)->with('status', 'Flash card saved successfully.');
         }
 
-        return redirect()->route('card.create')->with('errors', 'Error saving the flash card.')->withInput();
+        return redirect()->route('cards.cards.create-flash-card')->with('errors', 'Error saving the flash card.')->withInput();
     }
 
     /**

@@ -34,7 +34,7 @@
                                             <td>{{ $existingCat->id }}</td>
                                             <td>{{ $existingCat->name }}</td>
                                             <td>
-                                                {{ count($existingCat->flashCards) }} / 
+                                                {{ count($existingCat->flashCards) }} /
                                                 {{ $resourceCounts->firstWhere('category', $existingCat->id )['count'] ?? 0 }}
                                             </td>
                                             <td>{{ $existingCat->created_at }}</td>

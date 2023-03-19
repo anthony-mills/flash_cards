@@ -43,6 +43,20 @@ class CardTypes implements CardTypesInterface
     }
 
     /**
+     * Get name by id
+     *
+     * @param int $typeId
+     *
+     * @return string
+     */
+    public static function nameById(int $typeId) : string
+    {
+        $configElm = (object) SELF::getTypes()->firstWhere('id', $typeId);
+
+        return $configElm->name ?? "";
+    }
+
+    /**
      * Return a name for a card type
      *
      * @param string $typeName

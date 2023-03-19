@@ -1,4 +1,4 @@
-@php use App\Providers\RouteServiceProvider; @endphp
+@php use App\Providers\CardTypes\CardTypes;use App\Providers\RouteServiceProvider; @endphp
 
 @extends('layouts.app')
 
@@ -9,7 +9,8 @@
             <div class="col-md-12">
                 <div class="card dark-card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        Showing {{ $cardRows->count() }} of {{ $cardRows->total() }} saved {{\App\Providers\CardTypes\CardTypes::name("FLASH")}}s.
+                        Showing {{ $cardRows->count() }} of {{ $cardRows->total() }} saved {{CardTypes::name("FLASH")}}
+                        s.
                         <a type="button" href="{{ url(RouteServiceProvider::ADMINHOME) }}"
                            class="btn btn-sm btn-inverse">
                             Dashboard
@@ -26,22 +27,20 @@
 
                                 <table class="table">
                                     <thead class="thead-dark">
-                                    <th scope="col">ID</th>
+                                    <th scope="col">Type</th>
                                     <th scope="col">Difficulty</th>
                                     <th scope="col">Question</th>
                                     <th scope="col">Answer</th>
-                                    <th scope="col">Created</th>
                                     <th scope="col">Actions</th>
                                     </thead>
 
                                     <tbody>
                                     @foreach( $cardRows as $existingCard )
                                         <tr>
-                                            <td>{{ $existingCard->id }}</td>
+                                            <td>{{ CardTypes::nameById($existingCard->type) }}</td>
                                             <td>{{ $existingCard->difficulty }} / 5</td>
                                             <td>{!! $existingCard->problem !!}</td>
                                             <td>{!! $existingCard->solution !!}</td>
-                                            <td>{{ Carbon\Carbon::parse($existingCard->created_at)->format('d/m/Y') }}</td>
                                             <td class="text-center">
                                                 <a href="/card/edit/{{ $existingCard->id }}"
                                                    class="btn btn-outline btn-block btn-sm mt-1">
