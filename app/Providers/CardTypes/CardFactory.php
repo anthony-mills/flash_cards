@@ -18,7 +18,7 @@ class CardFactory {
         $cardType = CardTypes::getType($cardType, false);
 
         return match ($cardType->key) {
-            "QUESTION" => $this->QuestionCard($cardType->id),
+            "QUIZ" => $this->QuizCard($cardType->id),
             default => $this->FlashCard($cardType->id),
         };
 
@@ -41,7 +41,7 @@ class CardFactory {
      * @param int $typeId
      * @return QuestionCard
      */
-    protected function QuestionCard(int $typeId) : QuestionCard
+    protected function QuizCard(int $typeId) : QuestionCard
     {
         return new QuestionCard($typeId);
     }

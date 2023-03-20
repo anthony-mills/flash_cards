@@ -10,9 +10,9 @@ return [
         'key' => 'FLASH',
         'name' => 'Flash Card'
     ],
-    'QUESTION' => [
+    'QUIZ' => [
         'id' => 2,
-        'key' => 'QUESTION',
-        'name' => 'Question'
+        'key' => 'QUIZ',
+        'name' => 'Quiz'
     ],
 ];

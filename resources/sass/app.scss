@@ -16,6 +16,9 @@
 // Bootstrap Tags Editor
 @import 'vendor/_bootstrap-tagsinput';
 
+// Styles related to the backend
+@import 'backend/card-creation';
+
 // Center Laravel pagination elements
 .pagination {
 	justify-content: center;

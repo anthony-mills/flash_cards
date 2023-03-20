@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Providers\Cards\FlashCard;
-use App\Providers\Cards\QuestionCard;
 use App\Providers\CardTypes\CardFactory;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 
 use App\Http\Requests\CardCreateForm;
@@ -16,7 +18,7 @@ use Illuminate\View\View;
 
 class FlashCardController extends Controller
 {
-    private FlashCard|QuestionCard $cardInstance;
+    private FlashCard $cardInstance;
 
     /**
      * Create a new controller instance.
@@ -48,8 +50,8 @@ class FlashCardController extends Controller
     *
     * @param int $cardId
     *
-    * @return RedirectResponse|View
-    */
+    * @return Application|Factory|\Illuminate\Contracts\View\View
+     */
     public function editCard(int $cardId)
     {
         return view(
@@ -69,7 +71,7 @@ class FlashCardController extends Controller
     *
     * @return RedirectResponse
     **/
-    public function saveCard(CardCreateForm $formObj)
+    public function saveCard(CardCreateForm $formObj): RedirectResponse
     {
         $formData = $this->cardInstance->formatData($formObj);
         $cardId = $this->cardInstance->save($formData, $formObj->get('tags') ?? []);
@@ -86,10 +88,8 @@ class FlashCardController extends Controller
      *
      * @param integer $cardId
      * @return RedirectResponse
-     *
-     * @throws \Exception if not numeric $cardId
      */
-    public function deleteCard($cardId)
+    public function deleteCard($cardId): RedirectResponse
     {
         if ($this->cardInstance->delete($cardId)) {
             return redirect(RouteServiceProvider::ADMINHOME)->with('status', 'Successfully deleted the flash card.');
@@ -101,9 +101,9 @@ class FlashCardController extends Controller
     /**
     * Return a JSON array of all stored card tags
     *
-    * @return \Illuminate\Http\JsonResponse
+    * @return JsonResponse
     **/
-    public function getTags()
+    public function getTags(): JsonResponse
     {
         return response()->json(Tags::all(['id', 'tag']), 200);
     }

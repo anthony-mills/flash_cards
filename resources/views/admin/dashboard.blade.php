@@ -21,6 +21,10 @@
                             </li>
 
                             <li class="list-group-item">
+                                <a href="/quiz-card/create">Create Quiz Card</a>
+                            </li>
+
+                            <li class="list-group-item">
                                 <a href="/resource/create">Create Learning Resource</a>
                             </li>
 
