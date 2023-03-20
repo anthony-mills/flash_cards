@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CardCreateForm;
+use App\Http\Requests\QuizCardCreateForm;
 use App\Providers\Cards\QuestionCard;
 use App\Providers\CardTypes\CardFactory;
 use App\Models\CardCategories;
@@ -42,11 +42,11 @@ class QuizCardController extends Controller
     /**
      * Store a flash card to the database
      *
-     * @param \App\Http\Requests\CardCreateForm $formObj
+     * @param \App\Http\Requests\QuizCardCreateForm $formObj
      *
      * @return RedirectResponse
      **/
-    public function saveCard(CardCreateForm $formObj): RedirectResponse
+    public function saveCard(QuizCardCreateForm $formObj): RedirectResponse
     {
         $formData = $this->cardInstance->formatData($formObj);
         $cardId = $this->cardInstance->save($formData, $formObj->get('tags') ?? []);

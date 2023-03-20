@@ -1,6 +1,6 @@
 <?php
 namespace App\Providers\Cards;
-use App\Http\Requests\CardCreateForm;
+use App\Http\Requests\FlashCardCreateForm;
 use App\Models\Cards;
 use App\Models\Tags;
 use Illuminate\Support\Facades\DB;
@@ -64,11 +64,11 @@ class FlashCard
     /**
      * Format form data for saving to the database.
      *
-     * @param CardCreateForm $cardObj
+     * @param FlashCardCreateForm $cardObj
      *
      * @return array
      */
-    public function formatData(CardCreateForm $cardObj) : array
+    public function formatData(FlashCardCreateForm $cardObj) : array
     {
         return array(
             'id' => ($cardObj->get('card_id') ?? null),

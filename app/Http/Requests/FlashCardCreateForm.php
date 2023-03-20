@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Validator;
 
-class CardCreateForm extends FormRequest
+class FlashCardCreateForm extends FormRequest
 {
     /** @var Request $reqObj */
     protected Request $reqObj;

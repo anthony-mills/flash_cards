@@ -44,9 +44,8 @@
 
                         <!-- Answer options for the question -->
                         <div class="form-group">
-                            <div class="form-group">
-                                {!! Form::label('solution', 'Answers ( Select the accepted answer )') !!}
-                            </div>
+                            {!! Form::label('solution', 'Answers ( Select the accepted answer )') !!}
+                            <span class="red-text">*</span>
 
                             <div class="row form-group">
                                 <div class="col-md-1">
@@ -54,7 +53,7 @@
                                 </div>
 
                                 <div class="col-md-11">
-                                    {!! Form::text('answer1', $cardRow->answer1 ?? null, ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 250, 'dusk' => 'difficulty', 'placeholder' => 'Option 1 ( Max 250 Characters )']) !!}
+                                    {!! Form::text('answer1', $cardRow->answer1 ?? null, ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 150, 'dusk' => 'difficulty', 'placeholder' => 'Option 1 ( Max 150 Characters )']) !!}
                                 </div>
                             </div>
 
@@ -64,7 +63,7 @@
                                 </div>
 
                                 <div class="col-md-11">
-                                    {!! Form::text('answer2', $cardRow->answer2 ?? null, ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 250, 'dusk' => 'difficulty', 'placeholder' => 'Option 2 ( Max 250 Characters )']) !!}
+                                    {!! Form::text('answer2', $cardRow->answer2 ?? null, ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 150, 'dusk' => 'difficulty', 'placeholder' => 'Option 2 ( Max 150 Characters )']) !!}
                                 </div>
                             </div>
 
@@ -74,7 +73,7 @@
                                 </div>
 
                                 <div class="col-md-11">
-                                    {!! Form::text('answer3', $cardRow->answer3 ?? null, ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 250, 'dusk' => 'difficulty', 'placeholder' => 'Option 3 ( Max 250 Characters )']) !!}
+                                    {!! Form::text('answer3', $cardRow->answer3 ?? null, ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 150, 'dusk' => 'difficulty', 'placeholder' => 'Option 3 ( Max 150 Characters )']) !!}
                                 </div>
                             </div>
 
@@ -84,7 +83,7 @@
                                 </div>
 
                                 <div class="col-md-11">
-                                    {!! Form::text('answer4', $cardRow->answer4 ?? null, ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 250, 'dusk' => 'difficulty', 'placeholder' => 'Option 4 ( Max 250 Characters )']) !!}
+                                    {!! Form::text('answer4', $cardRow->answer4 ?? null, ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 150, 'dusk' => 'difficulty', 'placeholder' => 'Option 4 ( Max 150 Characters )']) !!}
                                 </div>
                             </div>
                         </div>

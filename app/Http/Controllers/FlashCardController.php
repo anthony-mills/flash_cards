@@ -10,7 +10,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 
-use App\Http\Requests\CardCreateForm;
+use App\Http\Requests\FlashCardCreateForm;
 use App\Models\CardCategories;
 use App\Models\CardTags;
 use App\Models\Tags;
@@ -67,11 +67,11 @@ class FlashCardController extends Controller
     /**
     * Store a flash card to the database
     *
-    * @param \App\Http\Requests\CardCreateForm $formObj
+    * @param \App\Http\Requests\FlashCardCreateForm $formObj
     *
     * @return RedirectResponse
     **/
-    public function saveCard(CardCreateForm $formObj): RedirectResponse
+    public function saveCard(FlashCardCreateForm $formObj): RedirectResponse
     {
         $formData = $this->cardInstance->formatData($formObj);
         $cardId = $this->cardInstance->save($formData, $formObj->get('tags') ?? []);
