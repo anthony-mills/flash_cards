@@ -58,4 +58,17 @@ class QuizCardController extends Controller
         return redirect()->route('cards.cards.create-flash-card')->with('errors', 'Error saving the quiz card.')->withInput();
     }
 
+    /**
+     * Delete a card from the system
+     *
+     * @param integer $cardId
+     * @return RedirectResponse
+     */
+    public function deleteCard($cardId): RedirectResponse
+    {
+        if ($this->cardInstance->delete($cardId)) {
+            return redirect(RouteServiceProvider::ADMINHOME)->with('status', 'Successfully deleted the quiz card.');
+        } 
+        return redirect(RouteServiceProvider::ADMINHOME)->with('errors', 'Error deleting the card from the system.');
+    }
 }

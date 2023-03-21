@@ -118,15 +118,10 @@ class CategoryController extends Controller
     public function getCards($catId): View|Factory|RedirectResponse|Application
     {
         if (is_numeric($catId)) {
-            $cardRows = ( new Cards )->getByCat($catId, CardTypes::id("FLASH"));
+            $cardRows = ( new Cards )->getByCat($catId);
 
             if ($cardRows) {
-                return view(
-                    'categories.list-cards',
-                    [
-                        'cardRows' => $cardRows
-                    ]
-                );
+                return view('categories.list-cards', ['cardRows' => $cardRows]);
             }
 
             return redirect(RouteServiceProvider::ADMINHOME)->with('errors', 'Category not found.');

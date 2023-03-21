@@ -69,6 +69,20 @@ class CardTypes implements CardTypesInterface
     }
 
     /**
+     * URL by id
+     *
+     * @param int $typeId
+     *
+     * @return string
+     */
+    public static function urlById(int $typeId) : string
+    {
+        $configElm = (object) SELF::getTypes()->firstWhere('id', $typeId);
+
+        return $configElm->url ?? "";
+    }
+
+    /**
      * Return a config element for a card type by its id
      *
      * @param string $typeName

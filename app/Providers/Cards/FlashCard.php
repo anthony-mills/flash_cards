@@ -3,12 +3,13 @@ namespace App\Providers\Cards;
 use App\Http\Requests\FlashCardCreateForm;
 use App\Models\Cards;
 use App\Models\Tags;
+use App\Providers\Interfaces\CardInterface;
 use Illuminate\Support\Facades\DB;
 
 /**
  * @property $typeId
  */
-class FlashCard
+class FlashCard implements CardInterface
 {
 
     public function __construct(int $typeId)

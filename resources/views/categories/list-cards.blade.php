@@ -40,14 +40,21 @@
                                             <td>{{ CardTypes::nameById($existingCard->type) }}</td>
                                             <td>{{ $existingCard->difficulty }} / 5</td>
                                             <td>{!! $existingCard->problem !!}</td>
-                                            <td>{!! $existingCard->solution !!}</td>
+                                            <td>
+                                                @if ($existingCard->type == CardTypes::id("QUIZ"))
+                                                    <?php $answer = json_decode($existingCard->solution); ?>
+                                                    {!! $answer->{$answer->correct_answer} !!}
+                                                @else
+                                                    {!! $existingCard->solution !!}
+                                                @endif
+                                            </td>
                                             <td class="text-center">
-                                                <a href="/card/edit/{{ $existingCard->id }}"
+                                                <a href="/{!! CardTypes::urlById($existingCard->type) !!}/edit/{{ $existingCard->id }}"
                                                    class="btn btn-outline btn-block btn-sm mt-1">
                                                     Edit
                                                 </a>
 
-                                                <button type="button" data-delete="/card/delete/{{ $existingCard->id }}"
+                                                <button type="button" data-delete="/{!! CardTypes::urlById($existingCard->type) !!}/delete/{{ $existingCard->id }}"
                                                         class="btn btn-outline delete-item btn-block btn-sm mt-1">Delete
                                                 </button>
                                             </td>

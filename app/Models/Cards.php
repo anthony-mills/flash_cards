@@ -23,16 +23,22 @@ class Cards extends Model
     * Get cards by category & type
     *
     * @param int $catId
-    * @param int $resourceId
+    * @param int $cardType
     *
     * @return
     **/
-    public function getByCat( int $catId, int $resourceId=1)
+    public function getByCat( int $catId, int $cardType=0)
     {
         $pageResults = Config::get('flash_cards.results_per_page');
 
+        if ($cardType > 0) {
+            return $this->where('category', $catId)
+                ->where('type', $cardType)
+                ->orderBy('id', 'DESC')
+                ->paginate($pageResults);
+        }
+
         return $this->where('category', $catId)
-            ->where('type', $resourceId)
             ->orderBy('id', 'DESC')
             ->paginate($pageResults);
     }
