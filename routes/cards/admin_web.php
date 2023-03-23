@@ -14,6 +14,8 @@ Route::get('/quiz-card/create', 'QuizCardController@createCard')->name('quizcard
 
 Route::post('/quiz-card/create', 'QuizCardController@saveCard')->name('quizcard.save');
 
+Route::get('/quiz-card/edit/{cardId}', 'QuizCardController@editCard')->name('quizcard.edit');
+
 Route::get('/quiz-card/delete/{cardId}', 'QuizCardController@deleteCard');
 /** End the quiz card management related routes **/
 

@@ -6,6 +6,7 @@ use App\Models\Cards;
 use App\Models\Tags;
 use App\Providers\Interfaces\CardInterface;
 use Illuminate\Support\Facades\DB;
+use mysql_xdevapi\Exception;
 
 /**
  * @property $typeId
@@ -26,7 +27,14 @@ class QuestionCard implements CardInterface
      */
     public function get(int $id) : Cards
     {
-        return Cards::where('id', $id)->where('type', $this->typeId)->first();
+        $cardRow = Cards::where('id', $id)->where('type', $this->typeId)->first();
+
+        if ($cardRow) {
+            $cardRow->solution = json_decode($cardRow->solution);
+            return $cardRow;
+        }
+
+        throw new Exception("No quiz card found with ID $id");
     }
 
     /**

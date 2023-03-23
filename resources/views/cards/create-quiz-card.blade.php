@@ -1,21 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card dark-card">
-                <div class="card-header d-flex justify-content-between align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card dark-card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
                         Create Quiz Card
-                        <a type="button" href="{{ url(\App\Providers\RouteServiceProvider::ADMINHOME) }}" class="btn btn-sm btn-inverse">
+                        <a type="button" href="{{ url(\App\Providers\RouteServiceProvider::ADMINHOME) }}"
+                           class="btn btn-sm btn-inverse">
                             Dashboard
                         </a>
-                </div>
+                    </div>
 
-                <div class="card-body">
-                    @include('alerts.status')
+                    <div class="card-body">
+                        @include('alerts.status')
 
-                    {!! Form::open(['class' => 'form', 'route' => 'quizcard.save']) !!}
+                        {!! Form::open(['class' => 'form', 'route' => 'quizcard.save']) !!}
 
                         {{ Form::hidden( 'card_id', $cardRow->id ?? null ) }}
 
@@ -23,7 +24,7 @@
                         <div class="form-group">
                             {!! Form::label('category', 'Category') !!}
                             <span class="red-text">*</span>
-                            <br />
+                            <br/>
 
                             {!! Form::select( 'category', $existingCats->pluck('name', 'id'), $cardRow->category ?? null, ['class' => 'form-control form-control-lg', 'dusk' => 'card_category', 'required'] ) !!}
                         </div>
@@ -39,7 +40,7 @@
                         <div class="form-group">
                             {!! Form::label('problem', 'Question') !!}
                             <span class="red-text">*</span>
-                             {!! Form::textarea('problem', $cardRow->problem ?? null, ['dusk' => 'card_problem','class' => 'form-control texteditor', 'placeholder' => 'Front of Card  ( Max 1000 Characters )', 'maxlength' => 1000]) !!}
+                            {!! Form::textarea('problem', $cardRow->problem ?? null, ['dusk' => 'card_problem','class' => 'form-control texteditor', 'placeholder' => 'Front of Card  ( Max 1000 Characters )', 'maxlength' => 1000]) !!}
                         </div>
 
                         <!-- Answer options for the question -->
@@ -49,41 +50,77 @@
 
                             <div class="row form-group">
                                 <div class="col-md-1">
-                                    {!! Form::radio('correct_answer', 'answer1', true, ['class' => 'quiz-answer-select']) !!}
+                                    {!! Form::radio(
+                                        'correct_answer',
+                                        'answer1',
+                                        !isset($cardRow->solution->correct_answer) || $cardRow->solution->correct_answer == 'answer1',
+                                        ['class' => 'quiz-answer-select'])
+                                    !!}
                                 </div>
 
                                 <div class="col-md-11">
-                                    {!! Form::text('answer1', $cardRow->answer1 ?? null, ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 150, 'dusk' => 'difficulty', 'placeholder' => 'Option 1 ( Max 150 Characters )']) !!}
+                                    {!! Form::text(
+                                        'answer1',
+                                        $cardRow->solution->answer1 ?? null,
+                                        ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 150, 'dusk' => 'difficulty', 'placeholder' => 'Option 1 ( Max 150 Characters )']
+                                    ) !!}
                                 </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col-md-1">
-                                    {!! Form::radio('correct_answer', 'answer2', false, ['class' => 'quiz-answer-select']) !!}
+                                    {!! Form::radio(
+                                        'correct_answer',
+                                        'answer2',
+                                        $cardRow->solution->correct_answer == 'answer2',
+                                        ['class' => 'quiz-answer-select']
+                                    ) !!}
                                 </div>
 
                                 <div class="col-md-11">
-                                    {!! Form::text('answer2', $cardRow->answer2 ?? null, ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 150, 'dusk' => 'difficulty', 'placeholder' => 'Option 2 ( Max 150 Characters )']) !!}
+                                    {!! Form::text(
+                                        'answer2',
+                                        $cardRow->solution->answer2 ?? null,
+                                        ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 150, 'dusk' => 'difficulty', 'placeholder' => 'Option 2 ( Max 150 Characters )']
+                                    ) !!}
                                 </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col-md-1">
-                                    {!! Form::radio('correct_answer', 'answer3', false, ['class' => 'quiz-answer-select']) !!}
+                                    {!! Form::radio(
+                                        'correct_answer',
+                                        'answer3',
+                                        $cardRow->solution->correct_answer == 'answer3',
+                                        ['class' => 'quiz-answer-select']
+                                    ) !!}
                                 </div>
 
                                 <div class="col-md-11">
-                                    {!! Form::text('answer3', $cardRow->answer3 ?? null, ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 150, 'dusk' => 'difficulty', 'placeholder' => 'Option 3 ( Max 150 Characters )']) !!}
+                                    {!! Form::text(
+                                        'answer3',
+                                        $cardRow->solution->answer3 ?? null,
+                                        ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 150, 'dusk' => 'difficulty', 'placeholder' => 'Option 3 ( Max 150 Characters )']
+                                    ) !!}
                                 </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col-md-1">
-                                    {!! Form::radio('correct_answer', 'answer4', false, ['class' => 'quiz-answer-select']) !!}
+                                    {!! Form::radio(
+                                        'correct_answer',
+                                        'answer4',
+                                        $cardRow->solution->correct_answer == 'answer4',
+                                        ['class' => 'quiz-answer-select']
+                                    ) !!}
                                 </div>
 
                                 <div class="col-md-11">
-                                    {!! Form::text('answer4', $cardRow->answer4 ?? null, ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 150, 'dusk' => 'difficulty', 'placeholder' => 'Option 4 ( Max 150 Characters )']) !!}
+                                    {!! Form::text(
+                                        'answer4',
+                                        $cardRow->solution->answer4 ?? null,
+                                        ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 150, 'dusk' => 'difficulty', 'placeholder' => 'Option 4 ( Max 150 Characters )']
+                                    ) !!}
                                 </div>
                             </div>
                         </div>
@@ -105,10 +142,10 @@
                         <div class="text-center">
                             {!! Form::submit(  ( isset($cardRow->id) ? "Update Card" : "Save Card" ) , ['class' => 'btn btn-outline', 'dusk' => 'save_card']) !!}
                         </div>
-                    {!! Form::close() !!}
+                        {!! Form::close() !!}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
