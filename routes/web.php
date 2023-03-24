@@ -8,6 +8,10 @@ Auth::routes([
   'verify' => false,
 ]);
 
+// Application homepage route
+Route::get('/', 'FlashSetController@beginSet')->name('card.select');
+
+// User Auth related routes
 Route::get('/auth/change-password', 'Auth\ChangePasswordController@changePassword')->name('password.change');
 
 Route::post('/auth/change-password', 'Auth\ChangePasswordController@updatePassword')->name('password.update');

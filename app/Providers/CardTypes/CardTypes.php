@@ -49,11 +49,11 @@ class CardTypes implements CardTypesInterface
      *
      * @return string
      */
-    public static function nameById(int $typeId) : string
+    public static function nameById(int $typeId, $plural=false) : string
     {
         $configElm = (object) SELF::getTypes()->firstWhere('id', $typeId);
 
-        return $configElm->name ?? "";
+        return ($plural) ? ($configElm->plural ?? "") : ($configElm->singular ?? "");
     }
 
     /**
@@ -63,9 +63,9 @@ class CardTypes implements CardTypesInterface
      *
      * @return string
      */
-    public static function name(string $typeName): string
+    public static function name(string $typeName, $plural=false): string
     {
-        return SELF::getType($typeName)->get('name');
+        return ($plural) ? SELF::getType($typeName)->get('plural') : SELF::getType($typeName)->get('singular');
     }
 
     /**

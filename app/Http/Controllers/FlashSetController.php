@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Providers\CardTypes\CardTypes;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests\CardStartSetForm;
@@ -21,10 +23,10 @@ class FlashSetController extends Controller
     public function beginSet()
     {
         $cardCats = ( new CardCategories )->getCategories();
-
         return view(
             'flashsets.start',
             [
+                'cardTypes' => CardTypes::getTypes(),
                 'cardCats' => $cardCats ?? array(),
                 'cardNumber' => [ 10 => 10, 20 => 20, 50 => 50 ],
                 'difficultyLvl' => [ 0 => 'All', 1, 2, 3, 4, 5 ]

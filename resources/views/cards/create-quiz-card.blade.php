@@ -61,7 +61,7 @@
                                 <div class="col-md-11">
                                     {!! Form::text(
                                         'answer1',
-                                        $cardRow->solution->answer1 ?? null,
+                                        (isset($cardRow)) ? $cardRow->solution->answer1 ?? null : null,
                                         ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 150, 'dusk' => 'difficulty', 'placeholder' => 'Option 1 ( Max 150 Characters )']
                                     ) !!}
                                 </div>
@@ -72,7 +72,7 @@
                                     {!! Form::radio(
                                         'correct_answer',
                                         'answer2',
-                                        $cardRow->solution->correct_answer == 'answer2',
+                                        (isset($cardRow)) ? $cardRow->solution->answer2 ?? null : null,
                                         ['class' => 'quiz-answer-select']
                                     ) !!}
                                 </div>
@@ -91,7 +91,7 @@
                                     {!! Form::radio(
                                         'correct_answer',
                                         'answer3',
-                                        $cardRow->solution->correct_answer == 'answer3',
+                                        (isset($cardRow)) ? $cardRow->solution->answer3 ?? null : null,
                                         ['class' => 'quiz-answer-select']
                                     ) !!}
                                 </div>
@@ -110,7 +110,7 @@
                                     {!! Form::radio(
                                         'correct_answer',
                                         'answer4',
-                                        $cardRow->solution->correct_answer == 'answer4',
+                                        (isset($cardRow)) ? $cardRow->solution->answer4 ?? null : null,
                                         ['class' => 'quiz-answer-select']
                                     ) !!}
                                 </div>
