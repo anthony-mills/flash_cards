@@ -10,7 +10,7 @@ use Tests\DuskTestCase;
 
 class CreateLearningResourceTest extends DuskTestCase
 {
-    // URL for card creation
+    // URL for learning resource creation
     protected $dashURL = '/resource/create';
 
     // User account to run tests under

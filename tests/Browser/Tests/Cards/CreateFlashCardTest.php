@@ -11,7 +11,7 @@ use Tests\DuskTestCase;
 
 class CreateFlashCardTest extends DuskTestCase
 {
-    // URL for listing recieved card feedback / comments
+    // URL for creating a flash card
     protected $createURL = '/flash-card/create';
 
     /**
@@ -21,7 +21,7 @@ class CreateFlashCardTest extends DuskTestCase
      */
     public function testCreateFlashCardPage() : void
     {
-        echo "\r\nBrowser Tests: Testing elements on the create Flash Card pag. \r\n";
+        echo "\r\nBrowser Tests: Testing elements on the create Flash Card page. \r\n";
 
         $this->createFlashCardPage();
 

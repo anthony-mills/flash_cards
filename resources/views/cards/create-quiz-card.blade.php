@@ -54,7 +54,7 @@
                                         'correct_answer',
                                         'answer1',
                                         !isset($cardRow->solution->correct_answer) || $cardRow->solution->correct_answer == 'answer1',
-                                        ['class' => 'quiz-answer-select'])
+                                        ['class' => 'quiz-answer-select', 'dusk' => 'quiz_solution1'])
                                     !!}
                                 </div>
 
@@ -62,7 +62,13 @@
                                     {!! Form::text(
                                         'answer1',
                                         (isset($cardRow)) ? $cardRow->solution->answer1 ?? null : null,
-                                        ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 150, 'dusk' => 'difficulty', 'placeholder' => 'Option 1 ( Max 150 Characters )']
+                                        [
+                                            'class' => 'quiz-answer-field',
+                                            'minlength' => 1,
+                                            'maxlength' => 150,
+                                            'dusk' => 'quiz_card_answer1',
+                                            'placeholder' => 'Option 1 ( Max 150 Characters )'
+                                        ]
                                     ) !!}
                                 </div>
                             </div>
@@ -73,7 +79,7 @@
                                         'correct_answer',
                                         'answer2',
                                         (isset($cardRow)) ? $cardRow->solution->answer2 ?? null : null,
-                                        ['class' => 'quiz-answer-select']
+                                        ['class' => 'quiz-answer-select', 'dusk' => 'quiz_solution2']
                                     ) !!}
                                 </div>
 
@@ -81,7 +87,13 @@
                                     {!! Form::text(
                                         'answer2',
                                         $cardRow->solution->answer2 ?? null,
-                                        ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 150, 'dusk' => 'difficulty', 'placeholder' => 'Option 2 ( Max 150 Characters )']
+                                        [
+                                            'class' => 'quiz-answer-field',
+                                            'minlength' => 1,
+                                            'maxlength' => 150,
+                                            'dusk' => 'quiz_card_answer2',
+                                            'placeholder' => 'Option 2 ( Max 150 Characters )'
+                                        ]
                                     ) !!}
                                 </div>
                             </div>
@@ -92,7 +104,7 @@
                                         'correct_answer',
                                         'answer3',
                                         (isset($cardRow)) ? $cardRow->solution->answer3 ?? null : null,
-                                        ['class' => 'quiz-answer-select']
+                                        ['class' => 'quiz-answer-select', 'dusk' => 'quiz_solution3']
                                     ) !!}
                                 </div>
 
@@ -100,7 +112,12 @@
                                     {!! Form::text(
                                         'answer3',
                                         $cardRow->solution->answer3 ?? null,
-                                        ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 150, 'dusk' => 'difficulty', 'placeholder' => 'Option 3 ( Max 150 Characters )']
+                                        [
+                                            'class' => 'quiz-answer-field',
+                                            'minlength' => 1, 'maxlength' => 150,
+                                            'dusk' => 'quiz_card_answer3',
+                                            'placeholder' => 'Option 3 ( Max 150 Characters )'
+                                        ]
                                     ) !!}
                                 </div>
                             </div>
@@ -111,7 +128,7 @@
                                         'correct_answer',
                                         'answer4',
                                         (isset($cardRow)) ? $cardRow->solution->answer4 ?? null : null,
-                                        ['class' => 'quiz-answer-select']
+                                        ['class' => 'quiz-answer-select', 'dusk' => 'quiz_solution4']
                                     ) !!}
                                 </div>
 
@@ -119,7 +136,13 @@
                                     {!! Form::text(
                                         'answer4',
                                         $cardRow->solution->answer4 ?? null,
-                                        ['class' => 'quiz-answer-field', 'minlength' => 1, 'maxlength' => 150, 'dusk' => 'difficulty', 'placeholder' => 'Option 4 ( Max 150 Characters )']
+                                        [
+                                            'class' => 'quiz-answer-field',
+                                            'minlength' => 1,
+                                            'maxlength' => 150,
+                                            'dusk' => 'quiz_card_answer4',
+                                            'placeholder' => 'Option 4 ( Max 150 Characters )'
+                                        ]
                                     ) !!}
                                 </div>
                             </div>
