@@ -43,6 +43,8 @@ class AdminDashboardTest extends DuskTestCase
                     ->assertSee('Flash Cards Management')
                     ->assertSee('Create Category')
                     ->assertSee('Create Flash Card')
+                    ->assertSee('Create Quiz Card')
+                    ->assertSee('Create Learning Resource')
                     ->assertSee('Existing Categories')
                     ->assertSee('View Flash Card Feedback')
                     ->assertSee('Users')
