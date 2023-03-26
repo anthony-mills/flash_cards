@@ -10695,6 +10695,16 @@ a.text-dark:hover, a.text-dark:focus {
   font-family: GungSeo, serif;
 }
 
+.quiz-answer-text {
+  text-align: left;
+  font-family: "Urbanist-Regular";
+  font-size: 18px;
+}
+
+.quiz-choice-select {
+  padding-left: 2em;
+}
+
 /* NAV */
 #nav_deck {
   color: #000000;
@@ -11525,6 +11535,10 @@ form {
 
 .invalid-feedback {
   font-size: 80%;
+}
+
+.transparent-form {
+  background: none;
 }
 
 .top-nav-bar {

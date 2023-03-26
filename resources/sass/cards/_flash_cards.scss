@@ -24,12 +24,12 @@
 
     @media only screen and (min-width : 800px) {
         min-width: 500px;
-    }                
+    }
 }
 
 .card-content-area {
     background-color: #f2f2f2;
-    padding: 20px;  
+    padding: 20px;
 
     .list-group-item {
         background-color: inherit;
@@ -128,7 +128,7 @@
 
     p {
         margin: 0px;
-    } 
+    }
 }
 
 .no-csstransforms3d .flip .side_one,.no-csstransforms3d .side_two{
@@ -152,6 +152,21 @@
     font-family:GungSeo, serif
 }
 
+// Quiz card related styles
+.quiz-answer-radio {
+
+}
+
+.quiz-answer-text {
+    text-align: left;
+    font-family: "Urbanist-Regular";
+    font-size:18px;
+}
+
+.quiz-choice-select {
+    padding-left: 2em;
+}
+
 // Buttons (Previous / Flip / Next)
 $button_text_color: #000000;
 
@@ -169,7 +184,7 @@ $button_width:     40px;
   cursor: pointer;
 
   -webkit-text-stroke: 2px #b5acac;
-  
+
   &:before {
     content: attr(data-icon);
     font-family: 'Flash Cards';
@@ -203,7 +218,7 @@ $button_width:     40px;
     background-color:rgba(0, 0, 0, 0.5);
     color: #b5acac;
     font-size: 1.2em;
-    
+
     .current-card-count {
         padding: 10px;
     }

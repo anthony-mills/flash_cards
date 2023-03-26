@@ -13,9 +13,13 @@
 									<div class="flash-card-content">{!! $existingCard->problem !!}</div>
 								</div>
 
+                                {!! Form::open(['class' => "transparent-form"]) !!}
 								<div class="side_two">
-									<div class="flash-card-content">{!! $existingCard->solution !!}</div>
+									<div class="quiz-card-content">
+                                        @include('cards.partials.quiz_card_responses', ['cardChoices' => json_decode($existingCard->solution) ])
+                                    </div>
 								</div>
+                                {!! Form::close() !!}
 							</li>
 						@endforeach
 					</ul>
@@ -24,10 +28,6 @@
 			<div class="col-md-6">
                 	<div class="card-body card-controls">
 						<div class="row justify-content-center">
-							<div class="col-xs-1 text-right">
-								<span class="icon" id="prev" data-icon="<"><span class="visuallyhidden">Previous</span></span>
-							</div>
-
 							<div class="col-xs-4 text-center">
 								<span class="icon" id="flipper" data-icon="/"><span class="visuallyhidden">Flip</span></span>
 
@@ -54,10 +54,6 @@
 										</a>
 									</div>
 								</div>
-							</div>
-
-							<div class="col-xs-1 text-left">
-								<span class="icon" id="next" data-icon=">"><span class="visuallyhidden">Next</span></span>
 							</div>
 						</div>
 					</div>

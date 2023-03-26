@@ -56,7 +56,7 @@ class FlashSetController extends Controller
 
         if ($cardType == 2) {
             return view(
-                'flashsets.show_flash_cards',
+                'flashsets.show_quiz_cards',
                 [
                     'cardType' => $cardType,
                     'existingCards' => count($cardSet) > 2 ? $cardSet : Cards::where('type', $cardType)->inRandomOrder()->limit($formObj->get('card_number'))->get()

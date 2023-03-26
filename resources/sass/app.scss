@@ -33,6 +33,11 @@
 	font-size: 80%;
 }
 
+// Remove the background from form content, required when using forms on cards.
+.transparent-form {
+    background: none;
+}
+
 .top-nav-bar {
 	background-color: $dark-overlay;
 
