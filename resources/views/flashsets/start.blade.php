@@ -18,7 +18,7 @@
                                 <span class="red-text">*</span>
                                 <br />
                                 <?php $cardSet = $cardTypes->pluck('plural', 'id')->toArray(); ?>
-                                {!! Form::select( 'category', $cardSet , null, ['class' => 'form-control form-control-lg', 'dusk' => 'card_types'] ) !!}
+                                {!! Form::select( 'card_type', $cardSet , null, ['class' => 'form-control form-control-lg', 'dusk' => 'card_types'] ) !!}
                             </div>
 
                             <!-- Card Category -->
