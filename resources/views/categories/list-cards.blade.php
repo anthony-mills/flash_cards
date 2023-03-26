@@ -42,7 +42,7 @@
                                             <td>{!! $existingCard->problem !!}</td>
                                             <td>
                                                 @if ($existingCard->type == CardTypes::id("QUIZ"))
-                                                    <?php $answer = json_decode($existingCard->solution); ?>
+                                                    @php $answer = json_decode($existingCard->solution); @endphp
                                                     {!! $answer->{$answer->correct_answer} !!}
                                                 @else
                                                     {!! $existingCard->solution !!}

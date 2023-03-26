@@ -5,7 +5,7 @@
 	    <div class="row justify-content-center">
 	        <div class="col-md-12">
 	        	@if (count($existingCards) > 1)
-	        		<?php $cardCount=1; ?>
+	        		@php $cardCount=1; @endphp
 					<ul id="deck">
 						@foreach( $existingCards as $existingCard )
 							<li class="flash-card" data-card-number="{!! $cardCount++ !!}" data-card-id="{!! $existingCard->id !!}">

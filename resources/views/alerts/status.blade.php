@@ -6,7 +6,7 @@
 
 @if (session('errors'))
     <div class="alert alert-danger" role="alert">
-        <?php $errors = session('errors');?>
+        @php $errors = session('errors'); @endphp
         @if (is_string($errors))
             {!! session('errors') . \Session::forget('errors')  !!}
         @endif

@@ -17,7 +17,7 @@
                                 {!! Form::label('set_type', 'Set Type') !!}
                                 <span class="red-text">*</span>
                                 <br />
-                                <?php $cardSet = $cardTypes->pluck('plural', 'id')->toArray(); ?>
+                                @php $cardSet = $cardTypes->pluck('plural', 'id')->toArray(); @endphp
                                 {!! Form::select( 'card_type', $cardSet , null, ['class' => 'form-control form-control-lg', 'dusk' => 'card_types'] ) !!}
                             </div>
 
@@ -26,7 +26,7 @@
                                 {!! Form::label('category', 'Topic') !!}
                                 <span class="red-text">*</span>
                                 <br />
-                                <?php $quizOptions = [ '' => 'Random Mix' ] + $cardCats->pluck('name', 'id')->toArray(); ?>
+                                @php $quizOptions = [ '' => 'Random Mix' ] + $cardCats->pluck('name', 'id')->toArray(); @endphp
                                 {!! Form::select( 'category', $quizOptions , null, ['class' => 'form-control form-control-lg', 'dusk' => 'card_category'] ) !!}
                             </div>
 
