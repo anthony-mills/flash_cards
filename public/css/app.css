@@ -10695,14 +10695,20 @@ a.text-dark:hover, a.text-dark:focus {
   font-family: GungSeo, serif;
 }
 
-.quiz-answer-text {
+.quiz-response .quiz-answer-text {
   text-align: left;
   font-family: "Urbanist-Regular";
   font-size: 18px;
 }
-
-.quiz-choice-select {
+.quiz-response .quiz-choice-select {
   padding-left: 2em;
+}
+.quiz-response .correct {
+  color: forestgreen;
+}
+.quiz-response .incorrect {
+  color: red;
+  text-decoration: line-through;
 }
 
 /* NAV */

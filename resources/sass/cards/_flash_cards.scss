@@ -153,18 +153,25 @@
 }
 
 // Quiz card related styles
-.quiz-answer-radio {
+.quiz-response {
+    .quiz-answer-text {
+        text-align: left;
+        font-family: "Urbanist-Regular";
+        font-size:18px;
+    }
 
-}
+    .quiz-choice-select {
+        padding-left: 2em;
+    }
 
-.quiz-answer-text {
-    text-align: left;
-    font-family: "Urbanist-Regular";
-    font-size:18px;
-}
+    .correct {
+        color: forestgreen;
+    }
 
-.quiz-choice-select {
-    padding-left: 2em;
+    .incorrect {
+        color: red;
+        text-decoration: line-through;
+    }
 }
 
 // Buttons (Previous / Flip / Next)

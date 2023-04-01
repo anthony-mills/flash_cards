@@ -35,11 +35,31 @@ $(document).ready(function(){
       let cardNum = $(this).data("card-number");
 
       $("#current-card").html( cardNum );
+      let cardType = $(".current").data("card-type");
+
+      if (cardType === 'quiz') {
+          $('input[name=card_answer]').attr('checked', false);
+
+          $("input:radio").change(function(){
+              let answerVal = $("input[name=card_answer]:checked").val();
+              if ($("input[name=solution]").val() === answerVal) {
+                  $(this).parent().parent().find('.quiz-answer-text').addClass('correct');
+
+                  setTimeout(function(){
+                      $('#deck').cycle('next');
+                  },800);
+              } else {
+                  $(this).parent().parent().find('.quiz-answer-text').addClass('incorrect');
+
+              }
+          });
+      }
     }
+
     // Keyboard Nav
     $(document).keydown(function (e) {
       var keyCode = e.keyCode || e.which;
-      key = {left: 37, up: 38, right: 39, down: 40, enter: 13, space: 32};
+      keyPress = {left: 37, up: 38, right: 39, down: 40, enter: 13, space: 32};
 
       if (annotation != null && annotation.isShowing) {
         annotation.hide();
@@ -47,20 +67,24 @@ $(document).ready(function(){
       }
 
       switch (keyCode) {
-        case key.left:
-          $('.current').removeClass('flip');
-          $('#deck').cycle('prev');
-          e.preventDefault();
-          break;
-        case key.right:
-          $('.current').removeClass('flip');
-          $('#deck').cycle('next');
-          e.preventDefault();
-          break;
-        case key.up:
-        case key.down:
-        case key.enter:
-        case key.space:
+        case keyPress.left:
+            if ($(".current").data("card-type") === 'flash') {
+                $('.current').removeClass('flip');
+                $('#deck').cycle('prev');
+                e.preventDefault();
+            }
+            break;
+        case keyPress.right:
+            if ($(".current").data("card-type") === 'flash') {
+                $('.current').removeClass('flip');
+                $('#deck').cycle('next');
+                e.preventDefault();
+            }
+            break;
+        case keyPress.up:
+        case keyPress.down:
+        case keyPress.enter:
+        case keyPress.space:
           if ($("#feedback-modal").is(":hidden")) {
             $('.current').toggleClass('flip');
 
@@ -73,35 +97,33 @@ $(document).ready(function(){
       }
 
       let currentSide = ($('.current').hasClass('flip') ? "Answer" : "Question");
-
-      $('#current-side').html( currentSide );      
+      $('#current-side').html( currentSide );
     });
   }
 
   function showTextEffect() {
-
-    setTimeout(function() { 
+    setTimeout(function() {
       if ($(".current u").length) {
         annotation = annotate(document.querySelector(".current u"), { type: 'underline', color: 'red' })
-      } 
+      }
 
       if ($(".current .side_two b").length) {
         annotation = annotate(document.querySelector(".current b"), { type: 'highlight', color: '#FFD54F' })
-      }       
+      }
 
-      annotation.show();  
+      annotation.show();
     }, 1300);
-  }  
-  
+  }
+
   $("#save-feedback").on('click', function( event ) {
     event.preventDefault();
 
     $.post(
-      "/api/store/feedback", 
+      "/api/store/feedback",
       {
         'card_id' : $(".current").data("card-id"),
-        'feedback' : $("#card-feedback textarea[name=feedback]").val(), 
-        '_token' : $("#card-feedback input[name=_token]").val(),       
+        'feedback' : $("#card-feedback textarea[name=feedback]").val(),
+        '_token' : $("#card-feedback input[name=_token]").val(),
       },
       function(result){
         $("#card-feedback").trigger('reset');

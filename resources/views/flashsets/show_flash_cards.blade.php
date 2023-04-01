@@ -8,7 +8,7 @@
 	        		@php $cardCount=1; @endphp
 					<ul id="deck">
 						@foreach( $existingCards as $existingCard )
-							<li class="flash-card" data-card-number="{!! $cardCount++ !!}" data-card-id="{!! $existingCard->id !!}">
+							<li class="flash-card" data-card-type="flash" data-card-number="{!! $cardCount++ !!}" data-card-id="{!! $existingCard->id !!}">
 								<div class="side_one">
 									<div class="flash-card-content">{!! $existingCard->problem !!}</div>
 								</div>

@@ -5393,6 +5393,21 @@ $(document).ready(function () {
       $(this).addClass('current');
       var cardNum = $(this).data("card-number");
       $("#current-card").html(cardNum);
+      var cardType = $(".current").data("card-type");
+      if (cardType === 'quiz') {
+        $('input[name=card_answer]').attr('checked', false);
+        $("input:radio").change(function () {
+          var answerVal = $("input[name=card_answer]:checked").val();
+          if ($("input[name=solution]").val() === answerVal) {
+            $(this).parent().parent().find('.quiz-answer-text').addClass('correct');
+            setTimeout(function () {
+              $('#deck').cycle('next');
+            }, 800);
+          } else {
+            $(this).parent().parent().find('.quiz-answer-text').addClass('incorrect');
+          }
+        });
+      }
     }; // Keyboard Nav
     // FLIP
     $('#flipper').bind('click', function () {
@@ -5418,7 +5433,7 @@ $(document).ready(function () {
     });
     $(document).keydown(function (e) {
       var keyCode = e.keyCode || e.which;
-      key = {
+      keyPress = {
         left: 37,
         up: 38,
         right: 39,
@@ -5431,20 +5446,24 @@ $(document).ready(function () {
         $("svg").find("*").remove();
       }
       switch (keyCode) {
-        case key.left:
-          $('.current').removeClass('flip');
-          $('#deck').cycle('prev');
-          e.preventDefault();
+        case keyPress.left:
+          if ($(".current").data("card-type") === 'flash') {
+            $('.current').removeClass('flip');
+            $('#deck').cycle('prev');
+            e.preventDefault();
+          }
           break;
-        case key.right:
-          $('.current').removeClass('flip');
-          $('#deck').cycle('next');
-          e.preventDefault();
+        case keyPress.right:
+          if ($(".current").data("card-type") === 'flash') {
+            $('.current').removeClass('flip');
+            $('#deck').cycle('next');
+            e.preventDefault();
+          }
           break;
-        case key.up:
-        case key.down:
-        case key.enter:
-        case key.space:
+        case keyPress.up:
+        case keyPress.down:
+        case keyPress.enter:
+        case keyPress.space:
           if ($("#feedback-modal").is(":hidden")) {
             $('.current').toggleClass('flip');
             if ($(".current u").length || $(".current b").length) {
