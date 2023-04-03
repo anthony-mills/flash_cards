@@ -32,7 +32,7 @@
 								<span class="icon" id="flipper" data-icon="/"><span class="visuallyhidden">Flip</span></span>
 
 								<div class="card-set-state">
-									<div class="current-card-count">
+                                    <div class="current-card-count" data-current-card="1" data-card-count="{{ count($existingCards) }}">
 										Card: <span id="current-card">1</span> of {{ count($existingCards) }}
 									</div>
 

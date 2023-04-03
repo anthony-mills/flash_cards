@@ -4,6 +4,7 @@ $(document).ready(function(){
   let annotation = null;
 
   if ($('#deck').length) {
+
     // FLIP
     $('#flipper').bind('click', function(){
       $('.flash-card.current').toggleClass('flip');
@@ -34,26 +35,8 @@ $(document).ready(function(){
 
       let cardNum = $(this).data("card-number");
 
+      $(".current-card-count").data("current-card", cardNum);
       $("#current-card").html( cardNum );
-      let cardType = $(".current").data("card-type");
-
-      if (cardType === 'quiz') {
-          $('input[name=card_answer]').attr('checked', false);
-
-          $("input:radio").change(function(){
-              let answerVal = $("input[name=card_answer]:checked").val();
-              if ($("input[name=solution]").val() === answerVal) {
-                  $(this).parent().parent().find('.quiz-answer-text').addClass('correct');
-
-                  setTimeout(function(){
-                      $('#deck').cycle('next');
-                  },800);
-              } else {
-                  $(this).parent().parent().find('.quiz-answer-text').addClass('incorrect');
-
-              }
-          });
-      }
     }
 
     // Keyboard Nav
@@ -113,6 +96,29 @@ $(document).ready(function(){
 
       annotation.show();
     }, 1300);
+  }
+
+  let cardType = $(".current").data("card-type");
+
+  if (cardType === 'quiz') {
+      $('input[name=card_answer]').attr('checked', false);
+
+      $("input[name=card_answer]:radio").change(function (event) {
+          event.preventDefault();
+          console.log(event);
+          let answerVal = $("input[name=card_answer]:checked").val();
+          if ($("input[name=solution]").val() === answerVal) {
+              $(this).parent().parent().find('.quiz-answer-text').addClass('correct');
+
+              setTimeout(function(){
+                  let answerVal = $("input[name=card_answer]:checked").val();
+                  $('.current').removeClass('flip');
+                  $('#deck').cycle('next');
+              },700);
+          } else {
+              $(this).parent().parent().find('.quiz-answer-text').addClass('incorrect');
+          }
+      });
   }
 
   $("#save-feedback").on('click', function( event ) {

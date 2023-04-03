@@ -5392,22 +5392,8 @@ $(document).ready(function () {
     var onAfter = function onAfter() {
       $(this).addClass('current');
       var cardNum = $(this).data("card-number");
+      $(".current-card-count").data("current-card", cardNum);
       $("#current-card").html(cardNum);
-      var cardType = $(".current").data("card-type");
-      if (cardType === 'quiz') {
-        $('input[name=card_answer]').attr('checked', false);
-        $("input:radio").change(function () {
-          var answerVal = $("input[name=card_answer]:checked").val();
-          if ($("input[name=solution]").val() === answerVal) {
-            $(this).parent().parent().find('.quiz-answer-text').addClass('correct');
-            setTimeout(function () {
-              $('#deck').cycle('next');
-            }, 800);
-          } else {
-            $(this).parent().parent().find('.quiz-answer-text').addClass('incorrect');
-          }
-        });
-      }
     }; // Keyboard Nav
     // FLIP
     $('#flipper').bind('click', function () {
@@ -5493,6 +5479,25 @@ $(document).ready(function () {
       }
       annotation.show();
     }, 1300);
+  }
+  var cardType = $(".current").data("card-type");
+  if (cardType === 'quiz') {
+    $('input[name=card_answer]').attr('checked', false);
+    $("input[name=card_answer]:radio").change(function (event) {
+      event.preventDefault();
+      console.log(event);
+      var answerVal = $("input[name=card_answer]:checked").val();
+      if ($("input[name=solution]").val() === answerVal) {
+        $(this).parent().parent().find('.quiz-answer-text').addClass('correct');
+        setTimeout(function () {
+          var answerVal = $("input[name=card_answer]:checked").val();
+          $('.current').removeClass('flip');
+          $('#deck').cycle('next');
+        }, 700);
+      } else {
+        $(this).parent().parent().find('.quiz-answer-text').addClass('incorrect');
+      }
+    });
   }
   $("#save-feedback").on('click', function (event) {
     event.preventDefault();
@@ -6945,7 +6950,7 @@ var RoughNotation = function (t) {
     animIn: null,
     // properties that define how the slide animates in
     animInDelay: 0,
-    // allows delay before next slide transitions in  
+    // allows delay before next slide transitions in
     animOut: null,
     // properties that define how the slide animates out
     animOutDelay: 0,
