@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+  let correctCards = 0;
   var annotate = RoughNotation.annotate;
   let annotation = null;
 
@@ -105,14 +105,21 @@ $(document).ready(function(){
 
       $("input[name=card_answer]:radio").change(function (event) {
           event.preventDefault();
-          console.log(event);
-          let answerVal = $("input[name=card_answer]:checked").val();
-          if ($("input[name=solution]").val() === answerVal) {
+
+          let answerVal = $(".current input[name=card_answer]:checked").val();
+
+          if ($(".current input[name=solution]").val() === answerVal) {
               $(this).parent().parent().find('.quiz-answer-text').addClass('correct');
+              if ($(".current .incorrect").length === 0) {
+                  correctCards++;
+              }
 
               setTimeout(function(){
-                  let answerVal = $("input[name=card_answer]:checked").val();
+                  $(this).parent().parent().find('.quiz-answer-text').addClass('correct');
                   $('.current').removeClass('flip');
+                  if ($(".current-card-count").data("current-card") == $(".current-card-count").data("card-count")) {
+                    alert(`Finished with ${correctCards} of ${$(".current-card-count").data("card-count")}`)
+                  }
                   $('#deck').cycle('next');
               },700);
           } else {

@@ -5383,6 +5383,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 $(document).ready(function () {
+  var correctCards = 0;
   var annotate = RoughNotation.annotate;
   var annotation = null;
   if ($('#deck').length) {
@@ -5485,13 +5486,18 @@ $(document).ready(function () {
     $('input[name=card_answer]').attr('checked', false);
     $("input[name=card_answer]:radio").change(function (event) {
       event.preventDefault();
-      console.log(event);
-      var answerVal = $("input[name=card_answer]:checked").val();
-      if ($("input[name=solution]").val() === answerVal) {
+      var answerVal = $(".current input[name=card_answer]:checked").val();
+      if ($(".current input[name=solution]").val() === answerVal) {
         $(this).parent().parent().find('.quiz-answer-text').addClass('correct');
+        if ($(".current .incorrect").length === 0) {
+          correctCards++;
+        }
         setTimeout(function () {
-          var answerVal = $("input[name=card_answer]:checked").val();
+          $(this).parent().parent().find('.quiz-answer-text').addClass('correct');
           $('.current').removeClass('flip');
+          if ($(".current-card-count").data("current-card") == $(".current-card-count").data("card-count")) {
+            alert("Finished with ".concat(correctCards, " of ").concat($(".current-card-count").data("card-count")));
+          }
           $('#deck').cycle('next');
         }, 700);
       } else {
