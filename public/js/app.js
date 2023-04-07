@@ -5420,7 +5420,7 @@ $(document).ready(function () {
     });
     $(document).keydown(function (e) {
       var keyCode = e.keyCode || e.which;
-      keyPress = {
+      var keyPress = {
         left: 37,
         up: 38,
         right: 39,
@@ -5495,7 +5495,7 @@ $(document).ready(function () {
         setTimeout(function () {
           $(this).parent().parent().find('.quiz-answer-text').addClass('correct');
           $('.current').removeClass('flip');
-          if ($(".current-card-count").data("current-card") == $(".current-card-count").data("card-count")) {
+          if ($(".current-card-count").data("current-card") === $(".current-card-count").data("card-count")) {
             alert("Finished with ".concat(correctCards, " of ").concat($(".current-card-count").data("card-count")));
           }
           $('#deck').cycle('next');
