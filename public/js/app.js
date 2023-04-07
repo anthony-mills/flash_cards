@@ -5384,6 +5384,7 @@ function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _ty
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 $(document).ready(function () {
   var correctCards = 0;
+  var cardCount = $(".current-card-count").data("card-count");
   var annotate = RoughNotation.annotate;
   var annotation = null;
   if ($('#deck').length) {
@@ -5432,16 +5433,17 @@ $(document).ready(function () {
         annotation.hide();
         $("svg").find("*").remove();
       }
+      var cardType = $(".current").data("card-type");
       switch (keyCode) {
         case keyPress.left:
-          if ($(".current").data("card-type") === 'flash') {
+          if (cardType === 'flash') {
             $('.current').removeClass('flip');
             $('#deck').cycle('prev');
             e.preventDefault();
           }
           break;
         case keyPress.right:
-          if ($(".current").data("card-type") === 'flash') {
+          if (cardType === 'flash') {
             $('.current').removeClass('flip');
             $('#deck').cycle('next');
             e.preventDefault();
@@ -5496,7 +5498,9 @@ $(document).ready(function () {
           $(this).parent().parent().find('.quiz-answer-text').addClass('correct');
           $('.current').removeClass('flip');
           if ($(".current-card-count").data("current-card") === $(".current-card-count").data("card-count")) {
-            alert("Finished with ".concat(correctCards, " of ").concat($(".current-card-count").data("card-count")));
+            var endMsg = "<p>Congratulations you completed the quiz!</p><p>Answering ".concat(correctCards, " of ").concat(cardCount, " questions correct.</p>");
+            $("#completed-modal .modal-body").html(endMsg);
+            $("#completed-modal").modal("show");
           }
           $('#deck').cycle('next');
         }, 700);

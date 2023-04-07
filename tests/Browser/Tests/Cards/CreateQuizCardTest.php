@@ -2,9 +2,7 @@
 
 namespace Tests\Browser\Tests\Cards;
 
-use App\Models\Feedback;
 use App\Models\User;
-use Illuminate\Support\Facades\Config;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\AuthSession;
 use Tests\DuskTestCase;

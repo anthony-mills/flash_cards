@@ -60,6 +60,7 @@
                     </div>
                 </div>
 
+                @include('flashsets.partials.set_complete_modal')
                 @include('flashsets.partials.feedback_modal')
 
                 @else

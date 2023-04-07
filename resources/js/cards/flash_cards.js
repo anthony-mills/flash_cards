@@ -1,5 +1,6 @@
 $(document).ready(function(){
   let correctCards = 0;
+  let cardCount = $(".current-card-count").data("card-count");
   let annotate = RoughNotation.annotate;
   let annotation = null;
 
@@ -119,7 +120,9 @@ $(document).ready(function(){
                   $(this).parent().parent().find('.quiz-answer-text').addClass('correct');
                   $('.current').removeClass('flip');
                   if ($(".current-card-count").data("current-card") === $(".current-card-count").data("card-count")) {
-                    alert(`Finished with ${correctCards} of ${$(".current-card-count").data("card-count")}`)
+                      let endMsg = `<p>Congratulations you completed the quiz!</p><p>Answering ${correctCards} of ${cardCount} questions correct.</p>`;
+                      $("#completed-modal .modal-body").html(endMsg);
+                      $("#completed-modal").modal("show");
                   }
                   $('#deck').cycle('next');
               },700);
