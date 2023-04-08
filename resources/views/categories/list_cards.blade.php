@@ -9,8 +9,7 @@
             <div class="col-md-12">
                 <div class="card dark-card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        Showing {{ $cardRows->count() }} of {{ $cardRows->total() }} saved {{CardTypes::name("FLASH")}}
-                        s.
+                        Showing {{ $cardRows->count() }} of {{ $cardRows->total() }} saved {{CardTypes::name("FLASH")}}s.
                         <a type="button" href="{{ url(RouteServiceProvider::ADMINHOME) }}"
                            class="btn btn-sm btn-inverse">
                             Dashboard
@@ -25,10 +24,10 @@
 
                                 <div class="row">
                                     <div class="col">
-                                        {!! $cardRows->links("layouts.pagination") !!}
+                                        @include("categories.partials.select_card_type", ["selectedType" => $selectedType, "catId" => $catId])
                                     </div>
                                     <div class="col">
-                                        @include("categories.partials.select_card_type", ["selectedType" => $selectedType, "catId" => $catId])
+                                        {!! $cardRows->links("layouts.pagination") !!}
                                     </div>
                                 </div>
 
