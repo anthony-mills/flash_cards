@@ -5509,6 +5509,14 @@ $(document).ready(function () {
       }
     });
   }
+
+  // Close the completed quiz set modal
+  $("#completed-modal .end-set").on('click', function (event) {
+    event.preventDefault();
+    window.location.replace("/");
+  });
+
+  // Save feedback from a use to a card
   $("#save-feedback").on('click', function (event) {
     event.preventDefault();
     $.post("/api/store/feedback", {
