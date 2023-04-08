@@ -133,7 +133,7 @@ class ResourceController extends Controller
         } else {
             $resourceRows = Resources::orderBy('category', 'ASC')->paginate();
         }
-        return view('resources.resource-category',
+        return view('resources.resource_category',
         [
             'resourceRows' => $resourceRows,
             'catId' => $catId,

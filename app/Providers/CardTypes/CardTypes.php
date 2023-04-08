@@ -16,8 +16,8 @@ class CardTypes implements CardTypesInterface
      */
     public static function getType($typeName, $retVal=true) : Mixed
     {
-        $confVal = SELF::getTypes()->firstWhere('key', $typeName);
-        return ($retVal == 'collection') ? collect($confVal) : (object) $confVal;
+        $confVal = SELF::getTypes()->firstWhere("key", $typeName);
+        return ($retVal == "collection") ? collect($confVal) : (object) $confVal;
     }
 
     /**
@@ -27,7 +27,7 @@ class CardTypes implements CardTypesInterface
      */
     public static function getTypes() : Collection
     {
-        return collect(Config::get('card_types'));
+        return collect(Config::get("card_types"));
     }
 
     /**
@@ -39,7 +39,7 @@ class CardTypes implements CardTypesInterface
      */
     public static function id(string $typeName): int
     {
-        return SELF::getType($typeName)->get('id');
+        return SELF::getType($typeName)->get("id");
     }
 
     /**
@@ -51,7 +51,7 @@ class CardTypes implements CardTypesInterface
      */
     public static function nameById(int $typeId, $plural=false) : string
     {
-        $configElm = (object) SELF::getTypes()->firstWhere('id', $typeId);
+        $configElm = (object) SELF::getTypes()->firstWhere("id", $typeId);
 
         return ($plural) ? ($configElm->plural ?? "") : ($configElm->singular ?? "");
     }
@@ -65,7 +65,7 @@ class CardTypes implements CardTypesInterface
      */
     public static function name(string $typeName, $plural=false): string
     {
-        return ($plural) ? SELF::getType($typeName)->get('plural') : SELF::getType($typeName)->get('singular');
+        return ($plural) ? SELF::getType($typeName)->get("plural") : SELF::getType($typeName)->get("singular");
     }
 
     /**
@@ -77,7 +77,7 @@ class CardTypes implements CardTypesInterface
      */
     public static function urlById(int $typeId) : string
     {
-        $configElm = (object) SELF::getTypes()->firstWhere('id', $typeId);
+        $configElm = (object) SELF::getTypes()->firstWhere("id", $typeId);
 
         return $configElm->url ?? "";
     }
@@ -91,6 +91,6 @@ class CardTypes implements CardTypesInterface
      */
     public static function configByType(string $typeName) : object
     {
-        return (object) SELF::getTypes()->firstWhere('key', $typeName);
+        return (object) SELF::getTypes()->firstWhere("key", $typeName);
     }
 }

@@ -17,7 +17,8 @@
 @import 'vendor/_bootstrap-tagsinput';
 
 // Styles related to the backend
-@import 'backend/card-creation';
+@import 'backend/card_creation';
+@import 'backend/category_cards';
 
 // Center Laravel pagination elements
 .pagination {

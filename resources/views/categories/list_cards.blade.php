@@ -23,7 +23,14 @@
 
                             @if ( count($cardRows) > 0 )
 
-                                {!! $cardRows->links("layouts.pagination") !!}
+                                <div class="row">
+                                    <div class="col">
+                                        {!! $cardRows->links("layouts.pagination") !!}
+                                    </div>
+                                    <div class="col">
+                                        @include("categories.partials.select_card_type", ["selectedType" => $selectedType, "catId" => $catId])
+                                    </div>
+                                </div>
 
                                 <table class="table">
                                     <thead class="thead-dark">

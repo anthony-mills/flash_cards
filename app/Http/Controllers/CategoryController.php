@@ -110,18 +110,26 @@ class CategoryController extends Controller
      * List all the cards associated with a category
      *
      * @param int $catId
+     * @param int $typeId
      *
      * @return Application|Factory|View|RedirectResponse
      *
      * @throws Exception If non-numeric $catId encountered
      */
-    public function getCards($catId): View|Factory|RedirectResponse|Application
+    public function getCards($catId, $typeId = 0): View|Factory|RedirectResponse|Application
     {
         if (is_numeric($catId)) {
-            $cardRows = ( new Cards )->getByCat($catId);
+            $cardRows = ( new Cards )->getByCat($catId, $typeId);
 
             if ($cardRows) {
-                return view('categories.list-cards', ['cardRows' => $cardRows]);
+                return view(
+                    'categories.list_cards',
+                    [
+                        'catId' => $catId,
+                        'cardRows' => $cardRows,
+                        'selectedType' => $typeId
+                    ]
+                );
             }
 
             return redirect(RouteServiceProvider::ADMINHOME)->with('errors', 'Category not found.');

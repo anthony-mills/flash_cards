@@ -4,8 +4,9 @@ require('./vendor/editor');
 require('./vendor/confirm_modal');
 require('./vendor/typeahead');
 require('./vendor/bootstrap_tagsinput');
-require('./cards/jquery_cycle');
+require('./cards/categories');
 require('./cards/flash_cards');
+require('./cards/jquery_cycle');
 require('./learning_resources/view.js');
 
 const Bloodhound = require('bloodhound-js');

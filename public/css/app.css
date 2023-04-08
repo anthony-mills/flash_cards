@@ -11530,6 +11530,10 @@ form {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.select-card-type {
+  margin-bottom: 1.2em;
+}
+
 .pagination {
   justify-content: center;
 }

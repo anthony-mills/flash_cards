@@ -9,4 +9,6 @@ Route::get('/card/categories/create', 'CategoryController@createCategory')->name
 Route::post('/card/categories/create', 'CategoryController@saveCategory')->name('category.save');
 
 Route::get('/card/category/{catId}', 'CategoryController@getCards');
+
+Route::get('/card/category/{catId}/type/{typeId}', 'CategoryController@getCards');
 /** End the category related routes **/

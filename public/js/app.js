@@ -5314,8 +5314,9 @@ __webpack_require__(/*! ./vendor/editor */ "./resources/js/vendor/editor.js");
 __webpack_require__(/*! ./vendor/confirm_modal */ "./resources/js/vendor/confirm_modal.js");
 __webpack_require__(/*! ./vendor/typeahead */ "./resources/js/vendor/typeahead.js");
 __webpack_require__(/*! ./vendor/bootstrap_tagsinput */ "./resources/js/vendor/bootstrap_tagsinput.js");
-__webpack_require__(/*! ./cards/jquery_cycle */ "./resources/js/cards/jquery_cycle.js");
+__webpack_require__(/*! ./cards/categories */ "./resources/js/cards/categories.js");
 __webpack_require__(/*! ./cards/flash_cards */ "./resources/js/cards/flash_cards.js");
+__webpack_require__(/*! ./cards/jquery_cycle */ "./resources/js/cards/jquery_cycle.js");
 __webpack_require__(/*! ./learning_resources/view.js */ "./resources/js/learning_resources/view.js");
 var Bloodhound = __webpack_require__(/*! bloodhound-js */ "./node_modules/bloodhound-js/index.js");
 $(document).ready(function () {
@@ -5354,6 +5355,22 @@ $(document).ready(function () {
       var deleteLink = $(el).data('delete');
       window.location = deleteLink;
     });
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/cards/categories.js":
+/*!******************************************!*\
+  !*** ./resources/js/cards/categories.js ***!
+  \******************************************/
+/***/ (() => {
+
+$(document).ready(function () {
+  $("select.select-card-type").on("change", function () {
+    var cardType = $("select.select-card-type").val();
+    var catId = $(this).data("category");
+    window.location.href = "/card/category/".concat(catId, "/type/").concat(cardType);
   });
 });
 

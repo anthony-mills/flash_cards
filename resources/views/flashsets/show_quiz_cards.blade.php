@@ -13,10 +13,10 @@
                                     <div class="flash-card-content">{!! $existingCard->problem !!}</div>
                                 </div>
 
-                                {!! Form::open(['class' => "transparent-form"]) !!}
+                                {!! Form::open(["class" => "transparent-form"]) !!}
                                 <div class="side_two">
                                     <div class="quiz-card-content">
-                                        @include('flashsets.partials.quiz_card_responses', ['cardChoices' => json_decode($existingCard->solution) ])
+                                        @include("flashsets.partials.quiz_card_responses", ["cardChoices" => json_decode($existingCard->solution) ])
                                     </div>
                                 </div>
                                 {!! Form::close() !!}
@@ -60,8 +60,8 @@
                     </div>
                 </div>
 
-                @include('flashsets.partials.set_complete_modal')
-                @include('flashsets.partials.feedback_modal')
+                @include("flashsets.partials.set_complete_modal")
+                @include("flashsets.partials.feedback_modal")
 
                 @else
                     @include('alerts.insufficient_cards', ['cardType' => $cardType])
