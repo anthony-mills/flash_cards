@@ -9,7 +9,8 @@
             <div class="col-md-12">
                 <div class="card dark-card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        Showing {{ $cardRows->count() }} of {{ $cardRows->total() }} saved {{CardTypes::name("FLASH")}}s.
+                        @php $typeName = ($selectedType > 0) ? CardTypes::nameById($selectedType) : CardTypes::name("FLASH"); @endphp
+                        Showing {{ $cardRows->count() }} of {{ $cardRows->total() }} saved {{$typeName}}s.
                         <a type="button" href="{{ url(RouteServiceProvider::ADMINHOME) }}"
                            class="btn btn-sm btn-inverse">
                             Dashboard
@@ -33,11 +34,11 @@
 
                                 <table class="table">
                                     <thead class="thead-dark">
-                                    <th scope="col">Type</th>
-                                    <th scope="col">Difficulty</th>
-                                    <th scope="col">Question</th>
-                                    <th scope="col">Answer</th>
-                                    <th scope="col">Actions</th>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">Difficulty</th>
+                                        <th scope="col">Question</th>
+                                        <th scope="col">Answer</th>
+                                        <th scope="col">Actions</th>
                                     </thead>
 
                                     <tbody>
