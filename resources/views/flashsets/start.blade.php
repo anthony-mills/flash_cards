@@ -12,13 +12,21 @@
 
                     @if ( $cardCats->count() > 0 )
                         {!! Form::open(['class' => 'form', 'route' => 'card.begin']) !!}
+                            <!-- Card Set Type -->
+                            <div class="form-group">
+                                {!! Form::label('set_type', 'Set Type') !!}
+                                <span class="red-text">*</span>
+                                <br />
+                                @php $cardSet = $cardTypes->pluck('plural', 'id')->toArray(); @endphp
+                                {!! Form::select( 'card_type', $cardSet , null, ['class' => 'form-control form-control-lg', 'dusk' => 'card_types'] ) !!}
+                            </div>
 
                             <!-- Card Category -->
                             <div class="form-group">
                                 {!! Form::label('category', 'Topic') !!}
                                 <span class="red-text">*</span>
                                 <br />
-                                <?php $quizOptions = [ '' => 'Random Mix' ] + $cardCats->pluck('name', 'id')->toArray(); ?>
+                                @php $quizOptions = [ '' => 'Random Mix' ] + $cardCats->pluck('name', 'id')->toArray(); @endphp
                                 {!! Form::select( 'category', $quizOptions , null, ['class' => 'form-control form-control-lg', 'dusk' => 'card_category'] ) !!}
                             </div>
 
@@ -42,9 +50,9 @@
 
                             <div class="text-center">
                                 {!! Form::submit('Continue', ['class' => 'btn btn-outline', 'dusk' => 'continue_button']) !!}
-                            </div>                      
+                            </div>
                         {!! Form::close() !!}
-                    @else 
+                    @else
                         <p>Some topics and cards need to be added to the system before you can proceed.</p>
                     @endif
                 </div>

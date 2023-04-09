@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Providers\CardTypes\CardTypes;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests\CardStartSetForm;
@@ -21,10 +23,10 @@ class FlashSetController extends Controller
     public function beginSet()
     {
         $cardCats = ( new CardCategories )->getCategories();
-
         return view(
             'flashsets.start',
             [
+                'cardTypes' => CardTypes::getTypes(),
                 'cardCats' => $cardCats ?? array(),
                 'cardNumber' => [ 10 => 10, 20 => 20, 50 => 50 ],
                 'difficultyLvl' => [ 0 => 'All', 1, 2, 3, 4, 5 ]
@@ -42,24 +44,30 @@ class FlashSetController extends Controller
     public function showCards(CardStartSetForm $formObj)
     {
         $cardCat = $formObj->get('category');
+        $cardType = $formObj->get('card_type') ?? 1;
         $cardLevel = $formObj->get('difficulty');
 
-        $cardQuery = Cards::inRandomOrder()->limit($formObj->get('card_number'));
+        $cardQuery = Cards::where('type', $cardType)->inRandomOrder()->limit($formObj->get('card_number'));
 
-        if ($cardLevel > 0) {
-            $cardQuery->where('difficulty', $cardLevel);
-        }
-
-        if (is_numeric($cardCat)) {
-            $cardQuery->where('category', $cardCat);
-        }
+        if ($cardLevel > 0) { $cardQuery->where('difficulty', $cardLevel); }
+        if (is_numeric($cardCat)) { $cardQuery->where('category', $cardCat); }
 
         $cardSet = $cardQuery->get();
 
+        if ($cardType == 2) {
+            return view(
+                'flashsets.show_quiz_cards',
+                [
+                    'cardType' => $cardType,
+                    'existingCards' => count($cardSet) > 2 ? $cardSet : Cards::where('type', $cardType)->inRandomOrder()->limit($formObj->get('card_number'))->get()
+                ]
+            );
+        }
         return view(
-            'flashsets.show_cards',
+            'flashsets.show_flash_cards',
             [
-                'existingCards' => count($cardSet) > 2 ? $cardSet : Cards::inRandomOrder()->limit($formObj->get('card_number'))->get()
+                'cardType' => $cardType,
+                'existingCards' => count($cardSet) > 2 ? $cardSet : Cards::where('type', $cardType)->inRandomOrder()->limit($formObj->get('card_number'))->get()
             ]
         );
     }

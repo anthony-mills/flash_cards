@@ -6,6 +6,18 @@
 
 @if (session('errors'))
     <div class="alert alert-danger" role="alert">
-        {!! session('errors') . \Session::forget('errors')  !!}
+        @php $errors = session('errors'); @endphp
+        @if (is_string($errors))
+            {!! session('errors') . \Session::forget('errors')  !!}
+        @endif
+
+        @if (is_object($errors))
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{!! $error !!}</li>
+                @endforeach
+                {!! \Session::forget('errors') !!}
+            </ul>
+        @endif
     </div>
 @endif

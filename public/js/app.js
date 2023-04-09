@@ -5314,8 +5314,9 @@ __webpack_require__(/*! ./vendor/editor */ "./resources/js/vendor/editor.js");
 __webpack_require__(/*! ./vendor/confirm_modal */ "./resources/js/vendor/confirm_modal.js");
 __webpack_require__(/*! ./vendor/typeahead */ "./resources/js/vendor/typeahead.js");
 __webpack_require__(/*! ./vendor/bootstrap_tagsinput */ "./resources/js/vendor/bootstrap_tagsinput.js");
-__webpack_require__(/*! ./cards/jquery_cycle */ "./resources/js/cards/jquery_cycle.js");
+__webpack_require__(/*! ./cards/categories */ "./resources/js/cards/categories.js");
 __webpack_require__(/*! ./cards/flash_cards */ "./resources/js/cards/flash_cards.js");
+__webpack_require__(/*! ./cards/jquery_cycle */ "./resources/js/cards/jquery_cycle.js");
 __webpack_require__(/*! ./learning_resources/view.js */ "./resources/js/learning_resources/view.js");
 var Bloodhound = __webpack_require__(/*! bloodhound-js */ "./node_modules/bloodhound-js/index.js");
 $(document).ready(function () {
@@ -5359,6 +5360,22 @@ $(document).ready(function () {
 
 /***/ }),
 
+/***/ "./resources/js/cards/categories.js":
+/*!******************************************!*\
+  !*** ./resources/js/cards/categories.js ***!
+  \******************************************/
+/***/ (() => {
+
+$(document).ready(function () {
+  $("select.select-card-type").on("change", function () {
+    var cardType = $("select.select-card-type").val();
+    var catId = $(this).data("category");
+    window.location.href = "/card/category/".concat(catId, "/type/").concat(cardType);
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/cards/flash_cards.js":
 /*!*******************************************!*\
   !*** ./resources/js/cards/flash_cards.js ***!
@@ -5383,6 +5400,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 $(document).ready(function () {
+  var correctCards = 0;
+  var cardCount = $(".current-card-count").data("card-count");
   var annotate = RoughNotation.annotate;
   var annotation = null;
   if ($('#deck').length) {
@@ -5392,6 +5411,7 @@ $(document).ready(function () {
     var onAfter = function onAfter() {
       $(this).addClass('current');
       var cardNum = $(this).data("card-number");
+      $(".current-card-count").data("current-card", cardNum);
       $("#current-card").html(cardNum);
     }; // Keyboard Nav
     // FLIP
@@ -5418,7 +5438,7 @@ $(document).ready(function () {
     });
     $(document).keydown(function (e) {
       var keyCode = e.keyCode || e.which;
-      key = {
+      var keyPress = {
         left: 37,
         up: 38,
         right: 39,
@@ -5430,21 +5450,26 @@ $(document).ready(function () {
         annotation.hide();
         $("svg").find("*").remove();
       }
+      var cardType = $(".current").data("card-type");
       switch (keyCode) {
-        case key.left:
-          $('.current').removeClass('flip');
-          $('#deck').cycle('prev');
-          e.preventDefault();
+        case keyPress.left:
+          if (cardType === 'flash') {
+            $('.current').removeClass('flip');
+            $('#deck').cycle('prev');
+            e.preventDefault();
+          }
           break;
-        case key.right:
-          $('.current').removeClass('flip');
-          $('#deck').cycle('next');
-          e.preventDefault();
+        case keyPress.right:
+          if (cardType === 'flash') {
+            $('.current').removeClass('flip');
+            $('#deck').cycle('next');
+            e.preventDefault();
+          }
           break;
-        case key.up:
-        case key.down:
-        case key.enter:
-        case key.space:
+        case keyPress.up:
+        case keyPress.down:
+        case keyPress.enter:
+        case keyPress.space:
           if ($("#feedback-modal").is(":hidden")) {
             $('.current').toggleClass('flip');
             if ($(".current u").length || $(".current b").length) {
@@ -5475,6 +5500,40 @@ $(document).ready(function () {
       annotation.show();
     }, 1300);
   }
+  var cardType = $(".current").data("card-type");
+  if (cardType === 'quiz') {
+    $('input[name=card_answer]').attr('checked', false);
+    $("input[name=card_answer]:radio").change(function (event) {
+      event.preventDefault();
+      var answerVal = $(".current input[name=card_answer]:checked").val();
+      if ($(".current input[name=solution]").val() === answerVal) {
+        $(this).parent().parent().find('.quiz-answer-text').addClass('correct');
+        if ($(".current .incorrect").length === 0) {
+          correctCards++;
+        }
+        setTimeout(function () {
+          $(this).parent().parent().find('.quiz-answer-text').addClass('correct');
+          $('.current').removeClass('flip');
+          if ($(".current-card-count").data("current-card") === $(".current-card-count").data("card-count")) {
+            var endMsg = "<p>Congratulations you completed the quiz!</p><p>Answering ".concat(correctCards, " of ").concat(cardCount, " questions correct.</p>");
+            $("#completed-modal .modal-body").html(endMsg);
+            $("#completed-modal").modal("show");
+          }
+          $('#deck').cycle('next');
+        }, 700);
+      } else {
+        $(this).parent().parent().find('.quiz-answer-text').addClass('incorrect');
+      }
+    });
+  }
+
+  // Close the completed quiz set modal
+  $("#completed-modal .end-set").on('click', function (event) {
+    event.preventDefault();
+    window.location.replace("/");
+  });
+
+  // Save feedback from a use to a card
   $("#save-feedback").on('click', function (event) {
     event.preventDefault();
     $.post("/api/store/feedback", {
@@ -6926,7 +6985,7 @@ var RoughNotation = function (t) {
     animIn: null,
     // properties that define how the slide animates in
     animInDelay: 0,
-    // allows delay before next slide transitions in  
+    // allows delay before next slide transitions in
     animOut: null,
     // properties that define how the slide animates out
     animOutDelay: 0,

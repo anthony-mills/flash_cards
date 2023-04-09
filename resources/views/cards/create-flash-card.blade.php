@@ -15,7 +15,7 @@
                 <div class="card-body">
                     @include('alerts.status')
 
-                    {!! Form::open(['class' => 'form', 'route' => 'card.save']) !!}
+                    {!! Form::open(['class' => 'form', 'route' => 'flashcard.save']) !!}
 
                         {{ Form::hidden( 'card_id', $cardRow->id ?? null ) }}
 

@@ -12,18 +12,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        Selected Category:
-                        <select name="selected-cat" class="select-card-category">
-                            @if ($catId == 0)
-                                <option value="" SELECTED>All</option>
-                            @endif
-
-                            @foreach($catList as $catItem)
-                                <option value="{{ $catItem->id }}" {{ ($catItem->id == $catId) ? 'SELECTED' : '' }}>
-                                    {{ $catItem->name }}
-                                </option>
-                            @endforeach
-                        </select>
+                        @include("resources.partials.category_select", ["catId" => $catId, "catList" => $catList])
                     </div>
 
                     <div class="col-md-2">
@@ -35,7 +24,7 @@
 
                 <div class="card-body">
                     <div class="card-content-area">
-                        @include('alerts.status')
+                        @include("alerts.status")
 
                         @if ( count($resourceRows) > 0 )
 
@@ -60,7 +49,7 @@
                                                 </a>
                                             </td>
                                             <td>{!! $existingResource->description !!}</td>
-                                            <td>{{ Carbon\Carbon::parse($existingResource->created_at)->format('d/m/Y') }}</td>
+                                            <td>{{ Carbon\Carbon::parse($existingResource->created_at)->format("d/m/Y") }}</td>
                                             @role('admin')
                                                 <td class="text-center">
                                                     <a href="/resource/edit/{{ $existingResource->id }}" class="btn btn-outline btn-block btn-sm mt-1">

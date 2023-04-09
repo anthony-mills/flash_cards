@@ -26,6 +26,8 @@ class SetSelectionTest extends DuskTestCase
         $this->browse(function (Browser $browserObj) {
             $browserObj->visit(Config::get('app.url'))
                     ->assertSee('Quiz Options')
+                    ->assertSee('Set Type')
+                    ->assertVisible('@card_types')
                     ->assertVisible('@card_category')
                     ->assertSelected('@card_category', '')
                     ->assertVisible('@card_difficulty')

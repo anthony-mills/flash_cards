@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Providers\CardTypes\CardTypes;
 use App\Providers\RouteServiceProvider;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
@@ -109,21 +110,24 @@ class CategoryController extends Controller
      * List all the cards associated with a category
      *
      * @param int $catId
+     * @param int $typeId
      *
      * @return Application|Factory|View|RedirectResponse
      *
      * @throws Exception If non-numeric $catId encountered
      */
-    public function getCards($catId): View|Factory|RedirectResponse|Application
+    public function getCards($catId, $typeId = 0): View|Factory|RedirectResponse|Application
     {
         if (is_numeric($catId)) {
-            $cardRows = ( new Cards )->getByCat($catId);
+            $cardRows = ( new Cards )->getByCat($catId, $typeId);
 
             if ($cardRows) {
                 return view(
-                    'categories.list-cards',
+                    'categories.list_cards',
                     [
-                        'cardRows' => $cardRows
+                        'catId' => $catId,
+                        'cardRows' => $cardRows,
+                        'selectedType' => $typeId
                     ]
                 );
             }

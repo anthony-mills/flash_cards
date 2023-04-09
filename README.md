@@ -50,9 +50,9 @@ By adding bold and underline styles to your card text in the editor will add eff
 
 ### Requirements 
 
-The application is created with Laravel 7.
+The application is created with Laravel 8.1.
 
-So an environment running PHP versions 7.2.5 and above is required.
+So an environment running PHP versions 8.1 and above is required.
 
 Along with a MySQL server to hold the flash cards and categories.
 

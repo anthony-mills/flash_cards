@@ -16,6 +16,10 @@
 // Bootstrap Tags Editor
 @import 'vendor/_bootstrap-tagsinput';
 
+// Styles related to the backend
+@import 'backend/card_creation';
+@import 'backend/category_cards';
+
 // Center Laravel pagination elements
 .pagination {
 	justify-content: center;
@@ -28,6 +32,11 @@
 
 .invalid-feedback {
 	font-size: 80%;
+}
+
+// Remove the background from form content, required when using forms on cards.
+.transparent-form {
+    background: none;
 }
 
 .top-nav-bar {

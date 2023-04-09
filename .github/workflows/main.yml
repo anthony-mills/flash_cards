@@ -20,7 +20,7 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - name: Verify MySQL connection
         run: |
           mysql --version
@@ -34,7 +34,7 @@ jobs:
             php-version: '8.1'
             extensions: mbstring, intl, zip, curl, mysql, json, xml
       - name: Cache composer dependencies
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
 
           path: vendor

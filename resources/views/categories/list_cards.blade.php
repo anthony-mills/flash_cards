@@ -1,4 +1,4 @@
-@php use App\Providers\RouteServiceProvider; @endphp
+@php use App\Providers\CardTypes\CardTypes;use App\Providers\RouteServiceProvider; @endphp
 
 @extends('layouts.app')
 
@@ -9,7 +9,8 @@
             <div class="col-md-12">
                 <div class="card dark-card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        Showing {{ $cardRows->count() }} of {{$cardRows->total() }} save flash cards.
+                        @php $typeName = ($selectedType > 0) ? CardTypes::nameById($selectedType) : CardTypes::name("FLASH"); @endphp
+                        Showing {{ $cardRows->count() }} of {{ $cardRows->total() }} saved {{$typeName}}s.
                         <a type="button" href="{{ url(RouteServiceProvider::ADMINHOME) }}"
                            class="btn btn-sm btn-inverse">
                             Dashboard
@@ -22,33 +23,45 @@
 
                             @if ( count($cardRows) > 0 )
 
-                                {!! $cardRows->links("layouts.pagination") !!}
+                                <div class="row">
+                                    <div class="col">
+                                        @include("categories.partials.select_card_type", ["selectedType" => $selectedType, "catId" => $catId])
+                                    </div>
+                                    <div class="col">
+                                        {!! $cardRows->links("layouts.pagination") !!}
+                                    </div>
+                                </div>
 
                                 <table class="table">
                                     <thead class="thead-dark">
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Difficulty</th>
-                                    <th scope="col">Question</th>
-                                    <th scope="col">Answer</th>
-                                    <th scope="col">Created</th>
-                                    <th scope="col">Actions</th>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">Difficulty</th>
+                                        <th scope="col">Question</th>
+                                        <th scope="col">Answer</th>
+                                        <th scope="col">Actions</th>
                                     </thead>
 
                                     <tbody>
                                     @foreach( $cardRows as $existingCard )
                                         <tr>
-                                            <td>{{ $existingCard->id }}</td>
+                                            <td>{{ CardTypes::nameById($existingCard->type) }}</td>
                                             <td>{{ $existingCard->difficulty }} / 5</td>
                                             <td>{!! $existingCard->problem !!}</td>
-                                            <td>{!! $existingCard->solution !!}</td>
-                                            <td>{{ Carbon\Carbon::parse($existingCard->created_at)->format('d/m/Y') }}</td>
+                                            <td>
+                                                @if ($existingCard->type == CardTypes::id("QUIZ"))
+                                                    @php $answer = json_decode($existingCard->solution); @endphp
+                                                    {!! $answer->{$answer->correct_answer} !!}
+                                                @else
+                                                    {!! $existingCard->solution !!}
+                                                @endif
+                                            </td>
                                             <td class="text-center">
-                                                <a href="/card/edit/{{ $existingCard->id }}"
+                                                <a href="/{!! CardTypes::urlById($existingCard->type) !!}/edit/{{ $existingCard->id }}"
                                                    class="btn btn-outline btn-block btn-sm mt-1">
                                                     Edit
                                                 </a>
 
-                                                <button type="button" data-delete="/card/delete/{{ $existingCard->id }}"
+                                                <button type="button" data-delete="/{!! CardTypes::urlById($existingCard->type) !!}/delete/{{ $existingCard->id }}"
                                                         class="btn btn-outline delete-item btn-block btn-sm mt-1">Delete
                                                 </button>
                                             </td>

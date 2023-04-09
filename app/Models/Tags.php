@@ -5,9 +5,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Config;
-
-use App\Models\CardTags;
 
 class Tags extends Model
 {

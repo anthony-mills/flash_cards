@@ -10695,6 +10695,22 @@ a.text-dark:hover, a.text-dark:focus {
   font-family: GungSeo, serif;
 }
 
+.quiz-response .quiz-answer-text {
+  text-align: left;
+  font-family: "Urbanist-Regular";
+  font-size: 18px;
+}
+.quiz-response .quiz-choice-select {
+  padding-left: 2em;
+}
+.quiz-response .correct {
+  color: forestgreen;
+}
+.quiz-response .incorrect {
+  color: red;
+  text-decoration: line-through;
+}
+
 /* NAV */
 #nav_deck {
   color: #000000;
@@ -11494,6 +11510,30 @@ form {
   width: auto;
 }
 
+.quiz-answer-select {
+  float: right;
+  margin-top: 10px;
+}
+
+.quiz-answer-field {
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #444;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #bbb;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.select-card-type {
+  margin-bottom: 1.2em;
+}
+
 .pagination {
   justify-content: center;
 }
@@ -11505,6 +11545,10 @@ form {
 
 .invalid-feedback {
   font-size: 80%;
+}
+
+.transparent-form {
+  background: none;
 }
 
 .top-nav-bar {

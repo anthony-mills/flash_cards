@@ -13,11 +13,15 @@
                     <div class="card-content-area">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
-                                <a href="/card/categories/create">Create Category</a>
+                                <a href="/categories/create">Create Category</a>
                             </li>
 
                             <li class="list-group-item">
-                                <a href="/card/create">Create Flash Card</a>
+                                <a href="/flash-card/create">Create Flash Card</a>
+                            </li>
+
+                            <li class="list-group-item">
+                                <a href="/quiz-card/create">Create Quiz Card</a>
                             </li>
 
                             <li class="list-group-item">
@@ -25,7 +29,7 @@
                             </li>
 
                             <li class="list-group-item">
-                                <a href="/card/categories/list">Existing Categories</a>
+                                <a href="/categories/list">Existing Categories</a>
                             </li>
 
                             <li class="list-group-item">
