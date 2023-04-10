@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Providers\CardTypes\CardTypes;
 use App\Providers\RouteServiceProvider;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
