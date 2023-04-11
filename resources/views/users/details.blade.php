@@ -50,7 +50,12 @@
                                 <tbody>
                                     @foreach($logins as $login)
                                         <tr>
-                                            <td>{{ $login->ip }}</td>
+                                            <td>
+                                                {{ $login->ip }} -
+                                                <a href="https://iplocation.io/ip/{{ $login->ip }}" target="_blank">
+                                                    Details
+                                                </a>
+                                            </td>
                                             <td>{{ $login->user_agent }}</td>
                                             <td>{{ $login->created_at }}</td>
                                         </tr>

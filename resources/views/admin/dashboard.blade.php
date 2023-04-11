@@ -10,40 +10,48 @@
                 <div class="card-body">
                     @include('alerts.status')
 
-                    <div class="card-content-area">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                                <a href="/categories/create">Create Category</a>
-                            </li>
+                    <div class="card-content-area row">
+                        <div class="col">
+                            <h4>Cards</h4>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <a href="/categories/create">Create Category</a>
+                                </li>
 
-                            <li class="list-group-item">
-                                <a href="/flash-card/create">Create Flash Card</a>
-                            </li>
+                                <li class="list-group-item">
+                                    <a href="/flash-card/create">Create Flash Card</a>
+                                </li>
 
-                            <li class="list-group-item">
-                                <a href="/quiz-card/create">Create Quiz Card</a>
-                            </li>
+                                <li class="list-group-item">
+                                    <a href="/quiz-card/create">Create Quiz Card</a>
+                                </li>
 
-                            <li class="list-group-item">
-                                <a href="/resource/create">Create Learning Resource</a>
-                            </li>
+                                <li class="list-group-item">
+                                    <a href="/categories/list">Existing Categories</a>
+                                </li>
 
-                            <li class="list-group-item">
-                                <a href="/categories/list">Existing Categories</a>
-                            </li>
+                                <li class="list-group-item">
+                                    <a href="/card/feedback/view">View Flash Card Feedback</a>
+                                </li>
+                            </ul>
+                        </div>
 
-                            <li class="list-group-item">
-                                <a href="/card/feedback/view">View Flash Card Feedback</a>
-                            </li>
+                        <div class="col">
+                            <h4>Misc</h4>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <a href="/resource/create">Create Learning Resource</a>
+                                </li>
 
-                            <li class="list-group-item">
-                                <a href="/users/list">View Users</a>
-                            </li>
+                                <li class="list-group-item">
+                                    <a href="/users/list">View Users</a>
+                                </li>
 
-                            <li class="list-group-item">
-                                <a href="/">Go to Flash Cards</a>
-                            </li>
-                        </ul>
+                                <li class="list-group-item">
+                                    <a href="/">Go to Flash Cards</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 

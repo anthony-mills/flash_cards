@@ -122,7 +122,8 @@ $(document).ready(function(){
                   if ($(".current-card-count").data("current-card") === $(".current-card-count").data("card-count")) {
                       let endMsg = `<p>Congratulations you completed the quiz!</p><p>Answering ${correctCards} of ${cardCount} questions correct.</p>`;
                       $("#completed-modal .modal-body").html(endMsg);
-                      $("#completed-modal").modal("show");
+                      $("#completed-modal").modal({backdrop: 'static', keyboard: false});
+                      $("#completed-modal").modal('show');
                   }
                   $('#deck').cycle('next');
               },700);

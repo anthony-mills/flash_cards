@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card dark-card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    Existing Users
+                    {!! $sysUsers->count() !!} Existing Users
                     <a type="button" href="{{ url(\App\Providers\RouteServiceProvider::ADMINHOME) }}" class="btn btn-sm btn-inverse">
                         Dashboard
                     </a>
