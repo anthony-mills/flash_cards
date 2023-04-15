@@ -137,7 +137,7 @@ class ResourceController extends Controller
         [
             'resourceRows' => $resourceRows,
             'catId' => $catId,
-            'catList' => (new CardCategories())->getCategories()
+            'catList' => (new CardCategories())->getResourceCats()
         ]);
     }
 }

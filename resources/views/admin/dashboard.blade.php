@@ -12,22 +12,26 @@
 
                     <div class="card-content-area row">
                         <div class="col">
-                            <h4>Cards</h4>
+                            <h4>Content Categories</h4>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
                                     <a href="/categories/create">Create Category</a>
                                 </li>
 
                                 <li class="list-group-item">
+                                    <a href="/categories/list">Existing Categories</a>
+                                </li>
+                            </ul>
+
+                            <br />
+                            <h4>Cards</h4>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
                                     <a href="/flash-card/create">Create Flash Card</a>
                                 </li>
 
                                 <li class="list-group-item">
                                     <a href="/quiz-card/create">Create Quiz Card</a>
-                                </li>
-
-                                <li class="list-group-item">
-                                    <a href="/categories/list">Existing Categories</a>
                                 </li>
 
                                 <li class="list-group-item">
@@ -48,7 +52,7 @@
                                 </li>
 
                                 <li class="list-group-item">
-                                    <a href="/">Go to Flash Cards</a>
+                                    <a href="/">Start a Card Set</a>
                                 </li>
                             </ul>
                         </div>

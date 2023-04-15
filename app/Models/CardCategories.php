@@ -50,6 +50,20 @@ class CardCategories extends Model
     }
 
     /**
+     * Get non categories that contain learning resources.
+     *
+     * @return Collection $existingCats
+     **/
+    public function getResourceCats( $paginateResults = 0 )
+    {
+        $savedCats = $this::whereIn('id', function ($query) {
+            $query->select('category')->from('resources')->groupBy('category')->havingRaw('COUNT(category) > 0');
+        })->get();
+
+        return $savedCats;
+    }
+
+    /**
     * Return a category along with its associated Cards
     *
     * @param integer $catId
