@@ -19,7 +19,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the application dashboard for an learning_resources user.
+     * Show the application dashboard for a learning_resources user.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

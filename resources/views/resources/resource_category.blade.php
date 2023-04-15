@@ -16,7 +16,11 @@
                     </div>
 
                     <div class="col-md-2">
-                        <a type="button" href="{{ url(\App\Providers\RouteServiceProvider::ADMINHOME) }}" class="btn btn-sm btn-inverse">
+                        @role('admin')
+                            <a type="button" href="{{ url(\App\Providers\RouteServiceProvider::ADMINHOME) }}" class="btn btn-sm btn-inverse">
+                        @else
+                            <a type="button" href="{{ url(\App\Providers\RouteServiceProvider::USERHOME) }}" class="btn btn-sm btn-inverse">
+                        @endrole
                             Dashboard
                         </a>
                     </div>

@@ -63,14 +63,6 @@
 
                                     <hr/>
 
-                                    @role('admin')
-                                        <a class="dropdown-item" href="{{ url(\App\Providers\RouteServiceProvider::ADMINHOME) }}">
-                                            Admin Panel
-                                        </a>
-
-                                        <hr/>
-                                    @endrole
-
                                     @hasanyrole('user|admin')
                                         <a class="dropdown-item" href="{{ url(\App\Providers\RouteServiceProvider::USERHOME) }}">
                                             Dashboard
@@ -79,6 +71,14 @@
                                         <hr/>
                                     @endhasanyrole
 
+                                    @role('admin')
+                                    <a class="dropdown-item" href="{{ url(\App\Providers\RouteServiceProvider::ADMINHOME) }}">
+                                        Admin Dashboard
+                                    </a>
+
+                                    <hr/>
+                                    @endrole
+                                    
                                     <a class="dropdown-item" href="{{ route('password.change') }}">
                                         Change Password
                                     </a>

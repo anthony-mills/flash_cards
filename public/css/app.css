@@ -11534,6 +11534,13 @@ form {
   margin-bottom: 1.2em;
 }
 
+#admin-dashboard h4 {
+  padding-bottom: 0.2em;
+}
+#admin-dashboard ul .list-group-item {
+  border: none;
+}
+
 .pagination {
   justify-content: center;
 }
