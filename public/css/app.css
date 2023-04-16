@@ -10763,10 +10763,12 @@ a.text-dark:hover, a.text-dark:focus {
 .card-controls .current-card-count {
   padding: 10px;
 }
-
-.card-action-icon img {
+.card-controls .card-action-icon img {
   border: none;
   -webkit-box-shadow: none;
+}
+.card-controls .card-action-icon .action-icon:hover {
+  transform: scale(0.9);
 }
 
 .highlight table td {
@@ -11532,13 +11534,6 @@ form {
 
 .select-card-type {
   margin-bottom: 1.2em;
-}
-
-#admin-dashboard h4 {
-  padding-bottom: 0.2em;
-}
-#admin-dashboard ul .list-group-item {
-  border: none;
 }
 
 .pagination {

@@ -20,4 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/card/tags', 'ApiController@getTags')->name('card.tags');
 
-Route::post('/store/feedback', 'ApiController@storeFeedback')->name('store.feedback');
+Route::post('/store/feedback', 'Api\CardController@storeFeedback')->name('store.feedback');
+
+// Routes restricted to users with learning_resources role
+Route::group(['middleware' => ['role:admin|user']], function () {
+    Route::post('/user/save_card', 'Api\CardController@addReviewCard');
+});

@@ -184,9 +184,10 @@ $button_width:     40px;
 
 /* NAV */
 #nav_deck {
-  color: $button_text_color;
-  position: relative;
+    color: $button_text_color;
+    position: relative;
 }
+
 .icon {
   cursor: pointer;
 
@@ -229,11 +230,17 @@ $button_width:     40px;
     .current-card-count {
         padding: 10px;
     }
-}
 
-.card-action-icon {
-    img {
-        border: none;
-        -webkit-box-shadow: none;
+    .card-action-icon {
+        img {
+            border: none;
+            -webkit-box-shadow: none;
+        }
+
+        .action-icon:hover {
+            transform: scale(0.9);
+        }
     }
 }
+
+

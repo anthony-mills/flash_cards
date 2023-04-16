@@ -1,34 +1,44 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
+use App\Models\Cards;
+use App\Models\Feedback;
+use App\Models\SavedCards;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
 
-use App\Models\Feedback;
-use App\Models\Tags;
-
-class ApiController extends Controller
+class CardController extends Controller
 {
     /**
-    * Return a JSON array of all stored card tags
-    *
-    * @return JsonResponse
-     **/
-    public function getTags() : JsonResponse
+     * Store a card for future review by a user
+     *
+     * @param Request $reqObj
+     *
+     * @return JsonResponse
+     */
+    public function addReviewCard(Request $reqObj) : JsonResponse
     {
-        return response()->json(Tags::all()->pluck('tag'), 200);
+        $cardRow = Cards::where('id', $reqObj->get("card_id"))->first();
+
+        if ($cardRow) {
+            SavedCards::updateOrCreate(["card_id" => $cardRow->id, "user_id" => Auth::id()]);
+            return response()->json(["data" => "Card successfully saved", "errors" => NULL]);
+        }
+
+        return response()->json(["errors" => "Card not found."]);
     }
 
     /**
-    * Store user feedback for a card, so it can be reviewed
-    *
-    * @param Request $reqObj
-    *
-    * @return JsonResponse
+     * Store user feedback for a card, so it can be reviewed
+     *
+     * @param Request $reqObj
+     *
+     * @return JsonResponse
      **/
     public function storeFeedback(Request $reqObj) : JsonResponse
     {

@@ -5537,6 +5537,16 @@ $(document).ready(function () {
     window.location.replace("/");
   });
 
+  // Save a card for future review
+  $(".save-card-for-review").on("click", function (event) {
+    event.preventDefault();
+    $.post("/api/user/save_card", {
+      'card_id': $(".current").data("card-id")
+    }, function (result) {
+      console.log("Card Saved");
+    });
+  });
+
   // Save feedback from a use to a card
   $("#save-feedback").on('click', function (event) {
     event.preventDefault();
