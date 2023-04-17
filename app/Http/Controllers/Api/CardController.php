@@ -24,9 +24,9 @@ class CardController extends Controller
     public function addReviewCard(Request $reqObj) : JsonResponse
     {
         $cardRow = Cards::where('id', $reqObj->get("card_id"))->first();
-
-        if ($cardRow) {
-            SavedCards::updateOrCreate(["card_id" => $cardRow->id, "user_id" => Auth::id()]);
+        $userId = Auth::id() ?? False;
+        if ($cardRow && $userId) {
+            SavedCards::updateOrCreate(["card_id" => $cardRow->id, "user_id" => $userId]);
             return response()->json(["data" => "Card successfully saved", "errors" => NULL]);
         }
 
