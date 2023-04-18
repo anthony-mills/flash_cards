@@ -148,7 +148,12 @@ $(document).ready(function(){
             'card_id' : $(".current").data("card-id"),
         },
         function(result){
-            console.log("Card Saved");
+            $(".card-button-action-message").html("Card Saved.");
+            $(".card-button-action-message").fadeToggle(300, "swing", function(){
+                setTimeout(function(){
+                    $(".card-button-action-message").fadeToggle();
+                },500);
+            });
         });
   });
 

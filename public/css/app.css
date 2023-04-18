@@ -10770,6 +10770,9 @@ a.text-dark:hover, a.text-dark:focus {
 .card-controls .card-action-icon .action-icon:hover {
   transform: scale(0.9);
 }
+.card-controls .card-button-action-message {
+  display: none;
+}
 
 .highlight table td {
   padding: 5px;
