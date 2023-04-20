@@ -181,7 +181,6 @@ $button_font_size: 30px;
 $button_padding:   10px; // For bigger targets!
 $button_width:     40px;
 
-
 /* NAV */
 #nav_deck {
     color: $button_text_color;
@@ -241,8 +240,11 @@ $button_width:     40px;
             transform: scale(0.9);
         }
     }
+}
 
+.container {
     .card-button-action-message {
+        margin-top: 2em;
         display: none;
     }
 }

@@ -10770,7 +10770,9 @@ a.text-dark:hover, a.text-dark:focus {
 .card-controls .card-action-icon .action-icon:hover {
   transform: scale(0.9);
 }
-.card-controls .card-button-action-message {
+
+.container .card-button-action-message {
+  margin-top: 2em;
   display: none;
 }
 

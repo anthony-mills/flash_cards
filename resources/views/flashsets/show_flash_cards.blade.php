@@ -49,6 +49,7 @@
 							</div>
 						</div>
 					</div>
+                    <div class="card-button-action-message alert alert-success justify-content-center" role="alert"></div>
 
                     @include('flashsets.partials.feedback_modal')
 				@else
