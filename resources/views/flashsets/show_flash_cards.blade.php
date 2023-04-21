@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends("layouts.app")
 
-@section('content')
+@section("content")
 	<div class="container dark-container">
 	    <div class="row justify-content-center">
 	        <div class="col-md-12">
@@ -41,7 +41,7 @@
 									</div>
 								</div>
 
-                                @include('flashsets.partials.action_buttons')
+                                @include("flashsets.partials.action_buttons")
 							</div>
 
 							<div class="col-xs-1 text-left">
@@ -49,11 +49,10 @@
 							</div>
 						</div>
 					</div>
-                    <div class="card-button-action-message alert alert-success justify-content-center" role="alert"></div>
-
-                    @include('flashsets.partials.feedback_modal')
+                    @include("flashsets.partials.alert_box")
+                    @include("flashsets.partials.feedback_modal")
 				@else
-					@include('alerts.insufficient_cards')
+					@include("alerts.insufficient_cards")
 				@endif
 	        </div>
 	    </div>

@@ -23,7 +23,9 @@
                     </div>
                 </div>
 
-            </div>
+                <div class="card-footer text-muted text-center">
+                   {{$cardCount}}
+                </div>
         </div>
     </div>
 </div>

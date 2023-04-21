@@ -5539,6 +5539,7 @@ $(document).ready(function () {
 
   // Save a card for future review
   $(".save-card-for-review").on("click", function (event) {
+    console.log('Saving card');
     event.preventDefault();
     $.post("/api/user/save_card", {
       'card_id': $(".current").data("card-id")

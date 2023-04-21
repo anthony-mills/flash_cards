@@ -45,7 +45,8 @@ class CreateLearningResourceTest extends DuskTestCase
                     ->assertSee('Dashboard')
                     ->click('@drop_down_menu')
                     ->assertSee('Home')
-                    ->assertSee('Admin Panel')
+                    ->assertSee('Dashboard')
+                    ->assertSee('Admin Dashboard')
                     ->assertSee('Dashboard')
                     ->assertSee('Change Password')
                     ->assertSee('Logout');

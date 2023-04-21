@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SavedCards;
+use App\Providers\CardTypes\CardTypes;
 use Illuminate\Http\Request;
 
 use App\Models\Cards;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -25,10 +28,19 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $savedCards = (new SavedCards())->cardsByType(Auth::id());
+
+        if ($savedCards) {
+            $cardCount = ($savedCards->map(function ($item) {
+                return $item->count . " " . CardTypes::nameById($item->type, true);
+            })->join(", ", " & ")) . " saved for review." ;
+        } else {
+            $cardCount = "Currently no cards saved for review.";
+        }
         return view(
             'users.dashboard',
             [
-                'cardCount' => Cards::count()
+                'cardCount' => $cardCount,
             ]
         );
     }
