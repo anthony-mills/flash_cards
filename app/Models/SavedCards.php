@@ -20,7 +20,7 @@ class SavedCards extends Model
      * Get a count of the saved cards by Card Type.
      *
      * @param int $userId
-     * 
+     *
      * @return mixed
      */
     public function cardsByType(int $userId): mixed

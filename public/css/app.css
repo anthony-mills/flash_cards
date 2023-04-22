@@ -11554,6 +11554,10 @@ form {
   font-size: 80%;
 }
 
+.inactive-link {
+  text-decoration: line-through;
+}
+
 .transparent-form {
   background: none;
 }

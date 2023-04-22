@@ -28,19 +28,20 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $cardCount = [];
         $savedCards = (new SavedCards())->cardsByType(Auth::id());
+        $savedCards->map(function ($item) {
+            $cardCount[CardTypes::nameById($item->type)] = $item->count;
+            return $item->count . " " . CardTypes::nameById($item->type, true);
+        });
 
-        if ($savedCards) {
-            $cardCount = ($savedCards->map(function ($item) {
-                return $item->count . " " . CardTypes::nameById($item->type, true);
-            })->join(", ", " & ")) . " saved for review." ;
-        } else {
-            $cardCount = "Currently no cards saved for review.";
-        }
+        $cardMsg = ($savedCards->count()) ? $savedCards->join(", ", " & ") . " saved for review." : "No cards saved for review.";
+
         return view(
             'users.dashboard',
             [
-                'cardCount' => $cardCount,
+                'cardMsg' => $cardMsg,
+                'cardCount' => $cardCount
             ]
         );
     }
