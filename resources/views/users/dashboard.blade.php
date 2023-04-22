@@ -20,7 +20,7 @@
 
                                 <li class="list-group-item">
                                     @php $cardCount['FLASH'] = (isset($cardCount['FLASH'])) ? $cardCount['FLASH'] : 0; @endphp
-                                    @if ($cardCount['FLASH'] > 10)
+                                    @if ($cardCount['FLASH'] >= 10)
                                         <a href="#">Start Flash Card Review</a> ( {{$cardCount['FLASH']}} Cards )
                                     @else
                                         <a href="" class="inactive-link">Start Flash Card Review</a> ( {{$cardCount['FLASH']}} Cards )
@@ -29,7 +29,7 @@
 
                                 <li class="list-group-item">
                                     @php $cardCount['QUIZ'] = (isset($cardCount['QUIZ'])) ? $cardCount['QUIZ'] : 0; @endphp
-                                    @if ($cardCount['QUIZ'] > 10)
+                                    @if ($cardCount['QUIZ'] >= 10)
                                         <a href="#">Start Quiz Card Review</a> ( {{$cardCount['QUIZ']}} Cards )
                                     @else
                                         <a href="" class="inactive-link">Start Quiz Card Review</a> ( {{$cardCount['QUIZ']}} Cards )
@@ -48,7 +48,7 @@
 
                             <br />
 
-                            <h4>Cards for Review</h4>
+                            <h4>Saved Cards</h4>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
                                     <a href="#">Flash cards</a>

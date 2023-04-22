@@ -57,6 +57,18 @@ class CardTypes implements CardTypesInterface
     }
 
     /**
+     * Get name by id
+     *
+     * @param int $typeId
+     *
+     * @return string
+     */
+    public static function keyById(int $typeId) : string
+    {
+        return ((object) SELF::getTypes()->firstWhere("id", $typeId))->key;
+    }
+
+    /**
      * Return a name for a card type
      *
      * @param string $typeName

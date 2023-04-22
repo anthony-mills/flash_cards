@@ -28,14 +28,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $cardCount = [];
         $savedCards = (new SavedCards())->cardsByType(Auth::id());
-        $savedCards->map(function ($item) {
-            $cardCount[CardTypes::nameById($item->type)] = $item->count;
+        $cardCount = $savedCards->mapWithKeys(function ($item) { return [CardTypes::keyById($item->type) => $item->count]; });
+        $savedCards = $savedCards->map(function ($item) {
             return $item->count . " " . CardTypes::nameById($item->type, true);
         });
-
-        $cardMsg = ($savedCards->count()) ? $savedCards->join(", ", " & ") . " saved for review." : "No cards saved for review.";
+        $cardMsg = ($savedCards->count() > 0) ? $savedCards->join(", ", " & ") . " saved for review." : "No cards saved for review.";
 
         return view(
             'users.dashboard',
