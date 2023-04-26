@@ -52,9 +52,9 @@
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
                                     @if ($cardCount['FLASH'] > 0)
-                                        <a href="#">Flash cards</a>
+                                        <a href="#">Flash Cards</a>
                                     @else
-                                        <a href="" class="inactive-link">Flash cards</a>
+                                        <a href="" class="inactive-link">Flash Cards</a>
                                     @endif
                                 </li>
 
@@ -62,7 +62,7 @@
                                     @if ($cardCount['QUIZ'] > 0)
                                         <a href="#">Quiz Cards</a>
                                     @else
-                                        <a class="inactive-link">Quiz cards</a>
+                                        <a class="inactive-link">Quiz Cards</a>
                                     @endif
                                 </li>
                             </ul>
