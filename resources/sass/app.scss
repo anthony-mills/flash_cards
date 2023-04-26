@@ -36,7 +36,8 @@
 }
 
 .inactive-link {
-    text-decoration: line-through;
+    text-decoration: line-through !important;
+    color: #ba1e0d;
 }
 
 // Remove the background from form content, required when using forms on cards.

@@ -188,12 +188,12 @@ a:hover {
   text-decoration: underline;
 }
 
-a:not([href]) {
+a:not([href]):not(.inactive-link) {
   color: inherit;
   text-decoration: none;
 }
 
-a:not([href]):hover {
+a:not([href]):not(.inactive-link):hover {
   color: inherit;
   text-decoration: none;
 }

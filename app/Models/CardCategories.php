@@ -29,7 +29,7 @@ class CardCategories extends Model
     /**
     * Return all categories and their associated cards
     *
-    * @param integer $paginateResults
+    * @param int $paginateResults
     *
     * @return Collection $existingCats
     **/
@@ -66,11 +66,11 @@ class CardCategories extends Model
     /**
     * Return a category along with its associated Cards
     *
-    * @param integer $catId
+    * @param int $catId
     *
     * @return null|object $existingCats
     **/
-    public function getCategory($catId)
+    public function getCategory(int $catId)
     {
         $existingCats = $this->with(
             'flashCards'
@@ -83,7 +83,7 @@ class CardCategories extends Model
     /**
      * Get category name by id
      *
-     * @param integer $catId
+     * @param int $catId
      *
      * @return string
      */
@@ -93,6 +93,7 @@ class CardCategories extends Model
             $savedCats  = Cache::get( 'categories' );
         } else {
             $savedCats = CardCategories::orderBy('name', 'ASC')->get();
+            Cache::put('categories', $savedCats);
         }
 
         return $savedCats->where('id', $catId)->pluck('name')->first();

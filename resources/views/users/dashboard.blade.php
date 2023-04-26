@@ -32,7 +32,7 @@
                                     @if ($cardCount['QUIZ'] >= 10)
                                         <a href="#">Start Quiz Card Review</a> ( {{$cardCount['QUIZ']}} Cards )
                                     @else
-                                        <a href="" class="inactive-link">Start Quiz Card Review</a> ( {{$cardCount['QUIZ']}} Cards )
+                                        <a class="inactive-link">Start Quiz Card Review</a> ( {{$cardCount['QUIZ']}} Cards )
                                     @endif
                                 </li>
                             </ul>
@@ -51,11 +51,19 @@
                             <h4>Saved Cards</h4>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                    <a href="#">Flash cards</a>
+                                    @if ($cardCount['FLASH'] > 0)
+                                        <a href="#">Flash cards</a>
+                                    @else
+                                        <a href="" class="inactive-link">Flash cards</a>
+                                    @endif
                                 </li>
 
                                 <li class="list-group-item">
-                                    <a href="#">Quiz Cards</a>
+                                    @if ($cardCount['QUIZ'] > 0)
+                                        <a href="#">Quiz Cards</a>
+                                    @else
+                                        <a class="inactive-link">Quiz cards</a>
+                                    @endif
                                 </li>
                             </ul>
                         </div>
